@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>萌夜雀的人头会社</title>
+<search> 
   
-  <link href="/atom.xml" rel="self"/>
-  
-  <link href="https://lgzh1215.github.io/"/>
-  <updated>2017-05-28T20:26:01.753Z</updated>
-  <id>https://lgzh1215.github.io/</id>
-  
-  <author>
-    <name>Dexlind</name>
-    <email>lgzh1215@gmail.com</email>
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>关于此博客，以及博主，还有那些七七八八的事</title>
-    <link href="https://lgzh1215.github.io/2017/04/27/Readme-About-and-Others/"/>
-    <id>https://lgzh1215.github.io/2017/04/27/Readme-About-and-Others/</id>
-    <published>2017-04-27T03:32:52.000Z</published>
-    <updated>2017-05-28T20:26:01.753Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="一些碎碎念"><a href="#一些碎碎念" class="headerlink" title="一些碎碎念"></a>一些碎碎念</h1><p>   讲道理，我搭好 Hexo 才发现，如果使用 Jekyll 的话，只要将页面源码 Push 到 Github 上，是可以自动生成页面并发布的。<br><a id="more"></a><br>全栽在 CI 上了（用的是 AppVeyor），首先是太久没用 Git，忘记子模块怎么用了，坑了好久。之后是 Git 一些操作重定向 stdout 到 stderr 导致 PowerShell ISE 报错，于是 CI 那边就挂掉了。然后是 Gitlab 的神奇 Bug，一次 Push 让 CI 那边连续 Build 了 5 次……</p>
+    <entry>
+      <title><![CDATA[关于此博客，以及博主，还有那些七七八八的事]]></title>
+      <url>/2017/04/27/Readme-About-and-Others/</url>
+      <content type="html"><![CDATA[<h1 id="一些碎碎念"><a href="#一些碎碎念" class="headerlink" title="一些碎碎念"></a>一些碎碎念</h1><p>   讲道理，我搭好 Hexo 才发现，如果使用 Jekyll 的话，只要将页面源码 Push 到 Github 上，是可以自动生成页面并发布的。<br><a id="more"></a><br>全栽在 CI 上了（用的是 AppVeyor），首先是太久没用 Git，忘记子模块怎么用了，坑了好久。之后是 Git 一些操作重定向 stdout 到 stderr 导致 PowerShell ISE 报错，于是 CI 那边就挂掉了。然后是 Gitlab 的神奇 Bug，一次 Push 让 CI 那边连续 Build 了 5 次……</p>
 <p>于是 3 天的人生就浪费掉了。<del>其实如果不搞持续集成的话就没那么多事。</del>虽然说结果都一样，但是总感觉有那么点不爽，我特么怎么就选了 Hexo 呢。越想越恼火。不排除以后换成 Jekyll 的可能性，不过主题一定是要换的。</p>
 <h1 id="关于博客-The-History-of-RenTou"><a href="#关于博客-The-History-of-RenTou" class="headerlink" title="关于博客 ~ The History of RenTou"></a>关于博客 ~ The History of RenTou</h1><pre><code>Q：这个博客的名字“人头会社”有什么含义么？
 A：没啥，这个只是从我的 QQ 空间那里拿来的（逃
@@ -36,16 +19,36 @@ A：没啥，这个只是从我的 QQ 空间那里拿来的（逃
 <p>噫，就这样。</p>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>这个博客是有评论系统的，看不到的话那应该是被墙了，请使用科学姿势查看。（或者等我换成友言（懒癌不允许我这么做（不！</p>
 ]]></content>
+      
+        
+        <tags>
+            
+            <tag> Others </tag>
+            
+        </tags>
+        
+    </entry>
     
-    <summary type="html">
-    
-      &lt;h1 id=&quot;一些碎碎念&quot;&gt;&lt;a href=&quot;#一些碎碎念&quot; class=&quot;headerlink&quot; title=&quot;一些碎碎念&quot;&gt;&lt;/a&gt;一些碎碎念&lt;/h1&gt;&lt;p&gt;   讲道理，我搭好 Hexo 才发现，如果使用 Jekyll 的话，只要将页面源码 Push 到 Github 上，是可以自动生成页面并发布的。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Others" scheme="https://lgzh1215.github.io/tags/Others/"/>
-    
-  </entry>
   
-</feed>
+  
+    
+    <entry>
+      <title><![CDATA[about]]></title>
+      <url>/about/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+  
+</search>
