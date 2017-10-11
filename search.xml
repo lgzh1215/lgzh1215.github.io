@@ -3,19 +3,100 @@
   
     
     <entry>
+      <title><![CDATA[最近注意到的Kotlin的华点]]></title>
+      <url>/2017/10/10/huadian/</url>
+      <content type="html"><![CDATA[<p>最近翻看以前写的旧代码，发现由于Kotlin及其IDEA插件版本更新了，静态检查工具功能增强，检出了一些令人窒息的代码（例如 Check for instance is always ‘true’）。然后我在查看这些乱七八糟的代码时发现了两个问题。<br><a id="more"></a><br>使用的 Kotlin 版本为 1.1.51。</p>
+<h1 id="编译器生成了无用的字节码"><a href="#编译器生成了无用的字节码" class="headerlink" title="编译器生成了无用的字节码(?)"></a>编译器生成了无用的字节码(?)</h1><p>把问题单独抽出来就像是这样：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> A<span class="token operator">&lt;</span>T <span class="token operator">:</span> Any<span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">val</span> <span class="token keyword">data</span><span class="token operator">:</span> T<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token keyword">val</span> string<span class="token operator">:</span> String<span class="token punctuation">)</span>
+
+<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span>a<span class="token operator">:</span> A<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    a<span class="token punctuation">.</span>data <span class="token keyword">as</span> B   <span class="token comment" spellcheck="true">// 注意这行对应的字节码</span>
+    a<span class="token punctuation">.</span>data<span class="token punctuation">.</span>string <span class="token comment" spellcheck="true">// 这里 a.data 有提示 Smart cast to B</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>然后看看编译出的字节码里面都有啥：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 以上省略</span>
+   L1
+    LINENUMBER <span class="token number">5</span> L1
+    ALOAD <span class="token number">0</span>
+    INVOKEVIRTUAL A<span class="token punctuation">.</span><span class="token function">getData</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>Object<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// a.data</span>
+    DUP
+    IFNONNULL L2   <span class="token comment" spellcheck="true">// &lt;============================ 这里进行判空</span>
+    NEW <span class="token class-name">kotlin</span><span class="token operator">/</span>TypeCastException
+    DUP
+    LDC <span class="token string">"null cannot be cast to non-null type B"</span>
+    INVOKESPECIAL kotlin<span class="token operator">/</span>TypeCastException<span class="token punctuation">.</span>&lt;init<span class="token operator">></span> <span class="token punctuation">(</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span><span class="token punctuation">)</span>V
+    ATHROW
+   L2
+    CHECKCAST B    <span class="token comment" spellcheck="true">// &lt;============================ 不为空则进行类型转换</span>
+    POP
+   L3
+<span class="token comment" spellcheck="true">// 以下省略</span>
+</code></pre>
+<p>大致内容就是判断 <code>a.data</code> 是否为 <code>null</code>，如果是 <code>null</code> 就 <code>throw TypeCastException(&quot;null cannot be cast to non-null type B&quot;)</code>。然而根据 <code>A</code> 这个类的定义，其属性 <code>data</code> 必定是非空的。对非空属性进行 null check 岂不是多余？难道说编译器太傻，在分析这种操作时不知道 <code>a.data</code> 是非空的？</p>
+<p>解决方法：加个问号，如下所示：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span>a<span class="token operator">:</span> A<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    a<span class="token punctuation">.</span>data <span class="token keyword">as</span> B<span class="token operator">?</span>   <span class="token comment" spellcheck="true">// 加了个问号，变成了B?</span>
+    a<span class="token punctuation">.</span>data<span class="token punctuation">.</span>string  <span class="token comment" spellcheck="true">// 注意这里 a.data 同样有提示 Smart cast to B</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这时候字节码就是这样的：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 以上省略</span>
+   L1
+    LINENUMBER <span class="token number">5</span> L1
+    ALOAD <span class="token number">0</span>
+    INVOKEVIRTUAL A<span class="token punctuation">.</span><span class="token function">getData</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>Object<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// a.data</span>
+    CHECKCAST B    <span class="token comment" spellcheck="true">// &lt;============================ 直接进行类型转换</span>
+    POP
+   L2
+<span class="token comment" spellcheck="true">// 以下省略</span>
+</code></pre>
+<p>这回就没有多余的判空处理了。但是注意代码中的 <code>a.data.string</code>，IDE提示 <code>a.data</code> 能够 Smart cast to B。咦编译器还是蛮聪明的呢！</p>
+<h1 id="检查工具提示可对代码进行负优化"><a href="#检查工具提示可对代码进行负优化" class="headerlink" title="检查工具提示可对代码进行负优化(?)"></a>检查工具提示可对代码进行负优化(?)</h1><p>这个问题单独抽出来就像这样：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> A
+<span class="token keyword">class</span> B <span class="token punctuation">{</span>
+    <span class="token keyword">fun</span> <span class="token function">getA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> A <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span>some<span class="token operator">:</span> Any<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> A <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>some <span class="token keyword">is</span> B<span class="token punctuation">)</span> some<span class="token punctuation">.</span><span class="token function">getA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 注意这行</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>然后你可以看到，IDE提示你可以 Replace ‘if’ expression with elvis experssion。如果你让IDE帮你优化，就变成了这样：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span>some<span class="token operator">:</span> Any<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> A <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>some <span class="token keyword">as</span><span class="token operator">?</span> B<span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">getA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?:</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// WTF???</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>不知道你们是怎么想的，至少对于我来说可读性下降，而且很明显生成的字节码也变复杂了。明显是负优化，吧？</p>
+<p>解决方法：<code>@Suppress(&quot;IfThenToElvis&quot;)</code></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Kotlin </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于此博客，以及博主，还有那些七七八八的事]]></title>
       <url>/2017/04/27/Readme-About-and-Others/</url>
-      <content type="html"><![CDATA[<h1 id="一些碎碎念"><a href="#一些碎碎念" class="headerlink" title="一些碎碎念"></a>一些碎碎念</h1><p>   讲道理，我搭好 Hexo 才发现，如果使用 Jekyll 的话，只要将页面源码 Push 到 Github 上，是可以自动生成页面并发布的。<br><a id="more"></a><br>全栽在 CI 上了（用的是 AppVeyor），首先是太久没用 Git，忘记子模块怎么用了，坑了好久。之后是 Git 一些操作重定向 stdout 到 stderr 导致 PowerShell ISE 报错，于是 CI 那边就挂掉了。然后是 Gitlab 的神奇 Bug，一次 Push 让 CI 那边连续 Build 了 5 次……</p>
+      <content type="html"><![CDATA[<h1 id="一些碎碎念"><a href="#一些碎碎念" class="headerlink" title="一些碎碎念"></a>一些碎碎念</h1><p>讲道理，我搭好 Hexo 才发现，如果使用 Jekyll 的话，只要将页面源码 Push 到 Github 上，是可以自动生成页面并发布的。<br><a id="more"></a><br>全栽在 CI 上了（用的是 AppVeyor），首先是太久没用 Git，忘记子模块怎么用了，坑了好久。之后是 Git 一些操作重定向 stdout 到 stderr 导致 PowerShell ISE 报错，于是 CI 那边就挂掉了。然后是 Gitlab 的神奇 Bug，一次 Push 让 CI 那边连续 Build 了 5 次……</p>
 <p>于是 3 天的人生就浪费掉了。<del>其实如果不搞持续集成的话就没那么多事。</del>虽然说结果都一样，但是总感觉有那么点不爽，我特么怎么就选了 Hexo 呢。越想越恼火。不排除以后换成 Jekyll 的可能性，不过主题一定是要换的。</p>
-<h1 id="关于博客-The-History-of-RenTou"><a href="#关于博客-The-History-of-RenTou" class="headerlink" title="关于博客 ~ The History of RenTou"></a>关于博客 ~ The History of RenTou</h1><pre><code>Q：这个博客的名字“人头会社”有什么含义么？
-A：没啥，这个只是从我的 QQ 空间那里拿来的（逃
-</code></pre><p>说实话我还专门上了一下万年没打理的 QQ 空间考究了一番，发现原来我的 QQ 空间是叫做 “反补课基地” 的（没错，我忘了）。初中时期补课之风盛行，原本每周都有的双休，补得只剩半天假期。唔，这个 “反补课基地” 就是当时中二病发作的产物。</p>
-<p>所谓 “人头”，并不是位于身体最上方部位、由人的颅骨支撑的那个圆滚滚的东西<del>（对不起让你们失望了）</del>，而是挂在小卖部外墙上的衣服或杂物。由于当时正值放假前夜，月黑风高，去买零食的3人误认为是人头。于是这项活动——在放假的前一天晚上，前往小卖部采购以庆祝放假——便固定了下来，美名其曰“人头节”，随后便有了人头会，可喜可贺。</p>
-<p>虽然人头会仅3名成员，但经常与班上其他同学一起庆祝人头节，即“独乐乐不如众乐乐”。这被班上另一结社“精神病院”的院长大人看到了，院长害怕事情变得一发不可收拾，便对人头会施压，试图使其解散。坚毅的人头会成员不惧怕任何威胁，事实证明，看似实力强大的精神病院（十几名成员）实际上却是一盘散沙。高贵的人头会有共同的信仰（放假），有定期的活动（人头节），具有强大的精神凝聚力，不是无所事事的精神病院所能比拟的。</p>
+<h1 id="关于博客-The-History-of-RenTou"><a href="#关于博客-The-History-of-RenTou" class="headerlink" title="关于博客 ~ The History of RenTou"></a>关于博客 ~ The History of RenTou</h1><blockquote>
+<p>Q：这个博客的名字“人头会社”有什么含义么？</p>
+<p>A：没啥，这个只是从我的 QQ 空间那里拿来的（逃</p>
+</blockquote>
+<p>说实话我还专门上了一下万年没打理的 QQ 空间考究了一番，发现原来我的 QQ 空间是叫做 “反补课基地” 的（没错，我忘了）。初中时期补课之风盛行，原本每周都有的双休，补得只剩半天假期。唔，这个 “反补课基地” 就是当时中二病发作的产物。</p>
+<p>所谓 “人头”，并不是位于身体最上方部位、由人的颅骨支撑的那个圆滚滚的东西<del>（对不起让你们失望了）</del>，而是挂在小卖部外墙上的衣服或杂物。由于当时正值放假前夜，月黑风高，去买零食的3人误认为是人头。于是这项活动「在放假的前一天晚上，前往小卖部采购以庆祝放假」便固定了下来，美名其曰「人头节」，随后便有了「人头会」，可喜可贺。</p>
+<p>虽然人头会仅3名成员，但经常与班上其他同学一起庆祝人头节，所谓“独乐乐不如众乐乐”。这被班上另一邪恶组织「精神病院」的院长大人看到了，院长害怕事情变得一发不可收拾，便对人头会施压，试图使其解散。坚毅的人头会成员不惧怕任何威胁，事实证明，看似实力强大的精神病院（十几名成员）实际上却是一盘散沙。高贵的人头会有共同的信仰（放假），有定期的活动（人头节），具有强大的精神凝聚力，不是无所事事的精神病院所能比拟的。</p>
 <p>嘻嘻。院长大人别打我~~</p>
 <h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>唔，感觉没啥好说的呢。</p>
 <p><del>人头会社三元老之一，精神病院第13号床位所有者。</del></p>
-<p><del>中二病晚期，轻度抑郁，敏感，厌食，嗜睡，懒癌，完美主义者。</del></p>
+<p><del>不务正业的辣鸡。</del></p>
 <p>噫，就这样。</p>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>这个博客是有评论系统的，看不到的话那应该是被墙了，请使用科学姿势查看。（或者等我换成友言（懒癌不允许我这么做（不！</p>
 ]]></content>
