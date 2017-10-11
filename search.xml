@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title><![CDATA[最近注意到的Kotlin的华点]]></title>
+      <title><![CDATA[最近观察到的Kotlin的华点]]></title>
       <url>/2017/10/10/huadian/</url>
       <content type="html"><![CDATA[<p>最近翻看以前写的旧代码，发现由于Kotlin及其IDEA插件版本更新了，静态检查工具功能增强，检出了一些令人窒息的代码（例如 Check for instance is always ‘true’）。然后我在查看这些乱七八糟的代码时发现了两个问题。<br><a id="more"></a><br>使用的 Kotlin 版本为 1.1.51。</p>
 <h1 id="编译器生成了无用的字节码"><a href="#编译器生成了无用的字节码" class="headerlink" title="编译器生成了无用的字节码(?)"></a>编译器生成了无用的字节码(?)</h1><p>把问题单独抽出来就像是这样：</p>
@@ -83,7 +83,7 @@
     
     <entry>
       <title><![CDATA[关于此博客，以及博主，还有那些七七八八的事]]></title>
-      <url>/2017/04/27/Readme-About-and-Others/</url>
+      <url>/2017/04/27/about/</url>
       <content type="html"><![CDATA[<h1 id="一些碎碎念"><a href="#一些碎碎念" class="headerlink" title="一些碎碎念"></a>一些碎碎念</h1><p>讲道理，我搭好 Hexo 才发现，如果使用 Jekyll 的话，只要将页面源码 Push 到 Github 上，是可以自动生成页面并发布的。<br><a id="more"></a><br>全栽在 CI 上了（用的是 AppVeyor），首先是太久没用 Git，忘记子模块怎么用了，坑了好久。之后是 Git 一些操作重定向 stdout 到 stderr 导致 PowerShell ISE 报错，于是 CI 那边就挂掉了。然后是 Gitlab 的神奇 Bug，一次 Push 让 CI 那边连续 Build 了 5 次……</p>
 <p>于是 3 天的人生就浪费掉了。<del>其实如果不搞持续集成的话就没那么多事。</del>虽然说结果都一样，但是总感觉有那么点不爽，我特么怎么就选了 Hexo 呢。越想越恼火。不排除以后换成 Jekyll 的可能性，不过主题一定是要换的。</p>
 <h1 id="关于博客-The-History-of-RenTou"><a href="#关于博客-The-History-of-RenTou" class="headerlink" title="关于博客 ~ The History of RenTou"></a>关于博客 ~ The History of RenTou</h1><blockquote>
@@ -128,6 +128,12 @@
     <entry>
       <title><![CDATA[tags]]></title>
       <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[timeline]]></title>
+      <url>/timeline/index.html</url>
       <content type="html"></content>
     </entry>
     

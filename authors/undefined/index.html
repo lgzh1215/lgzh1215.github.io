@@ -58,7 +58,7 @@
     <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
 
     <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon_normal.png">
     <link rel="icon" sizes="192x192" href="/img/favicon_high.png">
     <link rel="apple-touch-icon" href="/img/favicon_high.png">
 
@@ -183,12 +183,7 @@
 
     <style>
       body{
-        background-color: #F5F5F5;
-      }
-
-      /* blog_info bottom background */
-      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
-        background-color: #fff;
+        background-image: url(/img/bg.jpg);
       }
     </style>
 
@@ -307,14 +302,12 @@
                 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
     <!-- Post Thumbnail -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="/img/0001.jpg">
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/10/10/huadian/">最近注意到的Kotlin的华点</a></p>
+        <p class="article-headline-p"><a href="/2017/10/10/huadian/">最近观察到的Kotlin的华点</a></p>
     </div>
 
     <!-- Post Excerpt -->
@@ -363,14 +356,12 @@
                 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
     <!-- Post Thumbnail -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="/img/0000.jpg">
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/27/Readme-About-and-Others/">关于此博客，以及博主，还有那些七七八八的事</a></p>
+        <p class="article-headline-p"><a href="/2017/04/27/about/">关于此博客，以及博主，还有那些七七八八的事</a></p>
     </div>
 
     <!-- Post Excerpt -->
@@ -380,7 +371,7 @@
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2017/04/27/Readme-About-and-Others/" target="_self">阅读全文</a>
+            <a href="/2017/04/27/about/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -550,7 +541,17 @@
         
     
         <li>
-            <a href="/about" title="关于">
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">view_list</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/2017/04/27/about" title="关于">
                 
                     <i class="material-icons sidebar-material-icons">person</i>
                 
