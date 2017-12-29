@@ -277,7 +277,11 @@ c)  2147483647
 d) 以上答案都不对
 </code></pre><p>上一题的答案：d</p>
 <p><code>sc.set</code> 有一个自定义 <code>getter</code>，编译器没法判断这个 <code>getter</code> 返回的是否是同一个对象，所以无法进行智能转换（smart cast）。</p>
-<p>思考：这时候别声明只有 <code>getter</code> 的属性，声明有 <code>backing field</code> 的属性就好。</p>
+<p>解决方法：这时候别声明只有 <code>getter</code> 的属性，声明有 <code>backing field</code> 的属性就好。或者像这样：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> <span class="token keyword">set</span> <span class="token operator">=</span> sc<span class="token punctuation">.</span>set
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">set</span> <span class="token keyword">is</span> MutableSet<span class="token punctuation">)</span>
+    <span class="token keyword">set</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
 <h2 id="人类衰退之后-Population-To-Mars"><a href="#人类衰退之后-Population-To-Mars" class="headerlink" title="人类衰退之后 ~ Population To Mars"></a>人类衰退之后 ~ Population To Mars</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> <span class="token function">Population</span><span class="token punctuation">(</span><span class="token keyword">var</span> cities<span class="token operator">:</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Int<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">val</span> 帝都 <span class="token keyword">by</span> cities
   <span class="token keyword">val</span> 魔都 <span class="token keyword">by</span> cities
