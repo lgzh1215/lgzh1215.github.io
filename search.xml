@@ -3,11 +3,11 @@
   
     
     <entry>
-      <title><![CDATA[Kotlin Puzzlers 改]]></title>
+      <title><![CDATA[【水】Kotlin Puzzlers 改]]></title>
       <url>/2017/12/28/kotlin-puzzlers/</url>
       <content type="html"><![CDATA[<p>《Java Puzzlers》（中文名《Java 解惑》）里面讲解了许多 Java 语言的大坑，相信各位julao应该都看过。Kotlin 作为「a better Java」，在填补一些坑的同时，不可避免地引入了许多新坑。<a id="more"></a>本来本鶸进行了一段时间的取材，想要写一篇《Kotlin Puzzlers》的，可谁知 已经有人早就把我的饭碗抢走了，而且素材比我还多，可恶！</p>
 <p>这篇文章就是本鶸看完录像（油土鳖上面有）以及 Github 上的完整内容后，将一些比较坑的谜题拿出来报复社会，蛐蛐一篇观后感而已。</p>
-<p>题型为选择题，本辣鸡博客没有NGA的折叠，没有萌百的黑幕，为了不让一眼瞄到答案而造成剧透，本文对答案（以及解释）的摆放位置做了调整，例如第一题的答案被我放在了第二题的位置（以此类推）。各位看客从上到下开始阅读就好了。</p>
+<p>题型为选择题，本辣鸡博客没有NGA的折叠，没有萌百的黑幕，为了防止一眼瞄到答案而造成剧透，本文对答案（以及解释）的摆放位置做了调整，例如第一题的答案被我放在了第二题的位置（以此类推）。各位看客从上到下开始阅读就好了。</p>
 <p>使用的 Kotlin 版本为1.2。</p>
 <h1 id="没有坑到我的谜题"><a href="#没有坑到我的谜题" class="headerlink" title="没有坑到我的谜题"></a>没有坑到我的谜题</h1><p>虽然没有被坑，比较简单，但是值得注意的题。一些更加简单的题目就不放上来了。想刷一遍完整题库的同学可以到 GitHub 上面找。</p>
 <h2 id="强力返回-Power-Return"><a href="#强力返回-Power-Return" class="headerlink" title="强力返回 ~ Power Return"></a>强力返回 ~ Power Return</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
@@ -340,7 +340,8 @@ d) 这破代码根本没法通过编译
     <entry>
       <title><![CDATA[2017-10-18：最近观察到的Kotlin的华点]]></title>
       <url>/2017/10/18/huadian/</url>
-      <content type="html"><![CDATA[<p>每次有零零碎碎的新东西都发篇文章觉得不是很好，这里当作记录贴好了，不定期更新。封面换成了艾拉酱，真好啊~真好啊~ ヾ(≧▽≦*)o<br><a id="more"></a><br>使用的 Kotlin 版本为 1.1.51。</p>
+      <content type="html"><![CDATA[<p>次奥被冰酱婊了，好害怕。萌新瑟瑟发抖~~</p>
+<p>每次有零零碎碎的新东西都发篇文章觉得不是很好，这里当作记录贴好了，不定期更新。封面换成了艾拉酱，真好啊~真好啊~ ヾ(≧▽≦*)o<br><a id="more"></a><br>以下内容使用的 Kotlin 版本为 1.1.51。</p>
 <h1 id="一件Java能做但是Kotlin不能做的事情"><a href="#一件Java能做但是Kotlin不能做的事情" class="headerlink" title="一件Java能做但是Kotlin不能做的事情"></a>一件Java能做但是Kotlin不能做的事情</h1><p>在Codewars上刷题的时候发现的，本来这网站上面的Kotlin题就少，而且还有大把大把不会写，能玩的就更少了。这种题目不调戏一下冰酱就可惜了。具体是<a href="http://www.codewars.com/kata/tricky-kotlin-number-3-define-a-function" target="_blank" rel="external">这道题</a>。</p>
 <p>这题要求你代码中不能出现<code>fun</code>、<code>{</code>以及<code>}</code>的情况下让定义一个拼接两个字符串的函数。这个要求等同于禁止你使用lambda表达式、函数声明，并且限制你仅用一个表达式完成任务（根据我的理解，是这样的没错）。</p>
 <p>那我们来找找有什么现成的有<code>invoke()</code>方法的东西吧。首先想到了反射，但是反射那家伙需要传入接收者作为第一个参数，rua~。既然反射不行，啊，有个更好的东西，看起来完美符合需求。</p>
