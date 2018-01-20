@@ -5,15 +5,16 @@
     <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
-        Version: 1.5.0 -->
+        Version: 1.5.2 -->
     <script>
-        window.materialVersion = "1.5.0"
+        window.materialVersion = "1.5.2"
         // Delete localstorage with these tags
         window.oldVersion = [
             'codestartv1',
             '1.3.4',
             '1.4.0',
-            '1.4.0b1'
+            '1.4.0b1',
+            '1.5.0'
         ]
     </script>
 
@@ -35,6 +36,11 @@
 
 
 
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
     <!-- Title -->
     
     <title>
@@ -44,51 +50,18 @@
         萌夜雀的人头会社
     </title>
 
-    <!-- Meta & Info -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="Dexlind">
-    <meta name="description" itemprop="description" content="《Java Puzzlers》（中文名《Java 解惑》）里面讲解了许多 Java 语言的大坑，相信各位julao应该都看过。Kotlin 作为「a better Java」，在填补一些坑的同时，不可避免地引入了许多新坑。">
-    <meta name="keywords" content="萌夜雀,Kotlin">
-
-    <!-- Import lsloader -->
-    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
-
-    <!-- Import queue -->
-    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
-
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon_normal.png">
-    <link rel="icon" sizes="192x192" href="/img/favicon_high.png">
-    <link rel="apple-touch-icon" href="/img/favicon_high.png">
+    <link rel="icon" href="/img/favicon_high.png">
 
-    <!--iOS -->
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="《Java Puzzlers》（中文名《Java 解惑》）里面讲解了许多 Java 语言的大坑，相信各位julao应该都看过。Kotlin 作为「a better Java」，在填补一些坑的同时，不可避免地引入了许多新坑。">
+    <meta name="keywords" content="萌夜雀 人头会社,Kotlin">
+    <meta name="theme-color" content="#9C27B0">
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="萌夜雀的人头会社">
-
-    <!-- Site Verification -->
-    
-    
-
-    <!-- RSS -->
-    
-        
-            <link rel=alternate type="application/atom+xml" href="/atom.xml">
-        
-    
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -97,6 +70,12 @@
             <script src="/js/ie-blocker.zhCN.js"></script>
         
     <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
 
     <!-- Import CSS -->
     
@@ -123,7 +102,7 @@
   }
 
   a {
-    color: #00838F;
+    color: #7A1EA1;
   }
 
   .mdl-card__media,
@@ -133,13 +112,13 @@
   #scheme-Paradox .sidebar_archives-count,
   #scheme-Paradox .sidebar-colored .sidebar-header,
   #scheme-Paradox .sidebar-colored .sidebar-badge{
-    background-color: #0097A7 !important;
+    background-color: #9B26AF !important;
   }
 
   /* Sidebar User Drop Down Menu Text Color */
   #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
   #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
-    color: #0097A7 !important;
+    color: #9B26AF !important;
   }
 
   #post_entry-right-info,
@@ -152,29 +131,29 @@
   .sidebar-colored .sidebar-nav > .open > a:hover,
   .sidebar-colored .sidebar-nav > .open > a:focus,
   #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
-    color: #0097A7 !important;
+    color: #9B26AF !important;
   }
 
   .toTop {
-    background: #757575 !important;
+    background: #B8B8B8 !important;
   }
 
   .material-layout .material-post>.material-nav,
   .material-layout .material-index>.material-nav,
   .material-nav a {
-    color: #757575;
+    color: #B8B8B8;
   }
 
   #scheme-Paradox .MD-burger-layer {
-    background-color: #757575;
+    background-color: #B8B8B8;
   }
 
   #scheme-Paradox #post-toc-trigger-btn {
-    color: #757575;
+    color: #B8B8B8;
   }
 
   .post-toc a:hover {
-    color: #00838F;
+    color: #7A1EA1;
     text-decoration: underline;
   }
 
@@ -214,12 +193,13 @@
 <!-- Import Font -->
 <!-- Import Roboto -->
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
 
 
-<!-- Import Material Icon -->
+<!-- Import Material Icons -->
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
 
 
@@ -229,29 +209,46 @@
         <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
     
 
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="萌夜雀的人头会社">
+    <meta name="msapplication-starturl" content="https://aisia.moe/2017/12/28/kotlin-puzzlers/">
+    <meta name="msapplication-navbutton-color" content="#9C27B0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="萌夜雀的人头会社">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon_high.png">
+
+    <!-- Site Verification -->
+    <meta name="google-site-verification" content="4_IUCIIHRXDDJ_WXIUCZRKp6YHxSLCilo6rOlfMHoH4" />
+    
+
+    <!-- RSS -->
+    
+        
+            <link rel=alternate type="application/atom+xml" href="/atom.xml">
+        
+    
+
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://lgzh1215.github.io">
+    <meta property="og:url" content="https://aisia.moe/2017/12/28/kotlin-puzzlers/">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="【水】Kotlin Puzzlers 改 | 萌夜雀的人头会社">
-    <meta property="og:image" content="https://lgzh1215.github.io/img/favicon_high.png" />
+    <meta property="og:image" content="/img/favicon_high.png">
     <meta property="og:description" content="《Java Puzzlers》（中文名《Java 解惑》）里面讲解了许多 Java 语言的大坑，相信各位julao应该都看过。Kotlin 作为「a better Java」，在填补一些坑的同时，不可避免地引入了许多新坑。">
     <meta property="og:article:tag" content="Kotlin"> 
 
     
-        <meta property="article:published_time" content="Fri Dec 29 2017 00:08:56 GMT+0800" />
-        <meta property="article:modified_time" content="Fri Jan 05 2018 05:16:22 GMT+0000" />
+        <meta property="article:published_time" content="Fri Dec 29 2017 00:08:56 GMT+0800">
+        <meta property="article:modified_time" content="Sat Jan 20 2018 01:46:34 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="【水】Kotlin Puzzlers 改 | 萌夜雀的人头会社">
-    <meta name="twitter:description" content="《Java Puzzlers》（中文名《Java 解惑》）里面讲解了许多 Java 语言的大坑，相信各位julao应该都看过。Kotlin 作为「a better Java」，在填补一些坑的同时，不可避免地引入了许多新坑。">
-    <meta name="twitter:image" content="https://lgzh1215.github.io/img/favicon_high.png">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://lgzh1215.github.io" />
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://lgzh1215.github.io/2017/12/28/kotlin-puzzlers/index.html" />
+        <link rel="canonical" href="https://aisia.moe/2017/12/28/kotlin-puzzlers/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -263,10 +260,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://lgzh1215.github.io/2017/12/28/kotlin-puzzlers/index.html",
+    "mainEntityOfPage": "https://aisia.moe/2017/12/28/kotlin-puzzlers/index.html",
     "headline": "【水】Kotlin Puzzlers 改",
     "datePublished": "Fri Dec 29 2017 00:08:56 GMT+0800",
-    "dateModified": "Fri Jan 05 2018 05:16:22 GMT+0000",
+    "dateModified": "Sat Jan 20 2018 01:46:34 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -284,7 +281,7 @@
             "url": "/img/favicon_high.png"
         }
     },
-    "keywords": ",Kotlin萌夜雀",
+    "keywords": ",Kotlin萌夜雀 人头会社",
     "description": "《Java Puzzlers》（中文名《Java 解惑》）里面讲解了许多 Java 语言的大坑，相信各位julao应该都看过。Kotlin 作为「a better Java」，在填补一些坑的同时，不可避免地引入了许多新坑。",
 }
 </script>
@@ -293,6 +290,14 @@
     
 
     <!-- Analytics -->
+    
+        <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-112770037-1', 'auto');ga('send', 'pageview');
+</script>
     
     
     
@@ -350,7 +355,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#没有坑到我的谜题"><span class="post-toc-number">1.</span> <span class="post-toc-text">没有坑到我的谜题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#强力返回-Power-Return"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">强力返回 ~ Power Return</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计划生育-One-Chile-Policy"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">计划生育 ~ One Chile Policy</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#两只拉姆达跑得快-Two-Lambda"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">两只拉姆达跑得快 ~ Two Lambda</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#衔尾蛇-Cyclic-Object-Constructions"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">衔尾蛇 ~ Cyclic Object Constructions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#哇，好长-Breaking-Lines"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">哇，好长 ~ Breaking Lines</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#换个名字你就不认识我了-Good-Child-Has-Many-Names"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">换个名字你就不认识我了 ~ Good Child Has Many Names</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序-Sorting"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">排序 ~ Sorting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#致命的顺序-The-Order"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">致命的顺序 ~ The Order</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#那些坑了我的迷题"><span class="post-toc-number">2.</span> <span class="post-toc-text">那些坑了我的迷题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#区间测试-Inclusive-Range"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">区间测试 ~ Inclusive Range</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#极性不定-Weird-Chaining"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">极性不定 ~ Weird Chaining</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dollar-In-Multiline-Literals"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">$_$ ~ Dollar In Multiline Literals</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#你的名字是-Property-Override"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">你的名字是 ~ Property Override</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#冰雪聪明-Custom-Getter-Smartcast"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">冰雪聪明 ~ Custom Getter Smartcast</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最小值-MinInt"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">最小值 ~ MinInt</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#人类衰退之后-Population-To-Mars"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">人类衰退之后 ~ Population To Mars</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反物质-AntiMatter"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">反物质 ~ AntiMatter</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#没有坑到我的谜题"><span class="post-toc-number">1.</span> <span class="post-toc-text">没有坑到我的谜题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#强力返回-Power-Return"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">强力返回 ~ Power Return</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计划生育-One-Chile-Policy"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">计划生育 ~ One Chile Policy</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两只拉姆达跑得快-Two-Lambda"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">两只拉姆达跑得快 ~ Two Lambda</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#衔尾蛇-Cyclic-Object-Constructions"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">衔尾蛇 ~ Cyclic Object Constructions</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#哇，好长-Breaking-Lines"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">哇，好长 ~ Breaking Lines</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#换个名字你就不认识我了-Good-Child-Has-Many-Names"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">换个名字你就不认识我了 ~ Good Child Has Many Names</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#排序-Sorting"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">排序 ~ Sorting</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#致命的顺序-The-Order"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">致命的顺序 ~ The Order</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#那些坑了我的迷题"><span class="post-toc-number">2.</span> <span class="post-toc-text">那些坑了我的迷题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#区间测试-Inclusive-Range"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">区间测试 ~ Inclusive Range</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#极性不定-Weird-Chaining"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">极性不定 ~ Weird Chaining</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Dollar-In-Multiline-Literals"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">$_$ ~ Dollar In Multiline Literals</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#你的名字是-Property-Override"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">你的名字是 ~ Property Override</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#冰雪聪明-Custom-Getter-Smartcast"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">冰雪聪明 ~ Custom Getter Smartcast</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最小值-MinInt"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">最小值 ~ MinInt</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#人类衰退之后-Population-To-Mars"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">人类衰退之后 ~ Population To Mars</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反物质-AntiMatter"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">反物质 ~ AntiMatter</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
     </ul>
     
 
@@ -414,7 +419,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC10lEQVR42u3awW7bMBAEUP//T6fXAqmVmaXcCOTjKUBtiY8Bst0dvr6OXC9sbGxsbGxsbGzsR7Jf8fr789+/++5p/3h9/Jn8Ldd7xsbGxj6B/cOf/u+PWNj67DjeHX2xZ2xsbOwD2EnRWikz+YG+e+bKnrGxsbGx11uXvHD+AMDGxsbG/gB75ZNJw4ONjY2NfddQKR/9XLco1+9KDvS/ztKwsbGxH89eCXp/6+dfzrexsbGxH8Nu10r70cYD1w1JvXNsbGzsTdmzCzdta9GOivKrQsXTsLGxsTdlz0LWuy5WrpfDvGRiY2Nj78pui0SLzJuKdrCVFC1sbGzsc9gtqW1a2uAhKaj1sWJjY2Nvys4DgKRszEpaPuRKStow6MXGxsbegp0P/ZPS0rYrecsxi4GxsbGx92bPhjjtYOiulmbYRGFjY2Nvym5HNnm5uuvSz8pBYGNjY5/MzqPZWesye84MjI2Njb03uxivL1zfSbb+iZYGGxsb+wR220i0Y/r8ONpfQxsSYGNjY+/N/ipXGyS05S35VhtjYGNjY+/Nng33ZxHs7MjWo2hsbGzsvdl3hQFF7FqCZw0SNjY29gns6xcMS0VJbQ9oOHjCxsbGPoA9DFAXDmWljF2XN2xsbOzT2PmG8is4OaONK24YKmFjY2NvxK7j0riFSI4mGVfl+6lnadjY2NhbsPPxzfooagWWBwbY2NjY2MlQaRYAJCWwjRCK0ouNjY29KXv96mQypp81IbP9vN0DNjY29qbsds3i2PbCTTvkinaOjY2NvSn7ruK00tjkzU87SMLGxsY+h50UrVmQkITBd/1rPVTCxsbG3o7dNgZ3XbtsjyYvt9jY2NjY7X/322s9syB5FjZgY2NjY+ffyodBbSFMwPVQCRsbG3sjdj5UmkUFSUFajw0+OEvDxsbGfjD7rouVszLWtihtEcXGxsbem33OwsbGxsbGxsbGxn7M+gMk8Vz/IJH4LQAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACc0lEQVR42u3bQYrDMAwF0N7/0jPbgZL2S7I9IbysAg2OXxaWkNTXz6OvFx4eHh4eHh4e3s14r/j6+/zV/fvz708m6/T2hoeHh3eS9+Wo/fhM/mvyOa7u87fj4eHhneTNX3n1ax5yJp8DDw8P7568wgEdbP0qLcbDw8N7Hu/zthLevDCBh4eHdwfepKBQfbK6wqFaCx4eHl7MW9UA23F/o/4eHh4e3mSwKRgUqBY1kjBQHrrCw8PD28BLXl8tPVTXT9LufE08PDy83bykQTVpevUS6GR9PDw8vP/lrS1MJIl1vnJe9sXDw8M7w9sxijpJu5PPvbgYgYeHh7eIt6NQmyfrk8IuHh4e3m5etZxaLRbkH64wHDAZHcDDw8Mb8/Kh0t5G8xR8/mcAPDw8vPO86jDBZDggaX01U3Y8PDy8zbzkuK+O++fjU9XxhejT4+Hh4R3hVRtgvaHSZLvbh67w8PDwlo6rTg7r3tBVNU1vzpTh4eHhbeBVW/XV5LjaJMtLzMtSajw8PLxxnbPZfCpe1XQ5+ih4eHh4R3i98NBroVXT5WUpNR4eHt4i3mSgPx8yqAaGUTjBw8PD28ybHPcJvjfClSfTeHh4eOd5+UYnaXe1+Lsx7uHh4eFtyzmrAaM3dDVpm43iHh4eHt6AVz2O8zJrnkBXi7yjMi4eHh7eIl4vFe4NCiQl4yRsFAIDHh4e3jZe4fAtFimqZdmkDHG5Dh4eHt6NeXNGL5n+UtjFw8PDuxmvcEAH4SS/z0seeHh4eCd5vY320t9VYaCQUuPh4eEt5fUaYPk61cCTwzb29/Dw8PAueM+78PDw8PDw8PDwbnD9Ao/c/WHdB5MyAAAAAElFTkSuQmCC">
     
 </ul>
 
@@ -456,7 +461,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=【水】Kotlin Puzzlers 改&url=https://lgzh1215.github.io/2017/12/28/kotlin-puzzlers/index.html&pic=https://lgzh1215.github.io/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=【水】Kotlin Puzzlers 改&url=https://aisia.moe/2017/12/28/kotlin-puzzlers/index.html&pic=https://aisia.moe/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -465,7 +470,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=【水】Kotlin Puzzlers 改&url=https://lgzh1215.github.io/2017/12/28/kotlin-puzzlers/index.html&via=Dexlind" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=【水】Kotlin Puzzlers 改&url=https://aisia.moe/2017/12/28/kotlin-puzzlers/index.html&via=Dexlind" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -474,7 +479,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://lgzh1215.github.io/2017/12/28/kotlin-puzzlers/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://aisia.moe/2017/12/28/kotlin-puzzlers/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -483,7 +488,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://lgzh1215.github.io/2017/12/28/kotlin-puzzlers/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://aisia.moe/2017/12/28/kotlin-puzzlers/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -512,8 +517,8 @@
 <p>这篇文章就是本鶸看完录像（油土鳖上面有）以及 Github 上的完整内容后，将一些比较坑的谜题拿出来报复社会，蛐蛐一篇观后感而已。</p>
 <p>题型为选择题，本辣鸡博客没有NGA的折叠，没有萌百的黑幕，为了防止一眼瞄到答案而造成剧透，本文对答案（以及解释）的摆放位置做了调整，例如第一题的答案被我放在了第二题的位置（以此类推）。各位看客从上到下开始阅读就好了。</p>
 <p>使用的 Kotlin 版本为1.2。</p>
-<h1 id="没有坑到我的谜题"><a href="#没有坑到我的谜题" class="headerlink" title="没有坑到我的谜题"></a>没有坑到我的谜题</h1><p>虽然没有被坑，比较简单，但是值得注意的题。一些更加简单的题目就不放上来了。想刷一遍完整题库的同学可以到 GitHub 上面找。</p>
-<h2 id="强力返回-Power-Return"><a href="#强力返回-Power-Return" class="headerlink" title="强力返回 ~ Power Return"></a>强力返回 ~ Power Return</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
+<h2 id="没有坑到我的谜题"><a href="#没有坑到我的谜题" class="headerlink" title="没有坑到我的谜题"></a>没有坑到我的谜题</h2><p>虽然没有被坑，比较简单，但是值得注意的题。一些更加简单的题目就不放上来了。想刷一遍完整题库的同学可以到 GitHub 上面找。</p>
+<h3 id="强力返回-Power-Return"><a href="#强力返回-Power-Return" class="headerlink" title="强力返回 ~ Power Return"></a>强力返回 ~ Power Return</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
   <span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token keyword">return</span> <span class="token keyword">throw</span> <span class="token keyword">return</span> <span class="token string">"Hello"</span>
   <span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
@@ -526,7 +531,7 @@ b) 两个Hello
 c) 这破代码根本没法通过编译
 d) 以上答案都不对
 </code></pre><p>本题答案（以及解释）在下一题那里。（以此类推）</p>
-<h2 id="计划生育-One-Chile-Policy"><a href="#计划生育-One-Chile-Policy" class="headerlink" title="计划生育 ~ One Chile Policy"></a>计划生育 ~ One Chile Policy</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">Node</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h3 id="计划生育-One-Chile-Policy"><a href="#计划生育-One-Chile-Policy" class="headerlink" title="计划生育 ~ One Chile Policy"></a>计划生育 ~ One Chile Policy</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">Node</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">fun</span> <span class="token function">lookup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -547,7 +552,7 @@ d) 以上答案都不对
 </code></pre><p>上一题的答案：a</p>
 <p>要记住，<code>return ***</code> 和 <code>throw ***</code> 都是表达式，其结果的类型为 <code>Nothing</code>，<code>Nothing</code> 类型是任意类型的子类型，所以 <code>Nothing</code> 可以被抛出，可以被返回，可以赋值给任意类型的变量。事实上 <code>hello()</code> 在 <code>return &quot;Hello&quot;</code> 的时候已经结束了，剩下的 <code>throw</code>、<code>val result</code>、<code>println()</code> 什么的都是不可到达代码（unreachable code），不会被运行。</p>
 <p>PS：你甚至可以写出这样的代码：<code>throw throw throw Exception()</code></p>
-<h2 id="两只拉姆达跑得快-Two-Lambda"><a href="#两只拉姆达跑得快-Two-Lambda" class="headerlink" title="两只拉姆达跑得快 ~ Two Lambda"></a>两只拉姆达跑得快 ~ Two Lambda</h2><pre class=" language-kotlin"><code class="language-kotlin">typealias L <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<h3 id="两只拉姆达跑得快-Two-Lambda"><a href="#两只拉姆达跑得快-Two-Lambda" class="headerlink" title="两只拉姆达跑得快 ~ Two Lambda"></a>两只拉姆达跑得快 ~ Two Lambda</h3><pre class=" language-kotlin"><code class="language-kotlin">typealias L <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span> <span class="token operator">-></span> Unit
 
 <span class="token keyword">fun</span> <span class="token function">foo</span><span class="token punctuation">(</span>one<span class="token operator">:</span> L <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> two<span class="token operator">:</span> L <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">one</span><span class="token punctuation">(</span><span class="token string">"one"</span><span class="token punctuation">)</span>
@@ -564,7 +569,7 @@ c) onetwo
 d) 以上答案都不对
 </code></pre><p>上一题的答案：d</p>
 <p>事实上是 <code>child1</code> 和 <code>parent</code>。<code>Kotlin</code> 的这些扩展方法如 <code>apply</code>、<code>let</code>、<code>also</code> 等等都是适用于所有类型的，包括可空类型。<code>child2</code> 那行 <code>apply</code> 函数接收的拉姆达表达式的类型其实是 <code>Node?.() -&gt; Unit</code>，如果 <code>child2</code>那行代码是写在 <code>Parent</code> 类的外面的话，你就会发现这行代码根本没法通过编译，这里面调用的 <code>lookup</code> 实际上是 <code>parent</code> 的 <code>lookup</code>。（你可以把 <code>apply</code> 换成 <code>also</code> 试试。）</p>
-<h2 id="衔尾蛇-Cyclic-Object-Constructions"><a href="#衔尾蛇-Cyclic-Object-Constructions" class="headerlink" title="衔尾蛇 ~ Cyclic Object Constructions"></a>衔尾蛇 ~ Cyclic Object Constructions</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token keyword">val</span> x<span class="token operator">:</span> Any<span class="token operator">?</span><span class="token punctuation">)</span>
+<h3 id="衔尾蛇-Cyclic-Object-Constructions"><a href="#衔尾蛇-Cyclic-Object-Constructions" class="headerlink" title="衔尾蛇 ~ Cyclic Object Constructions"></a>衔尾蛇 ~ Cyclic Object Constructions</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token keyword">val</span> x<span class="token operator">:</span> Any<span class="token operator">?</span><span class="token punctuation">)</span>
 
 <span class="token keyword">object</span> B <span class="token operator">:</span> <span class="token function">A</span><span class="token punctuation">(</span>C<span class="token punctuation">)</span>
 <span class="token keyword">object</span> C <span class="token operator">:</span> <span class="token function">A</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span>
@@ -580,7 +585,7 @@ d) 这破代码根本没法通过编译
 </code></pre><p>上一题的答案：d</p>
 <p>实际上是 <code>twoone</code>。第一句的语法只有在拉姆达表达式是最后一个参数的时候才能写的，所以是 <code>two</code>。第二句是普通的方法调用，先填上第一个参数，第二个参数使用默认值。</p>
 <p>PS：想要朴素地实现 <code>foo { } { }</code> 这样的调用的话应该是办不到的吧。(如果能做到请赶快告诉我！)</p>
-<h2 id="哇，好长-Breaking-Lines"><a href="#哇，好长-Breaking-Lines" class="headerlink" title="哇，好长 ~ Breaking Lines"></a>哇，好长 ~ Breaking Lines</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> anExtremelyLongAndBoringStatementThatBarelyFitsOnALine <span class="token operator">=</span> <span class="token number">2</span>
+<h3 id="哇，好长-Breaking-Lines"><a href="#哇，好长-Breaking-Lines" class="headerlink" title="哇，好长 ~ Breaking Lines"></a>哇，好长 ~ Breaking Lines</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> anExtremelyLongAndBoringStatementThatBarelyFitsOnALine <span class="token operator">=</span> <span class="token number">2</span>
 <span class="token keyword">val</span> anotherExtremelyLongStatementThatBarelyFitsOnALine <span class="token operator">=</span> <span class="token number">2</span>
 <span class="token keyword">val</span> someList <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token keyword">val</span> result <span class="token operator">=</span> someList<span class="token punctuation">.</span><span class="token function">map</span> <span class="token punctuation">{</span>
@@ -597,7 +602,7 @@ d) [1, 4]
 </code></pre><p>上一题的答案：b</p>
 <p><code>B</code> 初始化需要 <code>C</code>，<code>C</code> 初始化需要 <code>B</code>。咦，<code>B</code> 还没初始化完成呢，那么哪来的 <code>B</code> 呢，只能是 <code>null</code> 了啊！</p>
 <p>参见 <a href="http://jetbrains.github.io/kotlin-spec/#_singleton_objects" target="_blank" rel="external">http://jetbrains.github.io/kotlin-spec/#_singleton_objects</a></p>
-<h2 id="换个名字你就不认识我了-Good-Child-Has-Many-Names"><a href="#换个名字你就不认识我了-Good-Child-Has-Many-Names" class="headerlink" title="换个名字你就不认识我了 ~ Good Child Has Many Names"></a>换个名字你就不认识我了 ~ Good Child Has Many Names</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> C <span class="token punctuation">{</span>
+<h3 id="换个名字你就不认识我了-Good-Child-Has-Many-Names"><a href="#换个名字你就不认识我了-Good-Child-Has-Many-Names" class="headerlink" title="换个名字你就不认识我了 ~ Good Child Has Many Names"></a>换个名字你就不认识我了 ~ Good Child Has Many Names</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> C <span class="token punctuation">{</span>
   <span class="token keyword">open</span> <span class="token keyword">fun</span> <span class="token function">sum</span><span class="token punctuation">(</span>x<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token operator">=</span> x <span class="token operator">+</span> y
 <span class="token punctuation">}</span>
 
@@ -618,7 +623,7 @@ c) 21
 d) 这破代码根本没法通过编译
 </code></pre><p>上一题的答案：b</p>
 <p>之前裙里有julao问过类似的问题所以我没被坑到。你可以把代码丢到IDEA里面，光标定位到加号前面，按下 <code>Ctrl+B</code> 或者 <code>Ctrl+Q</code>，看看那个加号是什么意思吧。解决方法：把加号放在上一行的后面可破。</p>
-<h2 id="排序-Sorting"><a href="#排序-Sorting" class="headerlink" title="排序 ~ Sorting"></a>排序 ~ Sorting</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> list <span class="token operator">=</span> <span class="token function">arrayListOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+<h3 id="排序-Sorting"><a href="#排序-Sorting" class="headerlink" title="排序 ~ Sorting"></a>排序 ~ Sorting</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> list <span class="token operator">=</span> <span class="token function">arrayListOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
 
 <span class="token keyword">val</span> sortedList <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -631,7 +636,7 @@ c) kotlin.Unit
 d) 这破代码根本没法通过编译
 </code></pre><p>上一题的答案：c</p>
 <p>命名参数是静态分配的。</p>
-<h2 id="致命的顺序-The-Order"><a href="#致命的顺序-The-Order" class="headerlink" title="致命的顺序 ~ The Order"></a>致命的顺序 ~ The Order</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Order <span class="token punctuation">{</span>
+<h3 id="致命的顺序-The-Order"><a href="#致命的顺序-The-Order" class="headerlink" title="致命的顺序 ~ The Order"></a>致命的顺序 ~ The Order</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Order <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">val</span> c<span class="token operator">:</span> String
   <span class="token keyword">init</span> <span class="token punctuation">{</span>
     <span class="token function">the</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -655,8 +660,8 @@ d) 以上答案都不对
 <p>JVM 不想理你并向你抛出了一只 NPE。Java 也有这个问题，Scala 不熟悉不清楚。据说 Ceylon 就没有这个问题，具体可以看 Ceylon 官网上的说明（趁机吹一波 Ceylon）。</p>
 <p><a href="https://ceylon-lang.org/documentation/1.3/tour/initialization/#definite_assignment_and_definite_initialization" target="_blank" rel="external">https://ceylon-lang.org/documentation/1.3/tour/initialization/#definite_assignment_and_definite_initialization</a></p>
 <p>Kotlin 官方人员曾表示修复这个缺陷是一件十分困难的事。</p>
-<h1 id="那些坑了我的迷题"><a href="#那些坑了我的迷题" class="headerlink" title="那些坑了我的迷题"></a>那些坑了我的迷题</h1><p>我果然是鶸，错了这么多，进入自卑模式~</p>
-<h2 id="区间测试-Inclusive-Range"><a href="#区间测试-Inclusive-Range" class="headerlink" title="区间测试 ~ Inclusive Range"></a>区间测试 ~ Inclusive Range</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> i <span class="token operator">=</span> <span class="token number">10.5</span>
+<h2 id="那些坑了我的迷题"><a href="#那些坑了我的迷题" class="headerlink" title="那些坑了我的迷题"></a>那些坑了我的迷题</h2><p>我果然是鶸，错了这么多，进入自卑模式~</p>
+<h3 id="区间测试-Inclusive-Range"><a href="#区间测试-Inclusive-Range" class="headerlink" title="区间测试 ~ Inclusive Range"></a>区间测试 ~ Inclusive Range</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> i <span class="token operator">=</span> <span class="token number">10.5</span>
 
 <span class="token keyword">when</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">in</span> <span class="token number">1</span><span class="token operator">..</span><span class="token number">10</span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"in"</span><span class="token punctuation">)</span>
@@ -670,7 +675,7 @@ b) !in
 c) else
 d) 这破代码根本没法通过编译
 </code></pre><p>据说这道题在 Kotlin 1.0 版本和 1.2 版本里有不同的表现。（我懒得试旧版本了）</p>
-<h2 id="极性不定-Weird-Chaining"><a href="#极性不定-Weird-Chaining" class="headerlink" title="极性不定 ~ Weird Chaining"></a>极性不定 ~ Weird Chaining</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">printNumberSign</span><span class="token punctuation">(</span>num<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h3 id="极性不定-Weird-Chaining"><a href="#极性不定-Weird-Chaining" class="headerlink" title="极性不定 ~ Weird Chaining"></a>极性不定 ~ Weird Chaining</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">printNumberSign</span><span class="token punctuation">(</span>num<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token string">"negative"</span>
   <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -691,7 +696,7 @@ c) negative; positive
 d) zero; positive
 </code></pre><p>上一题的答案：a</p>
 <p>实际上是把 <code>i</code> 转成 <code>Int</code> 再进行的比较。</p>
-<h2 id="Dollar-In-Multiline-Literals"><a href="#Dollar-In-Multiline-Literals" class="headerlink" title="$_$ ~ Dollar In Multiline Literals"></a>$_$ ~ Dollar In Multiline Literals</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> multiline <span class="token operator">=</span> <span class="token raw-string string">"""
+<h3 id="Dollar-In-Multiline-Literals"><a href="#Dollar-In-Multiline-Literals" class="headerlink" title="$_$ ~ Dollar In Multiline Literals"></a>$_$ ~ Dollar In Multiline Literals</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> multiline <span class="token operator">=</span> <span class="token raw-string string">"""
         To win \<span class="token interpolation variable">$999</span>.999 execute "rm -fr \<span class="token interpolation variable">$HOME</span>/kotlin-puzzlers/*"
         """</span><span class="token punctuation">.</span><span class="token function">trimIndent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -713,7 +718,7 @@ d) 这破代码根本没法通过编译
 </code></pre>
 <p>秒懂！</p>
 <p>解决方法：用小括号将那串 <code>if else</code> 括起来再接 <code>let</code> 可破。</p>
-<h2 id="你的名字是-Property-Override"><a href="#你的名字是-Property-Override" class="headerlink" title="你的名字是 ~ Property Override"></a>你的名字是 ~ Property Override</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> Named <span class="token punctuation">{</span>
+<h3 id="你的名字是-Property-Override"><a href="#你的名字是-Property-Override" class="headerlink" title="你的名字是 ~ Property Override"></a>你的名字是 ~ Property Override</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> Named <span class="token punctuation">{</span>
   <span class="token keyword">open</span> <span class="token keyword">var</span> name<span class="token operator">:</span> String<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
     <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> field <span class="token operator">?:</span> <span class="token string">"&lt;unnamed>"</span>
 <span class="token punctuation">}</span>
@@ -736,7 +741,7 @@ d) null
 </code></pre><p>上一题的答案：d</p>
 <p>这种 raw string 里面美元符号 <code>$</code> 一直都是表示模板表达式，而且不能被转义，所以 <code>$HOME</code> 这里糟了。（你问为什么 <code>$999.999</code> 没糟？因为 <code>999.999</code> 不是合法的变量名啊，你在 <code>999.999</code> 两边加上反引号试试。）</p>
 <p>解决方法：”””${‘$’}HOME”””</p>
-<h2 id="冰雪聪明-Custom-Getter-Smartcast"><a href="#冰雪聪明-Custom-Getter-Smartcast" class="headerlink" title="冰雪聪明 ~ Custom Getter Smartcast"></a>冰雪聪明 ~ Custom Getter Smartcast</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> SmartCastable <span class="token punctuation">{</span>
+<h3 id="冰雪聪明-Custom-Getter-Smartcast"><a href="#冰雪聪明-Custom-Getter-Smartcast" class="headerlink" title="冰雪聪明 ~ Custom Getter Smartcast"></a>冰雪聪明 ~ Custom Getter Smartcast</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> SmartCastable <span class="token punctuation">{</span>
     <span class="token keyword">val</span> list<span class="token operator">:</span> List<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token operator">=</span> <span class="token function">mutableListOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 
     <span class="token keyword">val</span> <span class="token keyword">set</span><span class="token operator">:</span> Set<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token operator">=</span> <span class="token function">mutableSetOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
@@ -767,7 +772,7 @@ d) 这破代码根本没法通过编译
         <span class="token keyword">set</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">super</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Mr <span class="token interpolation variable">$value</span>"</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="最小值-MinInt"><a href="#最小值-MinInt" class="headerlink" title="最小值 ~ MinInt"></a>最小值 ~ MinInt</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">printInt</span><span class="token punctuation">(</span>n<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h3 id="最小值-MinInt"><a href="#最小值-MinInt" class="headerlink" title="最小值 ~ MinInt"></a>最小值 ~ MinInt</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">printInt</span><span class="token punctuation">(</span>n<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">println</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -785,7 +790,7 @@ d) 以上答案都不对
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">set</span> <span class="token keyword">is</span> MutableSet<span class="token punctuation">)</span>
     <span class="token keyword">set</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
 </code></pre>
-<h2 id="人类衰退之后-Population-To-Mars"><a href="#人类衰退之后-Population-To-Mars" class="headerlink" title="人类衰退之后 ~ Population To Mars"></a>人类衰退之后 ~ Population To Mars</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> <span class="token function">Population</span><span class="token punctuation">(</span><span class="token keyword">var</span> cities<span class="token operator">:</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Int<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h3 id="人类衰退之后-Population-To-Mars"><a href="#人类衰退之后-Population-To-Mars" class="headerlink" title="人类衰退之后 ~ Population To Mars"></a>人类衰退之后 ~ Population To Mars</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> <span class="token function">Population</span><span class="token punctuation">(</span><span class="token keyword">var</span> cities<span class="token operator">:</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Int<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">val</span> 帝都 <span class="token keyword">by</span> cities
   <span class="token keyword">val</span> 魔都 <span class="token keyword">by</span> cities
   <span class="token keyword">val</span> 妖都 <span class="token keyword">by</span> cities
@@ -811,7 +816,7 @@ c) NullPointerException
 d) NoSuchElementException
 </code></pre><p>上一题的答案：d</p>
 <p>破代码没法通过编译。实际的求值顺序是：<code>-(2_147_483_648.inc())</code>，这TM是个 <code>Long</code>。这个一元操作符的优先级比普通方法调用低。</p>
-<h2 id="反物质-AntiMatter"><a href="#反物质-AntiMatter" class="headerlink" title="反物质 ~ AntiMatter"></a>反物质 ~ AntiMatter</h2><pre class=" language-kotlin"><code class="language-kotlin">operator <span class="token keyword">fun</span> Nothing<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">not</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> Unit
+<h3 id="反物质-AntiMatter"><a href="#反物质-AntiMatter" class="headerlink" title="反物质 ~ AntiMatter"></a>反物质 ~ AntiMatter</h3><pre class=" language-kotlin"><code class="language-kotlin">operator <span class="token keyword">fun</span> Nothing<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">not</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> Unit
 operator <span class="token keyword">fun</span> Unit<span class="token punctuation">.</span><span class="token function">not</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">null</span>
 
 <span class="token keyword">val</span> foo <span class="token operator">=</span> <span class="token keyword">null</span>
@@ -827,9 +832,19 @@ d) 这破代码根本没法通过编译
 <p>用于委托代理的那个 <code>Map</code> 被保存在了一个 <code>private final</code> 的 <code>field</code> 里面，正常手段没法赋新值。</p>
 <p>本题的答案：d</p>
 <p><code>null</code> 的类型是 <code>Nothing?</code>（而且是这个类型的唯一值）。<code>***!!</code> 这个非空断言比 <code>not()</code> 的优先级要高，所以 <code>foo!!!!</code> 的类型是 <code>Nothing</code>，<code>Nothing</code> 是所有类型的子类型，所以编译器没法判断该调用哪个扩展方法。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这些辣鸡代码，别学。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这些辣鸡代码，别学。</p>
 <img src="/2017/12/28/kotlin-puzzlers/20171206120238.jpg" alt="辣鸡Kotlin" title="辣鸡Kotlin">
 <img src="/2017/12/28/kotlin-puzzlers/3274183514325243.jpg" alt="芳文社天下第一" title="芳文社天下第一">
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可，转载请注明出处。
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://aisia.moe/2017/12/28/kotlin-puzzlers/">https://aisia.moe/2017/12/28/kotlin-puzzlers/</a>
+                    </p>
+                </blockquote>
         
     
 
@@ -871,19 +886,20 @@ d) 这破代码根本没法通过编译
             background: rgba(158, 158, 158, .2);
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
             color: #fff;
-            background-color: #757575;
-            text-shadow: 0
+            background-color: #B8B8B8;
+            text-shadow: 0;
+            display: none
         }
 </style>
 	
 <div class="btn_click_load"> 
-    <button class="disqus_click_btn" style="display: none">阅读评论（请确保 disqus 可以正常加载）</button>
+    <button class="disqus_click_btn">阅读评论（请确保 disqus 可以正常加载）</button>
 </div>
 
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'https://lgzh1215.github.io/2017/12/28/kotlin-puzzlers/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'https://lgzh1215.github.io/2017/12/28/kotlin-puzzlers/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'https://aisia.moe/2017/12/28/kotlin-puzzlers/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://aisia.moe/2017/12/28/kotlin-puzzlers/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
@@ -898,10 +914,10 @@ d) 这破代码根本没法通过编译
             s.src = '//lgzh1215.disqus.com/embed.js';
             s.setAttribute('data-timestamp', + new Date());
             (d.head || d.body).appendChild(s);
-            $('.btn_click_load').css('display','none');
+            $('.disqus_click_btn').css('display','none');
         })(),
         error: function() {
-          $('.btn_click_load').css('display','block');
+          $('.disqus_click_btn').css('display','block');
         }
     });
     $('.btn_click_load').click(function() {  //click to load comments
@@ -912,7 +928,7 @@ d) 这破代码根本没法通过编译
             s.setAttribute('data-timestamp', + new Date());
             (d.head || d.body).appendChild(s);
         })();
-        $('.btn_click_load').css('display','none');
+        $('.disqus_click_btn').css('display','none');
     });
 </script>
   	
@@ -931,6 +947,14 @@ d) 这破代码根本没法通过编译
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/2018/01/07/kotlin-jiqiao/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -1030,7 +1054,7 @@ d) 这破代码根本没法通过编译
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -1077,6 +1101,16 @@ d) 这破代码根本没法通过编译
         
     
         <li>
+            <a href="/java6api-cn" title="Java6 Api">
+                
+                    <i class="material-icons sidebar-material-icons">code</i>
+                
+                Java6 Api
+            </a>
+        </li>
+        
+    
+        <li>
             <a href="/2017/04/27/about" title="关于">
                 
                     <i class="material-icons sidebar-material-icons">person</i>
@@ -1092,7 +1126,7 @@ d) 这破代码根本没法通过编译
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">3</span>
+                <span class="sidebar-badge">4</span>
             </a>
         </li>
         
@@ -1230,6 +1264,11 @@ It will not impact the appearance and can give developers a lot of support :)
         <div id="copyright">
             Copyright&nbsp;©&nbsp;2017&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>萌夜雀的人头会社
             
+                <br>
+                
+                    博客内容遵循 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名-非商业性使用-相同方式共享 4.0协议</a>
+                
+            
         </div>
 
         <!-- Paradox Footer Right Section -->
@@ -1271,14 +1310,14 @@ It will not impact the appearance and can give developers a lot of support :)
     });
     NProgress.start();
     $('#nprogress .bar').css({
-        'background': '#29d'
+        'background': '#AA00FF'
     });
     $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+        'box-shadow': '0 0 10px #AA00FF, 0 0 15px #AA00FF'
     });
     $('#nprogress .spinner-icon').css({
-        'border-top-color': '#29d',
-        'border-left-color': '#29d'
+        'border-top-color': '#AA00FF',
+        'border-left-color': '#AA00FF'
     });
     setTimeout(function() {
         NProgress.done();
@@ -1364,7 +1403,7 @@ It will not impact the appearance and can give developers a lot of support :)
             lsloader.runInlineScript(item.id,item.id);
         }
     })()
-console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
                 </main>
