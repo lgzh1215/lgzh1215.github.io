@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Fri Dec 29 2017 00:08:56 GMT+0800">
-        <meta property="article:modified_time" content="Sat Jan 20 2018 01:46:34 GMT+0000">
+        <meta property="article:modified_time" content="Mon Feb 26 2018 13:48:17 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -263,7 +263,7 @@
     "mainEntityOfPage": "https://aisia.moe/2017/12/28/kotlin-puzzlers/index.html",
     "headline": "【水】Kotlin Puzzlers 改",
     "datePublished": "Fri Dec 29 2017 00:08:56 GMT+0800",
-    "dateModified": "Sat Jan 20 2018 01:46:34 GMT+0000",
+    "dateModified": "Mon Feb 26 2018 13:48:17 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -523,7 +523,7 @@
   <span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token function">println</span><span class="token punctuation">(</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
 </code></pre>
 <pre><code>这会打印出什么？
 a) Hello
@@ -601,7 +601,7 @@ c) [4]
 d) [1, 4]
 </code></pre><p>上一题的答案：b</p>
 <p><code>B</code> 初始化需要 <code>C</code>，<code>C</code> 初始化需要 <code>B</code>。咦，<code>B</code> 还没初始化完成呢，那么哪来的 <code>B</code> 呢，只能是 <code>null</code> 了啊！</p>
-<p>参见 <a href="http://jetbrains.github.io/kotlin-spec/#_singleton_objects" target="_blank" rel="external">http://jetbrains.github.io/kotlin-spec/#_singleton_objects</a></p>
+<p>参见 <a href="http://jetbrains.github.io/kotlin-spec/#_singleton_objects" target="_blank" rel="noopener">http://jetbrains.github.io/kotlin-spec/#_singleton_objects</a></p>
 <h3 id="换个名字你就不认识我了-Good-Child-Has-Many-Names"><a href="#换个名字你就不认识我了-Good-Child-Has-Many-Names" class="headerlink" title="换个名字你就不认识我了 ~ Good Child Has Many Names"></a>换个名字你就不认识我了 ~ Good Child Has Many Names</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> C <span class="token punctuation">{</span>
   <span class="token keyword">open</span> <span class="token keyword">fun</span> <span class="token function">sum</span><span class="token punctuation">(</span>x<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token operator">=</span> x <span class="token operator">+</span> y
 <span class="token punctuation">}</span>
@@ -655,10 +655,10 @@ b) null
 c) 这破代码根本没法通过编译
 d) 以上答案都不对
 </code></pre><p>上一题的答案：c</p>
-<p>参见 <a href="https://zhuanlan.zhihu.com/p/27234651" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/27234651</a></p>
+<p>参见 <a href="https://zhuanlan.zhihu.com/p/27234651" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27234651</a></p>
 <p>本题的答案：d</p>
 <p>JVM 不想理你并向你抛出了一只 NPE。Java 也有这个问题，Scala 不熟悉不清楚。据说 Ceylon 就没有这个问题，具体可以看 Ceylon 官网上的说明（趁机吹一波 Ceylon）。</p>
-<p><a href="https://ceylon-lang.org/documentation/1.3/tour/initialization/#definite_assignment_and_definite_initialization" target="_blank" rel="external">https://ceylon-lang.org/documentation/1.3/tour/initialization/#definite_assignment_and_definite_initialization</a></p>
+<p><a href="https://ceylon-lang.org/documentation/1.3/tour/initialization/#definite_assignment_and_definite_initialization" target="_blank" rel="noopener">https://ceylon-lang.org/documentation/1.3/tour/initialization/#definite_assignment_and_definite_initialization</a></p>
 <p>Kotlin 官方人员曾表示修复这个缺陷是一件十分困难的事。</p>
 <h2 id="那些坑了我的迷题"><a href="#那些坑了我的迷题" class="headerlink" title="那些坑了我的迷题"></a>那些坑了我的迷题</h2><p>我果然是鶸，错了这么多，进入自卑模式~</p>
 <h3 id="区间测试-Inclusive-Range"><a href="#区间测试-Inclusive-Range" class="headerlink" title="区间测试 ~ Inclusive Range"></a>区间测试 ~ Inclusive Range</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> i <span class="token operator">=</span> <span class="token number">10.5</span>
@@ -833,8 +833,8 @@ d) 这破代码根本没法通过编译
 <p>本题的答案：d</p>
 <p><code>null</code> 的类型是 <code>Nothing?</code>（而且是这个类型的唯一值）。<code>***!!</code> 这个非空断言比 <code>not()</code> 的优先级要高，所以 <code>foo!!!!</code> 的类型是 <code>Nothing</code>，<code>Nothing</code> 是所有类型的子类型，所以编译器没法判断该调用哪个扩展方法。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这些辣鸡代码，别学。</p>
-<img src="/2017/12/28/kotlin-puzzlers/20171206120238.jpg" alt="辣鸡Kotlin" title="辣鸡Kotlin">
-<img src="/2017/12/28/kotlin-puzzlers/3274183514325243.jpg" alt="芳文社天下第一" title="芳文社天下第一">
+<img src="/2017/12/28/kotlin-puzzlers/20171206120238.jpg" title="辣鸡Kotlin">
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -1044,21 +1044,6 @@ d) 这破代码根本没法通过编译
 
     <!-- Archives  -->
     
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">inbox</i>
-                
-                    归档
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-            <li>
-                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a>
-            </ul>
-        </li>
-        
-    
 
     <!-- Categories  -->
     
@@ -1126,7 +1111,7 @@ d) 这破代码根本没法通过编译
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">4</span>
+                <span class="sidebar-badge">6</span>
             </a>
         </li>
         

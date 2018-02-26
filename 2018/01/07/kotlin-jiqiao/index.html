@@ -45,7 +45,7 @@
     
     <title>
         
-            【水】Kotlin的一些技巧和迂回操作 | 
+            Kotlin的一些技巧和迂回操作 | 
         
         萌夜雀的人头会社
     </title>
@@ -55,7 +55,8 @@
     <link rel="icon" href="/img/favicon_high.png">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="要和谐, 要有爱">
+    <meta name="description" itemprop="description" content="RT，不定期更新。
+递归的 Lambda 表达式">
     <meta name="keywords" content="萌夜雀 人头会社,Kotlin">
     <meta name="theme-color" content="#9C27B0">
 
@@ -233,14 +234,15 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://aisia.moe/2018/01/07/kotlin-jiqiao/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="【水】Kotlin的一些技巧和迂回操作 | 萌夜雀的人头会社">
+    <meta property="og:title" content="Kotlin的一些技巧和迂回操作 | 萌夜雀的人头会社">
     <meta property="og:image" content="/img/favicon_high.png">
-    <meta property="og:description" content="要和谐, 要有爱">
+    <meta property="og:description" content="RT，不定期更新。
+递归的 Lambda 表达式">
     <meta property="og:article:tag" content="Kotlin"> 
 
     
         <meta property="article:published_time" content="Mon Jan 08 2018 03:03:42 GMT+0800">
-        <meta property="article:modified_time" content="Sat Jan 20 2018 01:46:34 GMT+0000">
+        <meta property="article:modified_time" content="Tue Feb 20 2018 14:28:33 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -261,9 +263,9 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "mainEntityOfPage": "https://aisia.moe/2018/01/07/kotlin-jiqiao/index.html",
-    "headline": "【水】Kotlin的一些技巧和迂回操作",
+    "headline": "Kotlin的一些技巧和迂回操作",
     "datePublished": "Mon Jan 08 2018 03:03:42 GMT+0800",
-    "dateModified": "Sat Jan 20 2018 01:46:34 GMT+0000",
+    "dateModified": "Tue Feb 20 2018 14:28:33 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -282,7 +284,8 @@
         }
     },
     "keywords": ",Kotlin萌夜雀 人头会社",
-    "description": "要和谐, 要有爱",
+    "description": "RT，不定期更新。
+递归的 Lambda 表达式",
 }
 </script>
 
@@ -355,7 +358,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#给data-class自定义getter和setter"><span class="post-toc-number">1.</span> <span class="post-toc-text">给data class自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">2.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">3.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">4.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的-Lambda-表达式"><span class="post-toc-number">1.</span> <span class="post-toc-text">递归的 Lambda 表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更进一步：匿名-Lambda-表达式的递归"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">更进一步：匿名 Lambda 表达式的递归</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的函数参数的-NullCheck"><span class="post-toc-number">2.</span> <span class="post-toc-text">阻止编译器添加对非空类型的函数参数的 NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给data-class自定义getter和setter"><span class="post-toc-number">3.</span> <span class="post-toc-text">给data class自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">4.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">5.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">6.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
     </ul>
     
 
@@ -378,7 +381,7 @@
         <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/0003.jpg)">
     
             <p class="article-headline-p">
-                【水】Kotlin的一些技巧和迂回操作
+                Kotlin的一些技巧和迂回操作
             </p>
         </div>
 
@@ -461,7 +464,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=【水】Kotlin的一些技巧和迂回操作&url=https://aisia.moe/2018/01/07/kotlin-jiqiao/index.html&pic=https://aisia.moe/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Kotlin的一些技巧和迂回操作&url=https://aisia.moe/2018/01/07/kotlin-jiqiao/index.html&pic=https://aisia.moe/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -470,7 +473,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=【水】Kotlin的一些技巧和迂回操作&url=https://aisia.moe/2018/01/07/kotlin-jiqiao/index.html&via=Dexlind" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Kotlin的一些技巧和迂回操作&url=https://aisia.moe/2018/01/07/kotlin-jiqiao/index.html&via=Dexlind" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -513,8 +516,58 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>RT，不定期更新。（因为是大家都知道的技巧所以是一篇水文）</p>
-<h3 id="给data-class自定义getter和setter"><a href="#给data-class自定义getter和setter" class="headerlink" title="给data class自定义getter和setter"></a>给data class自定义getter和setter</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">SomeClass</span><span class="token punctuation">(</span><span class="token keyword">var</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span>
+        <p>RT，不定期更新。</p>
+<h2 id="递归的-Lambda-表达式"><a href="#递归的-Lambda-表达式" class="headerlink" title="递归的 Lambda 表达式"></a>递归的 Lambda 表达式</h2><a id="more"></a>
+<p>刚才在某个 Kotlin 裙里看到有人在问：</p>
+<blockquote>
+<p>是不是lambda无法递归</p>
+</blockquote>
+<p>举个例子，我们可以写一个简单的递归函数：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1551"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印出很多1551</span>
+</code></pre>
+<p>如果要写成 Lambda 呢？这样的代码会报错：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> a<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1551"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>我们自然是不能直接写这样的代码的，它会说 <code>a</code> 没有定义。解决方法当然是使用 <code>lateinit</code>：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">lateinit</span> <span class="token keyword">var</span> a<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1551"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印出很多1551</span>
+</code></pre>
+<h3 id="更进一步：匿名-Lambda-表达式的递归"><a href="#更进一步：匿名-Lambda-表达式的递归" class="headerlink" title="更进一步：匿名 Lambda 表达式的递归"></a>更进一步：匿名 Lambda 表达式的递归</h3><p>正统的「<a href="https://en.wikipedia.org/wiki/Lambda_calculus" target="_blank" rel="noopener">Lambda演算</a>」里面的函数全部都是匿名函数，需要使用「<a href="https://en.wikipedia.org/wiki/Fixed-point_combinator" target="_blank" rel="noopener">不动点组合子</a>」实现递归：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 这是javascript</span>
+<span class="token punctuation">(</span>f <span class="token operator">=</span><span class="token operator">></span>
+  <span class="token punctuation">(</span>x <span class="token operator">=</span><span class="token operator">></span> <span class="token function">f</span><span class="token punctuation">(</span>y <span class="token operator">=</span><span class="token operator">></span> <span class="token function">x</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>x <span class="token operator">=</span><span class="token operator">></span> <span class="token function">f</span><span class="token punctuation">(</span>y <span class="token operator">=</span><span class="token operator">></span> <span class="token function">x</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">(</span>func <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"1551"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印出很多1551</span>
+</code></pre>
+<p>上面的那一坨 <code>f =&gt; (x =&gt; f(y =&gt; x(x)(y)))(x =&gt; f(y =&gt; x(x)(y)))</code> 即是「Z组合子」。（读者可以思考一下为什么这里我给了 JavaScript 的例子是而不是 Kotlin（逃</p>
+<h2 id="阻止编译器添加对非空类型的函数参数的-NullCheck"><a href="#阻止编译器添加对非空类型的函数参数的-NullCheck" class="headerlink" title="阻止编译器添加对非空类型的函数参数的 NullCheck"></a>阻止编译器添加对非空类型的函数参数的 NullCheck</h2><p>总所周知，当一个函数的参数是非空类型时，Kotlin编译器会在方法入口处加一行检查入参是否为空的代码。比如说 <code>main</code> 函数：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p>经过编译后，再反编译成Java：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NotNull</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Intrinsics<span class="token punctuation">.</span><span class="token function">checkParameterIsNotNull</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> <span class="token string">"args"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>可恶！辣鸡编译器自作主张！我不想要这行代码！</p>
+<p>如果不想编译器生成这些代码，把这几个编译器参数 <code>-Xno-call-assertions</code>、<code>-Xno-param-assertions</code>、<code>-Xno-receiver-assertions</code> 传给Kotlin编译器即可。</p>
+<p>传递编译器参数的方法：</p>
+<p>使用IDEA调用编译器的情况：</p>
+<pre><code>Project 设置：File -&gt; Settings -&gt; 找到 Kotlin Compiler -&gt; Additional command line parameters
+
+Module 设置：File -&gt; Project Structure -&gt; Module -&gt; 找到你的Module里面的Kotlin设置 -&gt; Additional command line parameters
+</code></pre><p>使用Gradle Kotlin DSL的情况：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// build.gradle.kts</span>
+tasks<span class="token punctuation">.</span>withType<span class="token operator">&lt;</span>KotlinCompile<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 加上下面这行</span>
+    kotlinOptions<span class="token punctuation">.</span>freeCompilerArgs <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string">"-Xno-call-assertions"</span><span class="token punctuation">,</span> <span class="token string">"-Xno-param-assertions"</span><span class="token punctuation">,</span> <span class="token string">"-Xno-receiver-assertions"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>PS：注意IDEA的 <code>Delegate IDE build/run actions to gradle</code> 这个选项是否勾选的区别。</p>
+<h2 id="给data-class自定义getter和setter"><a href="#给data-class自定义getter和setter" class="headerlink" title="给data class自定义getter和setter"></a>给data class自定义getter和setter</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">SomeClass</span><span class="token punctuation">(</span><span class="token keyword">var</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span>
 </code></pre>
 <p>众所周知 Kotlin 不允许给声明在主构造器里面的属性写自定义getter、setter，主要是为了防止有好事者乱写，破坏规则就不好了。所以迂回操作如下：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">SomeClass</span><span class="token punctuation">(</span><span class="token keyword">private</span> <span class="token keyword">var</span> _name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -524,7 +577,8 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>解释：<code>private</code>的<code>_name</code>不会生成getter和setter，你再把你想写的getter和setter添上就好。这样<code>SomeClass</code>里面就有3样东西：<code>String _name</code>，<code>String getName()</code>和<code>void setName(String)</code>（以及data class根据<code>_name</code>自动生成的那些）。</p>
-<h3 id="流的读取"><a href="#流的读取" class="headerlink" title="流的读取"></a>流的读取</h3><p>普通青年：</p>
+<p>缺点很明显，toString 生成的字符串会比较丑。</p>
+<h2 id="流的读取"><a href="#流的读取" class="headerlink" title="流的读取"></a>流的读取</h2><p>普通青年：</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// java 代码</span>
 <span class="token keyword">void</span> <span class="token function">someFunc</span><span class="token punctuation">(</span>InputStream in<span class="token punctuation">,</span> OutputStream out<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
     <span class="token keyword">int</span> read<span class="token punctuation">;</span>
@@ -558,7 +612,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="限制扩展的作用域（防止污染命名空间）"><a href="#限制扩展的作用域（防止污染命名空间）" class="headerlink" title="限制扩展的作用域（防止污染命名空间）"></a>限制扩展的作用域（防止污染命名空间）</h3><p>注意：此技巧并不稳定，可能在未来被官方干掉。</p>
+<h2 id="限制扩展的作用域（防止污染命名空间）"><a href="#限制扩展的作用域（防止污染命名空间）" class="headerlink" title="限制扩展的作用域（防止污染命名空间）"></a>限制扩展的作用域（防止污染命名空间）</h2><p>注意：此技巧并不稳定，可能在未来被官方干掉。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 把扩展丢进一个object里面</span>
 <span class="token keyword">object</span> StringExtension <span class="token punctuation">{</span>
     <span class="token annotation builtin">@JvmStatic</span> <span class="token keyword">fun</span> String<span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"fuck <span class="token interpolation variable">$this</span>"</span><span class="token punctuation">)</span>
@@ -601,7 +655,7 @@
     IntExtension<span class="token punctuation">.</span><span class="token function">use</span> <span class="token punctuation">{</span> <span class="token number">1551</span><span class="token punctuation">.</span><span class="token function">love</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="链式调用时输出中间值"><a href="#链式调用时输出中间值" class="headerlink" title="链式调用时输出中间值"></a>链式调用时输出中间值</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> printlnBy <span class="token punctuation">{</span> it <span class="token punctuation">}</span>
+<h2 id="链式调用时输出中间值"><a href="#链式调用时输出中间值" class="headerlink" title="链式调用时输出中间值"></a>链式调用时输出中间值</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> printlnBy <span class="token punctuation">{</span> it <span class="token punctuation">}</span>
 
 <span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> U<span class="token operator">></span> T<span class="token punctuation">.</span><span class="token function">printlnBy</span><span class="token punctuation">(</span>selector<span class="token operator">:</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-></span> U<span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">also</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">selector</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
 
@@ -616,6 +670,7 @@
 <span class="token comment" spellcheck="true">// 6</span>
 </code></pre>
 <p>注意副作用，别夏姬八用！</p>
+<p>如果是集合操作，可以考虑使用 <code>onEach</code> 这个高阶函数，例如<code>onEach { println(it) }</code>。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -730,6 +785,14 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2018/02/08/kotlin-coroutine-kepa/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
@@ -818,21 +881,6 @@
 
     <!-- Archives  -->
     
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">inbox</i>
-                
-                    归档
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-            <li>
-                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a>
-            </ul>
-        </li>
-        
-    
 
     <!-- Categories  -->
     
@@ -900,7 +948,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">4</span>
+                <span class="sidebar-badge">6</span>
             </a>
         </li>
         
