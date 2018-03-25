@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Sun Mar 25 2018 16:31:53 GMT+0800">
-        <meta property="article:modified_time" content="Sun Mar 25 2018 14:05:12 GMT+0000">
+        <meta property="article:modified_time" content="Sun Mar 25 2018 14:35:42 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -263,7 +263,7 @@
     "mainEntityOfPage": "https://aisia.moe/2018/03/25/kotlin-contracts-dsl/index.html",
     "headline": "Kotlin Contracts DSL",
     "datePublished": "Sun Mar 25 2018 16:31:53 GMT+0800",
-    "dateModified": "Sun Mar 25 2018 14:05:12 GMT+0000",
+    "dateModified": "Sun Mar 25 2018 14:35:42 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -585,23 +585,33 @@
 <p>编译器可以知道「传入的 lambda 会立即在“原地”执行有且仅有一次」，那么 <code>str</code> 一定会被初始化，而且不会被重新赋值。编译通过！</p>
 <p>现在 Contracts DSL 位于 <code>kotlin.internal.contracts</code> 这个包内，是 <code>internal</code> 的，一般用户还无法直接拿来写自己的 contract，等JB那帮人把这个功能做好了就能用了。</p>
 <h3 id="跑个题"><a href="#跑个题" class="headerlink" title="跑个题"></a>跑个题</h3><p>JetBrains 注解库有个 <code>@Contract</code> 可以实现类似的功能。虽然这个功能是 IDEA 提供的，不是 javac 的功能，并不能阻止错误的代码通过编译，不过总比没有强（逃</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>jetbrains<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// KotlinMain.kt</span>
+<span class="token comment" spellcheck="true">// 在kotlin里写具体实现以干掉IDEA强大的Java代码分析功能</span>
+<span class="token keyword">fun</span> <span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>cs<span class="token operator">:</span> CharSequence<span class="token operator">?</span><span class="token punctuation">)</span> <span class="token operator">=</span> cs <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> cs<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>jetbrains<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>Contract<span class="token punctuation">;</span>
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaMain</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Contract</span><span class="token punctuation">(</span><span class="token string">"null->true"</span><span class="token punctuation">)</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> CharSequence cs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> cs <span class="token operator">==</span> null <span class="token operator">||</span> cs<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+   <span class="token annotation punctuation">@Contract</span><span class="token punctuation">(</span><span class="token string">"null->true"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 输入 null 则一定返回 true</span>
+   <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>CharSequence cs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> KotlinMainKt<span class="token punctuation">.</span><span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>cs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        String str <span class="token operator">=</span> KotlinMainKt<span class="token punctuation">.</span><span class="token function">getNullableString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// IDEA提示：调用 hashCode 可能会产生 NullPointerException</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      String str <span class="token operator">=</span> KotlinMainKt<span class="token punctuation">.</span><span class="token function">getNullableString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token comment" spellcheck="true">// warning：调用hashCode可能会产生NullPointerException（这个warning是本来就有的）</span>
+         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+         <span class="token comment" spellcheck="true">// 通过@Contract提供的信息可知else分支里str不为null，所以不会有warning</span>
+         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
 
-        <span class="token keyword">boolean</span> b <span class="token operator">=</span> <span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// IDEA提示：condition `b` is always true</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>b<span class="token punctuation">)</span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"でないと、私のすごいとこ 見せられないじゃん"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+      <span class="token keyword">boolean</span> b <span class="token operator">=</span> <span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">// 通过@Contract提供的信息可知`b`永远为null</span>
+      <span class="token comment" spellcheck="true">// warning：condition `b` is always true</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>b<span class="token punctuation">)</span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"でないと、私のすごいとこ 見せられないじゃん"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 
