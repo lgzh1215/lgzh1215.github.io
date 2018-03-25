@@ -6,8 +6,42 @@
     
     
   <url>
+    <loc>https://aisia.moe/2018/02/26/why-not-gradle-kts-dsl/</loc>
+    <lastmod>2018-03-25T14:05:12.878Z</lastmod>
+    <data>
+        <display>
+        <title>为什么我不用 Gradle Kotlin DSL</title>
+        <pubTime>2018-02-26T11:11:00.000Z</pubTime>
+        
+        <tag>Others</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://aisia.moe/2018/03/25/kotlin-contracts-dsl/</loc>
+    <lastmod>2018-03-25T14:05:12.878Z</lastmod>
+    <data>
+        <display>
+        <title>Kotlin Contracts DSL</title>
+        <pubTime>2018-03-25T08:31:53.000Z</pubTime>
+        
+        <tag>Kotlin</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://aisia.moe/2017/12/28/kotlin-puzzlers/</loc>
-    <lastmod>2018-03-02T05:24:40.076Z</lastmod>
+    <lastmod>2018-03-25T14:05:12.878Z</lastmod>
     <data>
         <display>
         <title>【水】Kotlin Puzzlers 改</title>
@@ -24,7 +58,7 @@
     
   <url>
     <loc>https://aisia.moe/2018/02/08/kotlin-coroutine-kepa/</loc>
-    <lastmod>2018-03-02T05:24:40.076Z</lastmod>
+    <lastmod>2018-03-25T14:05:12.878Z</lastmod>
     <data>
         <display>
         <title>Kotlin协程 - 先入个门吧</title>
@@ -41,51 +75,34 @@
     </url>
 
     
-  <url>
-    <loc>https://aisia.moe/2018/02/26/why-not-gradle-kts-dsl/</loc>
-    <lastmod>2018-03-02T05:24:40.076Z</lastmod>
-    <data>
-        <display>
-        <title>为什么我不用 Gradle Kotlin DSL</title>
-        <pubTime>2018-02-26T11:11:00.000Z</pubTime>
-        
-        <tag>Others</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
-    
-    
-  <url>
-    <loc>https://aisia.moe/2017/04/27/about/</loc>
-    <lastmod>2018-03-02T05:24:40.060Z</lastmod>
-    <data>
-        <display>
-        <title>关于此博客，以及博主，还有那些七七八八的事</title>
-        <pubTime>2017-04-27T03:32:52.000Z</pubTime>
-        
-        <tag>Others</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>https://aisia.moe/2017/10/18/huadian/</loc>
-    <lastmod>2018-03-02T05:24:40.060Z</lastmod>
+    <lastmod>2018-03-25T14:05:12.862Z</lastmod>
     <data>
         <display>
         <title>最近观察到的Kotlin的华点</title>
         <pubTime>2017-10-18T15:44:52.000Z</pubTime>
         
         <tag>Kotlin</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://aisia.moe/2017/04/27/about/</loc>
+    <lastmod>2018-03-25T14:05:12.862Z</lastmod>
+    <data>
+        <display>
+        <title>关于此博客，以及博主，还有那些七七八八的事</title>
+        <pubTime>2017-04-27T03:32:52.000Z</pubTime>
+        
+        <tag>Others</tag>
          
          
            
