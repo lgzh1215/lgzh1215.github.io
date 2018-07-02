@@ -56,6 +56,12 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="RT，不定期更新。
+不需要 import 就能使用的顶层函数一个顶层函数，除非你在同一个文件里使用，否则就需要 import 或者使用完全限定名。问题是有些人就是嫌烦，想要所谓的“全局函数”，就像 Kotlin 标准库里的 println 一样。其实很简单，只需要写得跟 println 一样就行了：
+package kotlin
+
+fun fuck() {}
+因为 kotlin 包下的东西都是自动导入的，也就不需要自己动手导入啦。
+需要传入编译器参数 -Xallow-kotlin-package 来允许使用 kotlin 开头的包名。
 递归的 Lambda 表达式">
     <meta name="keywords" content="萌夜雀 人头会社,Kotlin">
     <meta name="theme-color" content="#9C27B0">
@@ -237,12 +243,18 @@
     <meta property="og:title" content="Kotlin的一些技巧和迂回操作 | 萌夜雀的人头会社">
     <meta property="og:image" content="/img/favicon_high.png">
     <meta property="og:description" content="RT，不定期更新。
+不需要 import 就能使用的顶层函数一个顶层函数，除非你在同一个文件里使用，否则就需要 import 或者使用完全限定名。问题是有些人就是嫌烦，想要所谓的“全局函数”，就像 Kotlin 标准库里的 println 一样。其实很简单，只需要写得跟 println 一样就行了：
+package kotlin
+
+fun fuck() {}
+因为 kotlin 包下的东西都是自动导入的，也就不需要自己动手导入啦。
+需要传入编译器参数 -Xallow-kotlin-package 来允许使用 kotlin 开头的包名。
 递归的 Lambda 表达式">
     <meta property="og:article:tag" content="Kotlin"> 
 
     
         <meta property="article:published_time" content="Mon Jan 08 2018 03:03:42 GMT+0800">
-        <meta property="article:modified_time" content="Tue Feb 20 2018 14:28:33 GMT+0000">
+        <meta property="article:modified_time" content="Mon Jul 02 2018 09:36:25 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +277,7 @@
     "mainEntityOfPage": "https://aisia.moe/2018/01/07/kotlin-jiqiao/index.html",
     "headline": "Kotlin的一些技巧和迂回操作",
     "datePublished": "Mon Jan 08 2018 03:03:42 GMT+0800",
-    "dateModified": "Tue Feb 20 2018 14:28:33 GMT+0000",
+    "dateModified": "Mon Jul 02 2018 09:36:25 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -285,6 +297,12 @@
     },
     "keywords": ",Kotlin萌夜雀 人头会社",
     "description": "RT，不定期更新。
+不需要 import 就能使用的顶层函数一个顶层函数，除非你在同一个文件里使用，否则就需要 import 或者使用完全限定名。问题是有些人就是嫌烦，想要所谓的“全局函数”，就像 Kotlin 标准库里的 println 一样。其实很简单，只需要写得跟 println 一样就行了：
+package kotlin
+
+fun fuck() {}
+因为 kotlin 包下的东西都是自动导入的，也就不需要自己动手导入啦。
+需要传入编译器参数 -Xallow-kotlin-package 来允许使用 kotlin 开头的包名。
 递归的 Lambda 表达式",
 }
 </script>
@@ -358,7 +376,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的-Lambda-表达式"><span class="post-toc-number">1.</span> <span class="post-toc-text">递归的 Lambda 表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更进一步：匿名-Lambda-表达式的递归"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">更进一步：匿名 Lambda 表达式的递归</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的函数参数的-NullCheck"><span class="post-toc-number">2.</span> <span class="post-toc-text">阻止编译器添加对非空类型的函数参数的 NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给data-class自定义getter和setter"><span class="post-toc-number">3.</span> <span class="post-toc-text">给data class自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">4.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">5.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">6.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不需要-import-就能使用的顶层函数"><span class="post-toc-number">1.</span> <span class="post-toc-text">不需要 import 就能使用的顶层函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的-Lambda-表达式"><span class="post-toc-number">2.</span> <span class="post-toc-text">递归的 Lambda 表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更进一步：匿名-Lambda-表达式的递归"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">更进一步：匿名 Lambda 表达式的递归</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的函数参数的-NullCheck"><span class="post-toc-number">3.</span> <span class="post-toc-text">阻止编译器添加对非空类型的函数参数的 NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给data-class自定义getter和setter"><span class="post-toc-number">4.</span> <span class="post-toc-text">给data class自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">5.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">6.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">7.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
     </ul>
     
 
@@ -517,6 +535,12 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>RT，不定期更新。</p>
+<h2 id="不需要-import-就能使用的顶层函数"><a href="#不需要-import-就能使用的顶层函数" class="headerlink" title="不需要 import 就能使用的顶层函数"></a>不需要 import 就能使用的顶层函数</h2><p>一个顶层函数，除非你在同一个文件里使用，否则就需要 import 或者使用完全限定名。问题是有些人就是嫌烦，想要所谓的“全局函数”，就像 Kotlin 标准库里的 <code>println</code> 一样。其实很简单，只需要写得跟 <code>println</code> 一样就行了：</p>
+<pre><code>package kotlin
+
+fun fuck() {}
+</code></pre><p>因为 kotlin 包下的东西都是自动导入的，也就不需要自己动手导入啦。</p>
+<p>需要传入编译器参数 <code>-Xallow-kotlin-package</code> 来允许使用 kotlin 开头的包名。</p>
 <h2 id="递归的-Lambda-表达式"><a href="#递归的-Lambda-表达式" class="headerlink" title="递归的 Lambda 表达式"></a>递归的 Lambda 表达式</h2><a id="more"></a>
 <p>刚才在某个 Kotlin 裙里看到有人在问：</p>
 <blockquote>
@@ -535,15 +559,27 @@ a <span class="token operator">=</span> <span class="token punctuation">{</span>
 <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印出很多1551</span>
 </code></pre>
 <h3 id="更进一步：匿名-Lambda-表达式的递归"><a href="#更进一步：匿名-Lambda-表达式的递归" class="headerlink" title="更进一步：匿名 Lambda 表达式的递归"></a>更进一步：匿名 Lambda 表达式的递归</h3><p>正统的「<a href="https://en.wikipedia.org/wiki/Lambda_calculus" target="_blank" rel="noopener">Lambda演算</a>」里面的函数全部都是匿名函数，需要使用「<a href="https://en.wikipedia.org/wiki/Fixed-point_combinator" target="_blank" rel="noopener">不动点组合子</a>」实现递归：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 这是javascript</span>
-<span class="token punctuation">(</span>f <span class="token operator">=</span><span class="token operator">></span>
-  <span class="token punctuation">(</span>x <span class="token operator">=</span><span class="token operator">></span> <span class="token function">f</span><span class="token punctuation">(</span>y <span class="token operator">=</span><span class="token operator">></span> <span class="token function">x</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token punctuation">(</span>x <span class="token operator">=</span><span class="token operator">></span> <span class="token function">f</span><span class="token punctuation">(</span>y <span class="token operator">=</span><span class="token operator">></span> <span class="token function">x</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">(</span>func <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"1551"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印出很多1551</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 这是kotlin-js</span>
+<span class="token keyword">val</span> z <span class="token operator">=</span> <span class="token punctuation">{</span> f<span class="token operator">:</span> dynamic <span class="token operator">-></span>
+   <span class="token punctuation">{</span> g<span class="token operator">:</span> dynamic <span class="token operator">-></span> <span class="token function">g</span><span class="token punctuation">(</span>g<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+   <span class="token punctuation">{</span> x<span class="token operator">:</span> dynamic <span class="token operator">-></span> f <span class="token punctuation">{</span> y<span class="token operator">:</span> dynamic <span class="token operator">-></span> <span class="token function">x</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">val</span> a <span class="token operator">=</span> z <span class="token punctuation">{</span> f<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">-></span>
+   <span class="token punctuation">{</span>
+      <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1551"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 求斐波那契数列第n项的函数</span>
+<span class="token keyword">val</span> fib<span class="token operator">:</span> <span class="token punctuation">(</span>Int<span class="token punctuation">)</span> <span class="token operator">-></span> Int <span class="token operator">=</span> z <span class="token punctuation">{</span> f<span class="token operator">:</span> <span class="token punctuation">(</span>Int<span class="token punctuation">)</span> <span class="token operator">-></span> Int <span class="token operator">-></span>
+   <span class="token punctuation">{</span> x<span class="token operator">:</span> Int <span class="token operator">-></span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token number">1</span>
+      <span class="token keyword">else</span> <span class="token function">f</span><span class="token punctuation">(</span>x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">f</span><span class="token punctuation">(</span>x <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 输出斐波那契数列前10项</span>
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token function">rangeTo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>fib<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<p>上面的那一坨 <code>f =&gt; (x =&gt; f(y =&gt; x(x)(y)))(x =&gt; f(y =&gt; x(x)(y)))</code> 即是「Z组合子」。（读者可以思考一下为什么这里我给了 JavaScript 的例子是而不是 Kotlin（逃</p>
+<p>上面的那一坨 <code>val z</code> 即是「Z组合子」。（读者可以思考一下为什么这里我给了 Kotlin-js 的例子是而不是 Kotlin-jvm（逃</p>
 <h2 id="阻止编译器添加对非空类型的函数参数的-NullCheck"><a href="#阻止编译器添加对非空类型的函数参数的-NullCheck" class="headerlink" title="阻止编译器添加对非空类型的函数参数的 NullCheck"></a>阻止编译器添加对非空类型的函数参数的 NullCheck</h2><p>总所周知，当一个函数的参数是非空类型时，Kotlin编译器会在方法入口处加一行检查入参是否为空的代码。比如说 <code>main</code> 函数：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 </code></pre>

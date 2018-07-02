@@ -489,6 +489,12 @@ Kotlin DSL：你看看这何等鬼畜的用法！
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
             RT，不定期更新。
+不需要 import 就能使用的顶层函数一个顶层函数，除非你在同一个文件里使用，否则就需要 import 或者使用完全限定名。问题是有些人就是嫌烦，想要所谓的“全局函数”，就像 Kotlin 标准库里的 println 一样。其实很简单，只需要写得跟 println 一样就行了：
+package kotlin
+
+fun fuck() {}
+因为 kotlin 包下的东西都是自动导入的，也就不需要自己动手导入啦。
+需要传入编译器参数 -Xallow-kotlin-package 来允许使用 kotlin 开头的包名。
 递归的 Lambda 表达式
         
         &nbsp;&nbsp;&nbsp;
