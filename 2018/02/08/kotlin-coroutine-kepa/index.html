@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Thu Feb 08 2018 23:16:58 GMT+0800">
-        <meta property="article:modified_time" content="Tue Nov 20 2018 10:55:45 GMT+0000">
+        <meta property="article:modified_time" content="Tue Nov 20 2018 16:31:05 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -263,7 +263,7 @@
     "mainEntityOfPage": "https://aisia.moe/2018/02/08/kotlin-coroutine-kepa/index.html",
     "headline": "Kotlin协程 - 先入个门吧",
     "datePublished": "Thu Feb 08 2018 23:16:58 GMT+0800",
-    "dateModified": "Tue Nov 20 2018 10:55:45 GMT+0000",
+    "dateModified": "Tue Nov 20 2018 16:31:05 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -354,7 +354,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本操作"><span class="post-toc-number">2.</span> <span class="post-toc-text">基本操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#suspend-关键字"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">suspend 关键字</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建和启动协程"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">创建和启动协程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#协程挂起和恢复执行"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">协程挂起和恢复执行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念摘出：Continuation"><span class="post-toc-number">3.</span> <span class="post-toc-text">概念摘出：Continuation</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译器的魔术"><span class="post-toc-number">4.</span> <span class="post-toc-text">编译器的魔术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CPS-转换"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">CPS 转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态机"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">状态机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#伪・Call-CC"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">伪・Call/CC</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#你学到了什么"><span class="post-toc-number">5.</span> <span class="post-toc-text">你学到了什么</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kotlin-协程有什么用"><span class="post-toc-number">2.</span> <span class="post-toc-text">Kotlin 协程有什么用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本操作"><span class="post-toc-number">3.</span> <span class="post-toc-text">基本操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#suspend-关键字"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">suspend 关键字</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建和启动协程"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">创建和启动协程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#协程挂起和恢复执行"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">协程挂起和恢复执行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念摘出：Continuation"><span class="post-toc-number">4.</span> <span class="post-toc-text">概念摘出：Continuation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上文基础操作的简要解释"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">上文基础操作的简要解释</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译器的魔术"><span class="post-toc-number">5.</span> <span class="post-toc-text">编译器的魔术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CPS-转换"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">CPS 转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态机"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">状态机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具有Kotlin特色的Call-CC"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">具有Kotlin特色的Call/CC</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#你学到了什么"><span class="post-toc-number">6.</span> <span class="post-toc-text">你学到了什么</span></a></li></ol>
     </ul>
     
 
@@ -513,81 +513,136 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>你们要的协程文，嗯。封面图id：66548341。<a id="more"></a></p>
+<iframe src="//music.163.com/outchain/player?type=2&id=1311345114&auto=0&height=32" width="298" height="52" frameborder="0" allowfullscreen></iframe>
+<p>（我终于学会嵌入网易云音乐了，音量注意）</p>
 <p>因为是入门嘛，所以本文保证不会出现任何与 <a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">kotlinx.coroutines</a> 相关的内容。</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>话说为什么我要在已经有辣么多篇优秀的协程文的情况下再水一篇呢？因为我太鶸了，bennyhuo的<a href="https://blog.kotliner.cn/2017/01/30/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20Kotlin%20Coroutine/" target="_blank" rel="noopener">那篇文章</a>根本看不懂，一开始上来就抛出一堆难以理解的专业名词，比如线程、Lua、CoroutineContext 等等，再加上那一堆根本看不懂的 Lua 代码以及 UML 类图，萌新一脸懵逼，直接被劝退，根本不留情面。所以我决定自己写一篇（自己能看懂的），就酱。</p>
+<p>本文写于Kotlin1.2的时代，1.3有点变化。所以修订一下本水文，增加一些内容，将原来的过时内容修改为1.3版本的内容，删减一些无关紧要的破事水。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>事先说明一点，本文的<strong>协程</strong>，专指<strong>Kotlin语言的协程</strong>，仅对Kotlin有效。本文完全不涉及其他编程语言的协程或类似的概念。</p>
+<p>话说为什么我要在已经有那么多篇优秀的协程文的情况下再水一篇呢？</p>
+<p>首先，因为我太鶸了，bennyhuo的<a href="https://blog.kotliner.cn/2017/01/30/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20Kotlin%20Coroutine/" target="_blank" rel="noopener">那篇文章</a>根本看不懂，一开始上来就抛出一堆难以理解的专业名词，比如线程、Lua、CoroutineContext 等等，再加上那一堆根本看不懂的 Lua 代码以及 UML 类图，萌新一脸懵逼，直接被劝退，根本不留情面。所以我决定自己写一篇（自己能看懂的）。</p>
+<p>其次，在Kotlin1.3版本更新之后，Kotlin官网上的参考文档的协程部分，完全套用了 kotlinx.coroutines 这个官方协程库的教程，对基本语法、标准库内容避而不谈。个人认为这并不合适，了解协程的原理、协程的本质也是十分重要的一环，就酱紫。</p>
 <p>本水文不保证其他读者能看懂！（逃</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><blockquote>
+<h2 id="Kotlin-协程有什么用"><a href="#Kotlin-协程有什么用" class="headerlink" title="Kotlin 协程有什么用"></a>Kotlin 协程有什么用</h2><blockquote>
 <p>Kotlin 1.1 的关键新特性是<em>协程</em>，它带来了 <code>future</code>/<code>await</code>、 <code>yield</code> 以及类似的编程模式的支持。Kotlin 的设计中的关键特性是协程执行的实现是语言库的一部分，而不是语言的一部分，所以你不必绑定任何特定的编程范式或并发库。</p>
 </blockquote>
-<p>为了不让内容太过单薄，抄了一段Kotlin中文网上的<a href="https://www.kotlincn.net/docs/reference/whatsnew11.html" target="_blank" rel="noopener">翻译</a>（逃</p>
-<h3 id="suspend-关键字"><a href="#suspend-关键字" class="headerlink" title="suspend 关键字"></a>suspend 关键字</h3><p>Kotlin在1.1版本新增加了 <code>suspend</code> 关键字，可以用来修饰函数或者 lambda 表达式的类型：</p>
+<p>很多人都会纳闷这Kotlin的协程到底有什么用，有什么好处。</p>
+<p>在Kotlin官网上的参考文档里讲到「协程实际上是一个轻量级的线程，可以挂起并稍后恢复」，并且使用 kotlinx.coroutines 里的 launch 函数作为例子：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token function">repeat</span><span class="token punctuation">(</span>100_000<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 启动大量的协程</span>
+   launch <span class="token punctuation">{</span> <span class="token operator">..</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>如果你找过其他官方资料，还能发现有将 launch 与 Thread.start 对比的例子，大多是在“我轻松开10W个协程，你开1K个线程试试”云云。</p>
+<p>然而这只是其中一个优点，并且容易使人感觉「协程只是线程池和线程调度的封装罢了」，未能感受到协程真正魅力所在，十分可惜。</p>
+<p>针对上述问题，一个比较好的答案是：</p>
+<p><strong>Kotlin协程是 callback 的语法糖，它的主要好处是能让你写不需要 callback 的异步代码。换言之，把异步代码写得看起来就想同步的一样。</strong></p>
+<p>直接拿官方的一段代码来做例子，假设有一段回调地狱代码如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 将数据从通道异步读入`buf`, 完成后运行lambda</span>
+inChannel<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 这个lambda在读取完成时执行</span>
+    bytesRead <span class="token operator">-></span>
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+    <span class="token function">process</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> bytesRead<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// 从`buf`异步写入通道, 完成后运行lambda</span>
+    outChannel<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 这个lambda在写入完成时执行</span>
+        <span class="token operator">..</span><span class="token punctuation">.</span>
+        <span class="token operator">..</span><span class="token punctuation">.</span>
+        outFile<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>          
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>再假设上述异步API（即read和write）有支持Kotlin协程的版本（用Kotlin协程对异步API封装为aRead和aWrite），则可以用协程将上面代码改写成如下形式：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">launch <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 当异步读取进行时挂起协程</span>
+    <span class="token keyword">val</span> bytesRead <span class="token operator">=</span> inChannel<span class="token punctuation">.</span><span class="token function">aRead</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span> 
+    <span class="token comment" spellcheck="true">// 只有在读取完成时才执行至这一行</span>
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+    <span class="token function">process</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> bytesRead<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 当异步写入进行时挂起协程 </span>
+    outChannel<span class="token punctuation">.</span><span class="token function">aWrite</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 只有在写入完成时才执行至这一行</span>
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+    outFile<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>看起来就像是没有回调、就像是同步代码一样。然而，协程仅仅是 callback 的语法糖，上面的代码仍然是包含了两个回调的异步代码，但是看起来却无比舒服。</p>
+<p>那么，Kotlin协程是如何做到的呢？</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>先说说Kotlin标准库在1.3版本新增了一个类 <code>Result&lt;T&gt;</code>。</p>
+<p><code>Result&lt;T&gt;</code> 是一个用于表示 Kotlin 函数执行成功和失败结果的 discriminated union（也叫 tagged union 或者是 algebraic data type），即 <code>Success T | Failure Throwable</code>，很简单。</p>
+<p>不懂也没关系。</p>
+<h3 id="suspend-关键字"><a href="#suspend-关键字" class="headerlink" title="suspend 关键字"></a>suspend 关键字</h3><p>Kotlin在1.1版本新增加了 suspend 关键字，可以用来修饰函数或者 lambda 表达式的类型：</p>
 <pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">suspendFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// ↑ 你看这辣鸡代码高亮 ↓</span>
 <span class="token keyword">val</span> suspendLambda<span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 你需要显式写出这个suspend lambda的类型，不然其类型会推导成普通的lambda而不是suspend lambda</span>
+<span class="token comment" spellcheck="true">// 上面这个suspend lambda的类型需要显式标明</span>
+<span class="token comment" spellcheck="true">// 不然其类型会推导成普通的lambda而不是suspend lambda</span>
 </code></pre>
-<p>然后你得到了一个 suspend 函数和 suspend lambda。被标记为 <code>suspend</code> 的函数只能在 suspend 函数或 suspend lambda 中被调用。</p>
-<p>Kotlin 1.2.30 版本提供了一个更简单的方法来声明无参数的 suspend lambda，不用显式写出类型了：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// Kotlin 1.2.30 以后才能这样写</span>
-<span class="token keyword">val</span> suspendLambda <span class="token operator">=</span> suspend <span class="token punctuation">{</span>
+<p>从Kotlin1.2.30版本开始，可以这样声明 suspend lambda，能够自动推导类型。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// Kotlin 1.2.30 以降</span>
+<span class="token keyword">val</span> suspendLambda2 <span class="token operator">=</span> suspend <span class="token punctuation">{</span>
     <span class="token string">"Hello world!"</span>
 <span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// suspendLambda 的类型将被自动推导为 suspend () -> String</span>
+<span class="token comment" spellcheck="true">// suspendLambda2 的类型将被自动推导为 suspend () -> String</span>
+<span class="token comment" spellcheck="true">// PS：在这里suspend是一个伪关键字</span>
 </code></pre>
-<p>PS：Kotlin 将在下次大更新（可能是 1.3）时让 suspend 关键字能够修饰 lambda 表达式，使之称为一个 suspend lambda，就像上面代码里的那样。但是 Kotlin 团队的那帮人根本就没有耐心，决定在 Kotlin 1.2.30 版本（小更新）就引入这个特性，但是又不想引入 breaking change，于是折中了一下，往标准库里加入了一个辅助函数，等到大版本更新正式加入这个功能时再移除这个函数：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token label symbol">@kotlin</span><span class="token punctuation">.</span>internal<span class="token punctuation">.</span>InlineOnly
-<span class="token keyword">public</span> <span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>R<span class="token operator">></span> <span class="token function">suspend</span><span class="token punctuation">(</span><span class="token keyword">noinline</span> block<span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> R<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> R <span class="token operator">=</span> block
+<p>现在，你得到了 suspend 函数和 suspend lambda。被标记为 suspend 的函数/lambda 只能在 suspend 函数/lambda 中被调用。</p>
+<p>在Kotlin1.3版本，新增了 suspend main 功能。</p>
+<pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hello coroutine"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>因为计划中这是要成为一个修饰符的，所以编译器会禁止那些看起来不像是修饰符的用法（non-modifier-like usages）：</p>
-<pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token label symbol">@suspend</span> <span class="token string">"1551"</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 不允许 return@suspend，编译错误！</span>
-suspend <span class="token label symbol">poi@</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token label symbol">@poi</span> <span class="token string">"1551"</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 这是好的！</span>
-
-<span class="token operator">::</span>suspend <span class="token comment" spellcheck="true">// 禁止函数引用，编译错误！</span>
-</code></pre>
-<p>因为是个折衷的版本嘛，所以目前只适用于声明无参 suspend lambda，等下个大版本真正成为一个 lambda 的修饰符的时候，就能适用于有参数的 lambda 了。</p>
 <h3 id="创建和启动协程"><a href="#创建和启动协程" class="headerlink" title="创建和启动协程"></a>创建和启动协程</h3><p>创建并启动一个协程十分简单，你只需要两件宝具：一个 <em>suspend lambda</em>，以及一个 <em>Continuation</em>：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">import</span> kotlin<span class="token punctuation">.</span>coroutines<span class="token punctuation">.</span>experimental<span class="token punctuation">.</span><span class="token operator">*</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">import</span> kotlin<span class="token punctuation">.</span>coroutines<span class="token punctuation">.</span><span class="token operator">*</span>
 
-<span class="token keyword">val</span> suspendLambda<span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> String <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">"Hello world!"</span>
+<span class="token keyword">val</span> suspendLambda <span class="token operator">=</span> suspend <span class="token punctuation">{</span>
+   <span class="token string">"Hello world!"</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">val</span> completion <span class="token operator">=</span> <span class="token keyword">object</span> <span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">override</span> <span class="token keyword">val</span> context <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> EmptyCoroutineContext
-    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">resume</span><span class="token punctuation">(</span>value<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">resumeWithException</span><span class="token punctuation">(</span>exception<span class="token operator">:</span> Throwable<span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> <span class="token keyword">throw</span> exception
+   <span class="token keyword">override</span> <span class="token keyword">val</span> context <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> EmptyCoroutineContext
+   <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">resumeWith</span><span class="token punctuation">(</span>result<span class="token operator">:</span> Result<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getOrThrow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>使用 Kotlin 标准库中的 <code>createCoroutine</code> 函数来创建协程：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> coroutine<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>Unit<span class="token operator">></span> <span class="token operator">=</span> suspendLambda<span class="token punctuation">.</span><span class="token function">createCoroutine</span><span class="token punctuation">(</span>completion<span class="token punctuation">)</span>
 </code></pre>
-<p>然后调用 <code>resume</code> 方法启动这个协程：</p>
-<pre class=" language-kotlin"><code class="language-kotlin">coroutine<span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span>Unit<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印出 Hello world!</span>
+<p>这样你就得到了一个未启动的协程，然后调用 <code>resume</code> 扩展方法启动这个协程：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">coroutine<span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span>Unit<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 打印出 Hello world!</span>
 </code></pre>
 <p>或者使用标准库里的 <code>startCoroutine</code> 函数来创建并立即启动一个协程：</p>
-<pre class=" language-kotlin"><code class="language-kotlin">suspendLambda<span class="token punctuation">.</span><span class="token function">startCoroutine</span><span class="token punctuation">(</span>completion<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印出 Hello world!</span>
+<pre class=" language-kotlin"><code class="language-kotlin">suspendLambda<span class="token punctuation">.</span><span class="token function">startCoroutine</span><span class="token punctuation">(</span>completion<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 打印出 Hello world!</span>
 </code></pre>
 <p>很简单。另外对于有带接收者的 suspend lambda，有与之相对应的库函数。</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">(</span><span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> T<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createCoroutine</span><span class="token punctuation">(</span>completion<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>Unit<span class="token operator">></span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 创建协程</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">(</span><span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> T<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createCoroutine</span><span class="token punctuation">(</span>completion<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>Unit<span class="token operator">></span>
 <span class="token keyword">fun</span> <span class="token operator">&lt;</span>R<span class="token punctuation">,</span> T<span class="token operator">></span> <span class="token punctuation">(</span>suspend R<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> T<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createCoroutine</span><span class="token punctuation">(</span>receiver<span class="token operator">:</span> R<span class="token punctuation">,</span> completion<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>Unit<span class="token operator">></span>
 
+<span class="token comment" spellcheck="true">// 创建并启动协程</span>
 <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">(</span><span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> T<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">startCoroutine</span><span class="token punctuation">(</span>completion<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Unit
 <span class="token keyword">fun</span> <span class="token operator">&lt;</span>R<span class="token punctuation">,</span> T<span class="token operator">></span> <span class="token punctuation">(</span>suspend R<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> T<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">startCoroutine</span><span class="token punctuation">(</span>receiver<span class="token operator">:</span> R<span class="token punctuation">,</span> completion<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Unit
+
+<span class="token comment" spellcheck="true">// 常用的扩展方法</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span>value<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">resumeWith</span><span class="token punctuation">(</span>Result<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">resumeWithException</span><span class="token punctuation">(</span>exception<span class="token operator">:</span> Throwable<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">resumeWith</span><span class="token punctuation">(</span>Result<span class="token punctuation">.</span><span class="token function">failure</span><span class="token punctuation">(</span>exception<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <h3 id="协程挂起和恢复执行"><a href="#协程挂起和恢复执行" class="headerlink" title="协程挂起和恢复执行"></a>协程挂起和恢复执行</h3><p>想要暂停一个协程的执行，可以使用标准库里面的 <code>suspendCoroutine</code> 函数：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> suspendLambda<span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> suspendLambda <span class="token operator">=</span> suspend <span class="token punctuation">{</span>
     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before suspend"</span><span class="token punctuation">)</span>
     suspendCoroutine<span class="token operator">&lt;</span>Unit<span class="token operator">></span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after suspend"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-
 suspendLambda<span class="token punctuation">.</span><span class="token function">startCoroutine</span><span class="token punctuation">(</span><span class="token keyword">object</span> <span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>Any<span class="token operator">></span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// 只输出 before suspend</span>
+<span class="token comment" spellcheck="true">// 输出：</span>
+<span class="token comment" spellcheck="true">// before suspend</span>
 </code></pre>
 <p>如果需要恢复协程，例如等待3秒后继续执行：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> suspendLambda<span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> suspendLambda <span class="token operator">=</span> suspend <span class="token punctuation">{</span>
     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before suspend"</span><span class="token punctuation">)</span>
     <span class="token keyword">val</span> int<span class="token operator">:</span> Int <span class="token operator">=</span> suspendCoroutine <span class="token punctuation">{</span> c <span class="token operator">-></span>
         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span>
@@ -604,34 +659,65 @@ suspendLambda<span class="token punctuation">.</span><span class="token function
 <p><code>suspendCoroutine</code> 函数的签名如下：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> suspend <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">suspendCoroutine</span><span class="token punctuation">(</span><span class="token keyword">crossinline</span> block<span class="token operator">:</span> <span class="token punctuation">(</span>Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span><span class="token operator">:</span> T
 </code></pre>
-<p>如果你知道这上面的各段代码里面究竟发生了什么，那太棒了，你不需要浪费时间阅读这篇辣鸡水文，请点击右上角的关闭按钮。</p>
+<p>如果你知道这上面的各段代码在执行的过程中究竟发生了什么，那太棒了，你不需要浪费时间阅读这篇辣鸡水文，请点击右上角的关闭按钮。</p>
 <h2 id="概念摘出：Continuation"><a href="#概念摘出：Continuation" class="headerlink" title="概念摘出：Continuation"></a>概念摘出：Continuation</h2><p>Continuation（续延）究竟是一个什么概念？一般来讲，Continuation 表示的是「剩余的计算」的概念，换句话说就是「接下来要执行的代码」。举个例子来说，假设我们有这样一段代码：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1551</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span>
 </code></pre>
-<p>我们知道这段代码会先执行 <code>1551.toString()</code>，然后再执行 <code>_.length</code>，最后将结果打印出来 <code>println(_)</code>。</p>
-<p>当 <code>1551.toString()</code> 求值之后，需要将其结果传递至 <code>println(_.length)</code>。我们可以将 <code>println(_.length)</code> 写成一个 lambda 表达式：<code>{ s: String -&gt; println(s.length) }</code>。这个 lambda 表达式（或者说是闭包）表示的就是 <code>1551.toString()</code> 的 Continuation，即「剩余的计算」。</p>
-<p>这样，我们就可以通过把 <code>1551.toString()</code> 应用到这个lambda来重新构建原来的形式：<code>{ s: String -&gt; println(s.length) }.invoke(1551.toString())</code>。换句话说，执行该 lambda 表达式的 <code>invoke</code> 方法以执行「剩余的计算」。</p>
+<p>我们知道这段代码会先执行 <code>1551.toString()</code>，然后再执行 <code>_.length</code>，最后执行 <code>println(_)</code> 将结果打印出来。</p>
+<p>当 <code>1551.toString()</code> 求值之后，需要将其结果传递至 <code>println(_.length)</code>。</p>
+<p>可以看到，<code>println(_.length)</code> 需要一个 String 类型的值才能执行。这时我们可以将 <code>println(_.length)</code> 改写成一个 lambda 表达式：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token punctuation">{</span> s<span class="token operator">:</span> String <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>这个 lambda 表达式（或者说是闭包）就可以是 <code>1551.toString()</code> 的 Continuation，即「剩余的计算」。</p>
+<p>这样，我们就可以通过把 <code>&quot;1551&quot;</code> 传给这个 lambda 来重新构建原始的形式：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token punctuation">{</span> s<span class="token operator">:</span> String <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token string">"1551"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>也就是执行该 lambda 表达式的 <code>invoke</code> 方法以执行「剩余的计算」。</p>
 <p>那么 <code>1551.toString().length</code> 的 Continuation 又是什么呢？很简单，是 <code>{ i: Int -&gt; println(i) }</code>。</p>
 <p>以上讲的就是 Continuation 的一般概念。Kotlin 里面的 Continuation 长什么样子？大概像这样：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">interface</span> Continuation<span class="token operator">&lt;</span><span class="token keyword">in</span> T<span class="token operator">></span> <span class="token punctuation">{</span>
    <span class="token keyword">val</span> context<span class="token operator">:</span> CoroutineContext
-   <span class="token keyword">fun</span> <span class="token function">resume</span><span class="token punctuation">(</span>value<span class="token operator">:</span> T<span class="token punctuation">)</span>
-   <span class="token keyword">fun</span> <span class="token function">resumeWithException</span><span class="token punctuation">(</span>exception<span class="token operator">:</span> Throwable<span class="token punctuation">)</span>
+   <span class="token keyword">fun</span> <span class="token function">resumeWith</span><span class="token punctuation">(</span>result<span class="token operator">:</span> Result<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 常用的扩展方法</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span>value<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token operator">=</span>
+      <span class="token function">resumeWith</span><span class="token punctuation">(</span>Result<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">resumeWithException</span><span class="token punctuation">(</span>exception<span class="token operator">:</span> Throwable<span class="token punctuation">)</span> <span class="token operator">=</span>
+      <span class="token function">resumeWith</span><span class="token punctuation">(</span>Result<span class="token punctuation">.</span><span class="token function">failure</span><span class="token punctuation">(</span>exception<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<p>这不就跟上面的 lambd 表达式很像嘛，Continuation接口的 <code>resume</code> 就相当与 lambda 表达式的 <code>invoke</code> ，所以当你拿到一个 Continuation 时，<code>resume</code> 方法即是「剩余的计算」的入口。</p>
-<p>上文基本操作的例子中，<code>createCoroutine</code> 函数接受一个 Contiuation 参数 completion，表示「协程执行完之后要执行的代码」。而 <code>createCoroutine</code> 的接收者 suspendLambda 则是协程的主要部分。<code>createCoroutine</code> 函数把这两个东西搓成一个表示「整个协程所有需要执行的代码」的 Contiuation，称为初始 Continuation（initial continuation）。当 suspendLambda 执行完毕后，将其结果传至 completion 的 <code>resume</code> 方法；若 suspendLambda 的执行过程中抛出了异常，则走 completion 的 <code>resumeWithException</code> 方法。</p>
+<p>这样我们就可以将 Kotlin 的 Continuation 与上面的 lambda 表达式建立一些对应关系，Continuation的 <code>resumeWith</code> 就相当与 lambda 表达式的 <code>invoke</code>，所以当你拿到一个 Continuation 时，<code>resumeWith</code> 方法即是「剩余的计算」的入口。</p>
+<p>PS：「剩余的计算」这个概念，是不是跟 callback 很像呢~</p>
+<h3 id="上文基础操作的简要解释"><a href="#上文基础操作的简要解释" class="headerlink" title="上文基础操作的简要解释"></a>上文基础操作的简要解释</h3><p>来看上文创建协程的例子：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> suspendLambda <span class="token operator">=</span> suspend <span class="token punctuation">{</span> <span class="token operator">..</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
+<span class="token keyword">val</span> completion <span class="token operator">=</span> <span class="token keyword">object</span> <span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token punctuation">{</span> <span class="token operator">..</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">val</span> coroutine<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>Unit<span class="token operator">></span> <span class="token operator">=</span> suspendLambda<span class="token punctuation">.</span><span class="token function">createCoroutine</span><span class="token punctuation">(</span>completion<span class="token punctuation">)</span>
+
+coroutine<span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span>Unit<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 执行已创建好的协程</span>
+</code></pre>
+<p>例中 <code>createCoroutine</code> 函数接受一个 Contiuation 类型的参数 completion，表示「协程执行完之后要执行的代码」。而 suspendLambda 则是协程的主体。</p>
+<p><code>createCoroutine</code> 函数负责把这两个东西整合成一个表示「整个协程所有需要执行的代码」的 Contiuation，称为初始 Continuation（initial continuation）。对其调用 resume 则开始运行。</p>
+<p>当 suspendLambda 执行完毕后，将其结果传至 completion 的 <code>resume</code> 扩展方法；若 suspendLambda 的执行过程中抛出了异常，则执行 completion 的 <code>resumeWithException</code> 扩展方法。</p>
 <p>再看上文 <code>suspendCoroutine</code> 函数的例子：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> suspendLambda<span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before suspend"</span><span class="token punctuation">)</span>
-    <span class="token keyword">val</span> int<span class="token operator">:</span> Int <span class="token operator">=</span> suspendCoroutine <span class="token punctuation">{</span> c <span class="token operator">-></span>
-        Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span>
-        c<span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span><span class="token number">1551</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after suspend, resume with <span class="token interpolation variable">$int</span>"</span><span class="token punctuation">)</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> suspendLambda <span class="token operator">=</span> suspend <span class="token punctuation">{</span>
+   <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before suspend"</span><span class="token punctuation">)</span>
+   <span class="token keyword">val</span> int<span class="token operator">:</span> Int <span class="token operator">=</span> suspendCoroutine <span class="token punctuation">{</span> cont <span class="token operator">-></span>
+      Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span>
+      cont<span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span><span class="token number">1551</span><span class="token punctuation">)</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after suspend, resume with <span class="token interpolation variable">$int</span>"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><code>suspendCoroutine</code> 函数接收一个lambda表达式作为参数，这个 lambda 的 Continuation 参数即是表示「协程挂起后剩下的还没执行的代码」。在这个例子中，表示的是 <code>{ i: Int -&gt; val int = i; println(&quot;after suspend, resume with $int&quot;) }</code>。调用<code>resume</code>方法将这个协程继续执行下去，<code>suspendCoroutine</code> 的返回值即是通过 <code>resume</code> 方法传入的值（本例中为<code>1551</code>），于是变量<code>int</code>得到值<code>1551</code>。</p>
+<p><code>suspendCoroutine</code> 会将协程挂起（suspend），并且 <code>suspendCoroutine</code> 这个函数接收一个lambda表达式作为参数，这个 lambda 的 cont 参数即是表示「协程挂起后剩下的还没执行的代码」。</p>
+<p>针对这个例子，如果要用lambda表达式来表示 cont 这个 Continuation，则是：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token punctuation">{</span> i<span class="token operator">:</span> Int <span class="token operator">-></span>
+   <span class="token keyword">val</span> int <span class="token operator">=</span> i
+   <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after suspend, resume with <span class="token interpolation variable">$int</span>"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在线程睡了3000毫秒后，调用 <code>resume</code> 方法将这个协程继续执行下去，<code>suspendCoroutine</code> 的返回值即是通过 <code>resume</code> 方法传入的值（本例中为<code>1551</code>），于是变量<code>int</code>得到值<code>1551</code>，并在之后打印出来。</p>
 <p>超简单~！</p>
 <h2 id="编译器的魔术"><a href="#编译器的魔术" class="headerlink" title="编译器的魔术"></a>编译器的魔术</h2><blockquote>
 <p><strong>「别逗我了。那种东西怎么会是魔法！」</strong></p>
@@ -641,19 +727,19 @@ suspendLambda<span class="token punctuation">.</span><span class="token function
 <h3 id="CPS-转换"><a href="#CPS-转换" class="headerlink" title="CPS 转换"></a>CPS 转换</h3><blockquote>
 <p>「CPST 就是 Gödel–Gentzen 变换的 Curry–Howard 像而已，这有什么难理解的？」</p>
 </blockquote>
-<p>在编译时，suspend 函数会被编译器加上一个 Continuation 参数：</p>
+<p>在编译时，每一个 suspend 函数会被编译器加上一个 Continuation 参数：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 编译前</span>
 suspend <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> U<span class="token operator">></span> <span class="token function">suspendFunction</span><span class="token punctuation">(</span>arg<span class="token operator">:</span> U<span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">// 编译后</span>
-<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> U<span class="token operator">></span> <span class="token function">suspendFunction</span><span class="token punctuation">(</span>arg<span class="token operator">:</span> U<span class="token punctuation">,</span> c<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span><span class="token keyword">in</span> String<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Any<span class="token operator">?</span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> U<span class="token operator">></span> <span class="token function">suspendFunction</span><span class="token punctuation">(</span>arg<span class="token operator">:</span> U<span class="token punctuation">,</span> c<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span><span class="token keyword">in</span> T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Any<span class="token operator">?</span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
 </code></pre>
-<p>这叫做 CPS 转换（Continuation-Passing-Style transformation）。</p>
-<p>可以认为每个 suspend 函数都有一个隐式参数，每个 suspend 函数都能通过这个参数拿到一个 Continuation，代表着「该函数之后将要执行的代码」。</p>
-<p>PS：<code>suspendFunction</code> 经过CPS转换后，返回值的那个 <code>Any?</code> 其实是个类似于 union types（并集类型）的玩意。它其实是 <code>T | COROUTINE_SUSPENDED</code>，表示返回值可能为 <code>T</code> 类型的值，也可能是个 <code>COROUTINE_SUSPENDED</code>。但是辣鸡 Kotlin 没有 union types，所以只能写成 <code>Any?</code>，使用的时候再做类型强转。（看看人家 <a href="http://dotty.epfl.ch/docs/reference/union-types.html" target="_blank" rel="noopener">Scala</a> 和 <a href="https://ceylon-lang.org/documentation/1.3/tour/types/#union_types" target="_blank" rel="noopener">Ceylon</a> ，做得多好）</p>
+<p>这叫做 CPS 转换（Continuation-Passing-Style Transformation）。</p>
+<p>因此我们可以认为每个 suspend 函数都有一个 Continuation 类型的隐式参数，每个 suspend 函数都能通过这个参数拿到一个 Continuation，代表着「该函数之后将要执行的代码」。</p>
+<p>PS：<code>suspendFunction</code> 经过CPS转换后，返回值的那个 <code>Any?</code> 其实是个类似于 union type（并集类型）的玩意。它其实是 <code>T | COROUTINE_SUSPENDED</code>，意为返回值可能为 <code>T</code> 类型的值，也可能是一个 <code>COROUTINE_SUSPENDED</code>。但是辣鸡 Kotlin 没有 union type，所以只能用 <code>Any?</code> ，使用的时候再做类型强转。（看看人家 <a href="http://dotty.epfl.ch/docs/reference/union-types.html" target="_blank" rel="noopener">Scala</a> 和 <a href="https://ceylon-lang.org/documentation/1.3/tour/types/#union_types" target="_blank" rel="noopener">Ceylon</a> ，做得多好）</p>
 <p>PPS：如果你喜欢翻看源码，你会发现在 Kotlin 标准库的协程部分以及 <a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">kotlinx.coroutines</a> 里面能经常见到这种用 <code>Any?</code> 表示的 union types。</p>
 <h3 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h3><p>我们知道 Continuation 就相当于一个闭包，经过 CPS 转换，每次调用 suspend 函数都需要传一个 Continuation 进去。为了避免创建过多的闭包和匿名类，Kotlin 选择使用<strong>状态机</strong>（state machines）来实现 Continuation。</p>
-<p>由于懒，我直接把官方的非正式文档里面的例子抄了过来：</p>
+<p>由于懒，我直接把 KEEP 里面的例子抄了过来：</p>
 <p>suspend 函数会被编译成一个状态机，例如一个 suspend 函数里有以下代码：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> a <span class="token operator">=</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">val</span> y <span class="token operator">=</span> <span class="token function">suspendFunction</span><span class="token punctuation">(</span><span class="token function">foo</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 挂起点 1</span>
@@ -712,7 +798,6 @@ suspend <span class="token keyword">fun</span> <span class="token operator">&lt;
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>各位读者自行体会，我懒得解释了。</p>
 <p>我们可以看到每次调用 suspendFunction 时，传进去的 Continuation 都是同一个对象，即状态机本身；并且通过 label 来控制状态和代码跳转，使其符合「剩下的计算」的语义。</p>
 <p>PS：并不是所有的 suspend 函数都会编译成一个状态机，存在一种尾调用优化（tail call optimization）的机制。举个例子：</p>
 <pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -730,32 +815,36 @@ suspend <span class="token keyword">fun</span> <span class="token function">f2</
 <span class="token keyword">fun</span> <span class="token function">f2</span><span class="token punctuation">(</span>c<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span><span class="token keyword">in</span> Unit<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Any<span class="token operator">?</span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
 </code></pre>
 <p>即尾调用优化。（亲爱的读者可以思考一下为什么可以这么做）</p>
-<p>PPS：在 Kotlin 1.2.30 之前的版本中（不包括 1.2.30），上面的代码并不会发生尾调用优化，你需要这样：</p>
-<pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"do something before calling f2"</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 这里必须写 return</span>
+<p>另外，如果 suspend 函数里面没有调用任何 suspend 函数，那么也不会被编译成状态机。</p>
+<h3 id="具有Kotlin特色的Call-CC"><a href="#具有Kotlin特色的Call-CC" class="headerlink" title="具有Kotlin特色的Call/CC"></a>具有Kotlin特色的Call/CC</h3><p>前面提到，编译器会给每一个 suspend 函数添加一个 Continuation 类型的参数，但是我们在代码里是看不到这个参数的，我们要怎么样才能拿到这个参数呢？</p>
+<p>于是乎，Kotlin 厚颜无耻地把 Scheme 的 Call/CC（call-with-current-continuation）抄了过来并加以魔改，放在 <code>kotlin.coroutines.intrinsics</code> 这个包里，就是这玩意：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> suspend <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">suspendCoroutineUninterceptedOrReturn</span><span class="token punctuation">(</span>
+   <span class="token keyword">crossinline</span> block<span class="token operator">:</span> <span class="token punctuation">(</span>Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Any<span class="token operator">?</span>
+<span class="token punctuation">)</span><span class="token operator">:</span> T
+<span class="token comment" spellcheck="true">// 不要问我为什么这玩意的名字这么长</span>
+</code></pre>
+<p>这个函数是 Kotlin 协程中<strong>最为重要</strong>的函数，是一个固有函数（intrinsic function，即编译器特殊对待的函数），其实现无法用 Kotlin 代码表示，需要编译器在编译的时候进行替换。如果你去看了它的源码，你会看到类似与这样的东西：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> suspend <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">suspendCoroutineUninterceptedOrReturn</span><span class="token punctuation">(</span>
+   <span class="token keyword">crossinline</span> block<span class="token operator">:</span> <span class="token punctuation">(</span>Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Any<span class="token operator">?</span>
+<span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> <span class="token keyword">throw</span> <span class="token function">NotImplementedError</span><span class="token punctuation">(</span><span class="token string">"Implementation is intrinsic"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 等号后面也有可能是一个 `null!!`</span>
+</code></pre>
+<p>在经过 CPS 转换后，我们来看一下这个函数的真面目：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">suspendCoroutineUninterceptedOrReturn</span><span class="token punctuation">(</span>
+   <span class="token keyword">crossinline</span> block<span class="token operator">:</span> <span class="token punctuation">(</span>Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Any<span class="token operator">?</span><span class="token punctuation">,</span> c<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token operator">:</span> Any<span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">block</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+</code></pre>
+<p>简单明了，直接将这个新增的 Continuation 参数传给了 lambda，这样我们就可以通过这个 lambda 来操纵由 CPS 转换得来的 Continuation。</p>
+<p>上文讲过，这里所有的 Any? 其实都是 <code>T | COROUTINE_SUSPENDED</code> ，<code>COROUTINE_SUSPENDED</code> 的定义也在这个包里：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> COROUTINE_SUSPENDED<span class="token operator">:</span> Any <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> CoroutineSingletons<span class="token punctuation">.</span>COROUTINE_SUSPENDED
+
+<span class="token annotation builtin">@PublishedApi</span>
+<span class="token keyword">internal</span> <span class="token keyword">enum</span> <span class="token keyword">class</span> CoroutineSingletons <span class="token punctuation">{</span>
+   COROUTINE_SUSPENDED<span class="token punctuation">,</span> UNDECIDED<span class="token punctuation">,</span> RESUMED 
 <span class="token punctuation">}</span>
-suspend <span class="token keyword">fun</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
 </code></pre>
-<p>显式地写成 <code>return f2()</code> 才能有尾调用优化。</p>
-<h3 id="伪・Call-CC"><a href="#伪・Call-CC" class="headerlink" title="伪・Call/CC"></a>伪・Call/CC</h3><p>前面提到，每个 suspend 函数都有一个隐式的 Continuation 参数（由编译器在编译时添加），但是我们在代码里是看不到这个参数的，我们要怎么样才能拿到这个参数呢？</p>
-<p>Kotlin 厚颜无耻地把 Scheme 的 Call/CC（call-with-current-continuation）抄了过来并加以魔改，放在 <code>kotlin.coroutines.experimental.intrinsics</code> 这个包里，就是这玩意：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> suspend <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">suspendCoroutineOrReturn</span><span class="token punctuation">(</span><span class="token keyword">crossinline</span> block<span class="token operator">:</span> <span class="token punctuation">(</span>Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Any<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> T
-</code></pre>
-<p>这个函数是 Kotlin 协程库中最重要的函数。在 Kotlin1.1 版本里，这个函数是个固有函数（intrinsic function，即编译器特殊对待的函数），如果你去看了它的源码（Kotlin1.1 版本），你会看到类似与这样的东西：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> suspend <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">suspendCoroutineOrReturn</span><span class="token punctuation">(</span><span class="token keyword">crossinline</span> block<span class="token operator">:</span> <span class="token punctuation">(</span>Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Any<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span>
-        <span class="token keyword">throw</span> <span class="token function">NotImplementedError</span><span class="token punctuation">(</span><span class="token string">"Implementation is intrinsic"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 或者可能是一个 `null!!`</span>
-</code></pre>
-<p>流石固有函数。在经过 CPS 转换后，我们来看一下这个函数的真面目：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">suspendCoroutineOrReturn</span><span class="token punctuation">(</span><span class="token keyword">crossinline</span> block<span class="token operator">:</span> <span class="token punctuation">(</span>Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">-></span> Any<span class="token operator">?</span><span class="token punctuation">,</span>
-                                        c<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Any<span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">block</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-</code></pre>
-<p>简单明了，直接将这个 Continuation 参数传给了 lambda，我们就可以通过这个 lambda 参数来操纵由 CPS 转换得来的 Continuation 。</p>
-<p>上文讲过，这个返回值 Any? 其实是 <code>T | COROUTINE_SUSPENDED</code> ，<code>COROUTINE_SUSPENDED</code> 的定义也在这个包里：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> COROUTINE_SUSPENDED<span class="token operator">:</span> Any <span class="token operator">=</span> <span class="token function">Any</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<p>太简单了。从上文的那个状态机伪代码里面可以看到，对于每个 suspend 函数的调用，都会检查其返回值是不是 <code>COROUTINE_SUSPENDED</code>。如果不是，那么状态机就开始执行下一个状态的代码；如果是 <code>COROUTINE_SUSPENDED</code>，就直接返回，停止执行代码，即协程挂起。可以写个demo来验证一下：</p>
-<pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">f3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> suspendCoroutineOrReturn <span class="token punctuation">{</span> c <span class="token operator">-></span>
+<p>从上文的那个状态机伪代码里面可以看到，对于每个 suspend 函数的调用，都会检查其返回值是不是 <code>COROUTINE_SUSPENDED</code>。如果不是，那么状态机就开始执行下一个状态的代码；如果是 <code>COROUTINE_SUSPENDED</code>，就直接返回，停止执行代码，即协程挂起。可以写个demo来验证一下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">f3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> suspendCoroutineUninterceptedOrReturn <span class="token punctuation">{</span> c <span class="token operator">-></span>
     COROUTINE_SUSPENDED
 <span class="token punctuation">}</span>
 
@@ -766,8 +855,8 @@ suspend <span class="token keyword">fun</span> <span class="token function">f2</
 <span class="token punctuation">}</span>
 suspendLambda<span class="token punctuation">.</span><span class="token function">startCoroutine</span><span class="token punctuation">(</span><span class="token keyword">object</span> <span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>Any<span class="token operator">></span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>结果只有 before suspend 被打印了出来。如果要继续执行下去，则需要调用其 <code>resume</code> 方法：</p>
-<pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">f3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> suspendCoroutineOrReturn <span class="token punctuation">{</span> c <span class="token operator">-></span>
+<p>结果只有 before suspend 被打印了出来。如果要继续执行下去，则需要通过 Continuation，调用其 <code>resume</code> 扩展方法：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">f3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> suspendCoroutineUninterceptedOrReturn <span class="token punctuation">{</span> c <span class="token operator">-></span>
     thread <span class="token punctuation">{</span>
         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>5_000<span class="token punctuation">)</span>
         c<span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span>Unit<span class="token punctuation">)</span>
@@ -776,7 +865,7 @@ suspendLambda<span class="token punctuation">.</span><span class="token function
 <span class="token punctuation">}</span>
 </code></pre>
 <p>这时候我们可以看到，before suspend 先被打印出来，5秒种后，after suspend 再被打印出来。</p>
-<p>f3函数经过 CPS 转换、suspend 函数的尾调用优化以及 <code>suspendCoroutineOrReturn</code> 的内联，最终会变成如下的样子：</p>
+<p>f3函数经过 CPS 转换、suspend 函数的尾调用优化以及 <code>suspendCoroutineUninterceptedOrReturn</code> 的内联，最终会变成如下的样子：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">f3</span><span class="token punctuation">(</span>c<span class="token operator">:</span> Continuation<span class="token operator">&lt;</span>Unit<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Any<span class="token operator">?</span> <span class="token punctuation">{</span>
     thread <span class="token punctuation">{</span>                <span class="token comment" spellcheck="true">//  ↑ 这个Any?其实是 ↓</span>
         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>5_000<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//       Unit | COROUTINE_SUSPENDED</span>
@@ -785,20 +874,22 @@ suspendLambda<span class="token punctuation">.</span><span class="token function
     <span class="token keyword">return</span> COROUTINE_SUSPENDED
 <span class="token punctuation">}</span>
 </code></pre>
-<p>看起来就像是在直接操纵附加的 Continuation 参数。</p>
-<p>本节比较长，给个小结：<code>suspendCoroutineOrReturn</code> 能够让你直接操纵通过CPS转换得来的 Continuation 参数，这个函数接收一个 lambda 参数。在这个 lambda 里面，你将面临两种选择：直接返回需要的结果（不挂起协程）或者返回 <code>COROUTINE_SUSPENDED</code>（挂起协程）。如果你选择挂起协程，你需要在合适的地方与时机调用（从lambda的参数得到的）Continuation 的 <code>resume</code> 方法将需要的结果传入以便继续执行协程。</p>
-<p>Kotlin 标准库里面的 <code>suspendCoroutine</code> 即是对 <code>suspendCoroutineOrReturn</code> 的封装，使其更易于使用。读者可以对比一下两者的函数签名以及文档上的注意事项。一般情况下使用 <code>suspendCoroutine</code> 即可满足需求。</p>
-<p>PS：不知道从什么时候开始的，<code>kotlin.coroutines.experimental.intrinsics</code> 这个包以及里面的所有东西，都被Intellij IDEA的自动补全屏蔽了。你需要手动import这个包，里面的东西才能出现在自动补全的列表里。</p>
-<p>PPS：在 Kotlin1.2 版本中，suspendCoroutineOrReturn 不再是一个固有函数，其实现由两个新的固有函数组成，但是不影响使用。（拆东墙补西墙）</p>
-<p>PPPS：本文完。</p>
+<p>看起来就像是在直接操纵编译时添加的 Continuation 参数。</p>
+<p>本节比较长，给个小结：<code>suspendCoroutineUninterceptedOrReturn</code> 能够让你直接操纵通过CPS转换得来的 Continuation 参数。</p>
+<pre class=" language-kotlin"><code class="language-kotlin">suspendCoroutineUninterceptedOrReturn <span class="token punctuation">{</span> cont <span class="token operator">-></span> <span class="token operator">..</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>这个函数接收一个 lambda 参数，在这个 lambda 里面，你将面临两种选择：直接返回需要的结果（不挂起协程）或者返回 <code>COROUTINE_SUSPENDED</code>（挂起协程）。如果你选择挂起协程，你需要在合适的地方与时机调用（从lambda的参数得到的）Continuation 的 <code>resume</code> 扩展方法将需要的结果传入以便继续执行协程。</p>
+<p>Kotlin 标准库里面的 <code>suspendCoroutine</code> 即是对 <code>suspendCoroutineUninterceptedOrReturn</code> 的封装，使其更易于使用。读者可以对比一下两者的函数签名以及文档上的注意事项。一般情况下使用 <code>suspendCoroutine</code> 即可满足需求。</p>
+<p>PS：不知道从什么时候开始的，<code>kotlin.coroutines.intrinsics</code> 这个包以及里面的所有东西，都不会出现在 Intellij IDEA 的自动补全的列表里了。你需要手动 import 这个包，才能享受到自动补全的便利。</p>
+<p>PPS：本文完。</p>
 <h2 id="你学到了什么"><a href="#你学到了什么" class="headerlink" title="你学到了什么"></a>你学到了什么</h2><ul>
-<li>Kotlin 协程的（不）常用的标准库函数的使用方法</li>
+<li>Kotlin协程的一些（不常用的）标准库函数的使用方法</li>
 <li>编译器都做了什么事（的一部分）</li>
-<li><code>suspendCoroutineOrReturn</code>有什么用</li>
+<li><code>suspendCoroutineUninterceptedOrReturn</code> 有什么用</li>
 </ul>
 <p>下一篇协程文？不存在的。</p>
-<p>课后作业：Codewars上面的<a href="https://www.codewars.com/kata/tricky-kotlin-number-8-simple-for-comprehension" target="_blank" rel="noopener">一道题</a>，要求实现简单的控制流，很简单。如果你能看懂这篇文章，那么这道题对于你来说应该是十分简单的。（冰封julao仅用了不到十分钟的时间就做出来了）</p>
-<p>反编译Tip：Intellij IDEA的Kotlin插件有将Kotlin代码反编译至Java的功能，但是在面对协程相关的代码时大多数情况下都不好用。请不要想太多，老老实实用其他反编译工具，我用的是这个<a href="https://github.com/skylot/jadx" target="_blank" rel="noopener">jadx</a>，版本0.6.1。</p>
+<p>课后作业：我在 Codewars 上面出了<a href="https://www.codewars.com/kata/tricky-kotlin-number-8-simple-for-comprehension" target="_blank" rel="noopener">一道题</a>，要求实现简单的控制流，很简单。如果你能看懂这篇文章，那么这道题对于你来说应该是十分简单的。（千里冰封julao仅用了不到十分钟的时间就做出来了）</p>
+<p>反编译Tip：Intellij IDEA的Kotlin插件有将Kotlin代码的字节码反编译至Java的功能，但是在面对协程相关的代码时大多数情况下都不好用。请不要想太多，老老实实用其他反编译工具，我用的是这个<a href="https://github.com/skylot/jadx" target="_blank" rel="noopener">jadx</a>，版本0.6.1。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
