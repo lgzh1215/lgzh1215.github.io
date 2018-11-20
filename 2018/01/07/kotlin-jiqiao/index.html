@@ -607,21 +607,6 @@ tasks<span class="token punctuation">.</span>withType<span class="token operator
 <span class="token keyword">val</span> compileKotlin<span class="token operator">:</span> KotlinCompile <span class="token keyword">by</span> tasks
 kotlinOptions<span class="token punctuation">.</span>freeCompilerArgs <span class="token operator">+=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string">"-foo"</span><span class="token punctuation">,</span> <span class="token string">"-bar"</span><span class="token punctuation">)</span>
 </code></pre>
-<p>使用 Maven：</p>
-<p>没用过Maven，以下是云的。</p>
-<pre class=" language-Xml"><code class="language-Xml"><plugin>
-   <artifactid>kotlin-maven-plugin</artifactid>
-   <groupid>org.jetbrains.kotlin</groupid>
-   <version>${kotlin.version}</version>
-   ...
-   <configuration>
-      <args> <!-- 看这里  -->
-         <arg>-foo</arg>
-         <arg>-bar</arg>
-      </args>
-   </configuration>
-</plugin>
-</code></pre>
 <p>IDEA项目，不使用Maven、Gradle构建工具的情况：</p>
 <p>有两个地方：一个是对整个Project有效的全局设置；另一个对单独Module有效，可以覆盖全局设置。</p>
 <p>全局设置：File -&gt; Settings -&gt; 找到 Kotlin Compiler -&gt; Additional command line parameters</p>
