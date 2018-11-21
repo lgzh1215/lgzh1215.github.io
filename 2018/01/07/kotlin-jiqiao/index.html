@@ -58,7 +58,7 @@
     <meta name="description" itemprop="description" content="RT，不定期更新。
 目录：
 
-lateinit属性自定义getter和setter">
+不依赖getter和setter的lateinit属性">
     <meta name="keywords" content="萌夜雀 人头会社,Kotlin">
     <meta name="theme-color" content="#9C27B0">
 
@@ -241,7 +241,7 @@ lateinit属性自定义getter和setter">
     <meta property="og:description" content="RT，不定期更新。
 目录：
 
-lateinit属性自定义getter和setter">
+不依赖getter和setter的lateinit属性">
     <meta property="og:article:tag" content="Kotlin"> 
 
     
@@ -291,7 +291,7 @@ lateinit属性自定义getter和setter">
     "description": "RT，不定期更新。
 目录：
 
-lateinit属性自定义getter和setter",
+不依赖getter和setter的lateinit属性",
 }
 </script>
 
@@ -363,7 +363,7 @@ lateinit属性自定义getter和setter",
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lateinit属性自定义getter和setter"><span class="post-toc-number">1.</span> <span class="post-toc-text">lateinit属性自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解除内联类的一些限制"><span class="post-toc-number">2.</span> <span class="post-toc-text">解除内联类的一些限制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启残废的SAM转换功能"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启残废的SAM转换功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何添加编译器参数"><span class="post-toc-number">4.</span> <span class="post-toc-text">如何添加编译器参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不需要import就能使用的顶层函数"><span class="post-toc-number">5.</span> <span class="post-toc-text">不需要import就能使用的顶层函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的Lambda表达式"><span class="post-toc-number">6.</span> <span class="post-toc-text">递归的Lambda表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更进一步：匿名-Lambda-表达式的递归"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">更进一步：匿名 Lambda 表达式的递归</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的NullCheck"><span class="post-toc-number">7.</span> <span class="post-toc-text">阻止编译器添加对非空类型的NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给主构造器内的属性自定义getter和setter"><span class="post-toc-number">8.</span> <span class="post-toc-text">给主构造器内的属性自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">9.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">10.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">11.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不依赖getter和setter的lateinit属性"><span class="post-toc-number">1.</span> <span class="post-toc-text">不依赖getter和setter的lateinit属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解除内联类的一些限制"><span class="post-toc-number">2.</span> <span class="post-toc-text">解除内联类的一些限制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启残废的SAM转换功能"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启残废的SAM转换功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何添加编译器参数"><span class="post-toc-number">4.</span> <span class="post-toc-text">如何添加编译器参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不需要import就能使用的顶层函数"><span class="post-toc-number">5.</span> <span class="post-toc-text">不需要import就能使用的顶层函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的Lambda表达式"><span class="post-toc-number">6.</span> <span class="post-toc-text">递归的Lambda表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更进一步：匿名-Lambda-表达式的递归"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">更进一步：匿名 Lambda 表达式的递归</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的NullCheck"><span class="post-toc-number">7.</span> <span class="post-toc-text">阻止编译器添加对非空类型的NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给主构造器内的属性自定义getter和setter"><span class="post-toc-number">8.</span> <span class="post-toc-text">给主构造器内的属性自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">9.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">10.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">11.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
     </ul>
     
 
@@ -524,7 +524,7 @@ lateinit属性自定义getter和setter",
         <p>RT，不定期更新。</p>
 <p>目录：</p>
 <ul>
-<li><a href="#lateinit属性自定义getter和setter">lateinit属性自定义getter和setter</a><a id="more"></a></li>
+<li><a href="#不依赖getter和setter的lateinit属性">不依赖getter和setter的lateinit属性</a><a id="more"></a></li>
 <li><a href="#解除内联类的一些限制">解除内联类的一些限制</a></li>
 <li><a href="#开启残废的SAM转换功能">开启残废的SAM转换功能</a></li>
 <li><a href="#如何添加编译器参数">如何添加编译器参数</a></li>
@@ -536,29 +536,32 @@ lateinit属性自定义getter和setter",
 <li><a href="#限制扩展的作用域（防止污染命名空间）">限制扩展的作用域</a></li>
 <li><a href="#链式调用时输出中间值">链式调用时输出中间值</a></li>
 </ul>
-<h2 id="lateinit属性自定义getter和setter"><a href="#lateinit属性自定义getter和setter" class="headerlink" title="lateinit属性自定义getter和setter"></a>lateinit属性自定义getter和setter</h2><p>lateinit属性之所以无法自定义getter和setter，是因为需要在getter插入空检测，并且保证setter能给backing field赋值。</p>
+<h2 id="不依赖getter和setter的lateinit属性"><a href="#不依赖getter和setter的lateinit属性" class="headerlink" title="不依赖getter和setter的lateinit属性"></a>不依赖getter和setter的lateinit属性</h2><p>lateinit属性之所以无法自定义getter和setter，是因为需要在getter插入空检测，并且保证setter能给backing field赋值。</p>
 <p>迂回方法如下：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@UseExperimental</span><span class="token punctuation">(</span>ExperimentalContracts<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token function">trick</span><span class="token punctuation">(</span>willNotBeInvoked<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
    contract <span class="token punctuation">{</span> <span class="token function">callsInPlace</span><span class="token punctuation">(</span>willNotBeInvoked<span class="token punctuation">,</span> InvocationKind<span class="token punctuation">.</span>EXACTLY_ONCE<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">undefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> T <span class="token operator">=</span> <span class="token keyword">throw</span> <span class="token function">Exception</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
 <span class="token keyword">class</span> Some <span class="token punctuation">{</span>
    <span class="token keyword">var</span> lateInit<span class="token operator">:</span> String
    <span class="token keyword">init</span> <span class="token punctuation">{</span>
-      trick <span class="token punctuation">{</span> lateInit <span class="token operator">=</span> <span class="token string">""</span> <span class="token punctuation">}</span>
+      trick <span class="token punctuation">{</span> lateInit <span class="token operator">=</span> <span class="token function">undefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> lateInit<span class="token operator">:</span> String
-<span class="token keyword">val</span> no_use <span class="token operator">=</span> trick <span class="token punctuation">{</span> lateInit <span class="token operator">=</span> <span class="token string">""</span> <span class="token punctuation">}</span>
+<span class="token keyword">val</span> no_use <span class="token operator">=</span> trick <span class="token punctuation">{</span> lateInit <span class="token operator">=</span> <span class="token function">undefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
 </code></pre>
 <p>原理：利用contracts欺骗Kotlin编译器，让它以为属性已被正常初始化（然而并不），属性停留在未被初始化的阶段，从而模拟 lateinit 的功能。当然安全性需要由敲代码的人来保证了。</p>
 <p>因为是假的lateinit，所以反射 Some::lateInit.isLateinit 将返回 false。</p>
+<p>用途：自定义getter或setter、@JvmField</p>
 <h2 id="解除内联类的一些限制"><a href="#解除内联类的一些限制" class="headerlink" title="解除内联类的一些限制"></a>解除内联类的一些限制</h2><p>不开后门的话，Kotlin1.3的新功能<strong>内联类</strong>的作用将十分有限。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 非公有构造器，以及泛型</span>
 <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"NON_PUBLIC_PRIMARY_CONSTRUCTOR_OF_INLINE_CLASS"</span><span class="token punctuation">)</span>
-<span class="token keyword">inline</span> <span class="token keyword">class</span> Some<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token keyword">private</span> <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token keyword">var</span> s<span class="token operator">:</span> T<span class="token punctuation">)</span>
+<span class="token keyword">inline</span> <span class="token keyword">class</span> Some<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token keyword">private</span> <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token keyword">val</span> s<span class="token operator">:</span> T<span class="token punctuation">)</span>
 </code></pre>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 非顶层声明</span>
 <span class="token keyword">class</span> Outer <span class="token punctuation">{</span>
