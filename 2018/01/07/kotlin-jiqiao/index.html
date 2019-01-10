@@ -58,7 +58,7 @@
     <meta name="description" itemprop="description" content="RT，不定期更新。
 目录：
 
-不依赖getter和setter的lateinit属性">
+扩展属性的backing field">
     <meta name="keywords" content="萌夜雀 人头会社,Kotlin">
     <meta name="theme-color" content="#9C27B0">
 
@@ -241,7 +241,7 @@
     <meta property="og:description" content="RT，不定期更新。
 目录：
 
-不依赖getter和setter的lateinit属性">
+扩展属性的backing field">
     <meta property="og:article:tag" content="Kotlin"> 
 
     
@@ -291,7 +291,7 @@
     "description": "RT，不定期更新。
 目录：
 
-不依赖getter和setter的lateinit属性",
+扩展属性的backing field",
 }
 </script>
 
@@ -363,7 +363,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不依赖getter和setter的lateinit属性"><span class="post-toc-number">1.</span> <span class="post-toc-text">不依赖getter和setter的lateinit属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解除内联类的一些限制"><span class="post-toc-number">2.</span> <span class="post-toc-text">解除内联类的一些限制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启残废的SAM转换功能"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启残废的SAM转换功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何添加编译器参数"><span class="post-toc-number">4.</span> <span class="post-toc-text">如何添加编译器参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不需要import就能使用的顶层函数"><span class="post-toc-number">5.</span> <span class="post-toc-text">不需要import就能使用的顶层函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的Lambda表达式"><span class="post-toc-number">6.</span> <span class="post-toc-text">递归的Lambda表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的NullCheck"><span class="post-toc-number">7.</span> <span class="post-toc-text">阻止编译器添加对非空类型的NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给主构造器内的属性自定义getter和setter"><span class="post-toc-number">8.</span> <span class="post-toc-text">给主构造器内的属性自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">9.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">10.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">11.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扩展属性的backing-field"><span class="post-toc-number">1.</span> <span class="post-toc-text">扩展属性的backing field</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不依赖getter和setter的lateinit属性"><span class="post-toc-number">2.</span> <span class="post-toc-text">不依赖getter和setter的lateinit属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解除内联类的一些限制"><span class="post-toc-number">3.</span> <span class="post-toc-text">解除内联类的一些限制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启残废的SAM转换功能"><span class="post-toc-number">4.</span> <span class="post-toc-text">开启残废的SAM转换功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何添加编译器参数"><span class="post-toc-number">5.</span> <span class="post-toc-text">如何添加编译器参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不需要import就能使用的顶层函数"><span class="post-toc-number">6.</span> <span class="post-toc-text">不需要import就能使用的顶层函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的Lambda表达式"><span class="post-toc-number">7.</span> <span class="post-toc-text">递归的Lambda表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的NullCheck"><span class="post-toc-number">8.</span> <span class="post-toc-text">阻止编译器添加对非空类型的NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给主构造器内的属性自定义getter和setter"><span class="post-toc-number">9.</span> <span class="post-toc-text">给主构造器内的属性自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">10.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">11.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">12.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
     </ul>
     
 
@@ -524,7 +524,8 @@
         <p>RT，不定期更新。</p>
 <p>目录：</p>
 <ul>
-<li><a href="#不依赖getter和setter的lateinit属性">不依赖getter和setter的lateinit属性</a><a id="more"></a></li>
+<li><a href="#扩展属性的backing-field">扩展属性的backing field</a><a id="more"></a></li>
+<li><a href="#不依赖getter和setter的lateinit属性">不依赖getter和setter的lateinit属性</a><!--more--></li>
 <li><a href="#解除内联类的一些限制">解除内联类的一些限制</a></li>
 <li><a href="#开启残废的SAM转换功能">开启残废的SAM转换功能</a></li>
 <li><a href="#如何添加编译器参数">如何添加编译器参数</a></li>
@@ -536,6 +537,25 @@
 <li><a href="#限制扩展的作用域（防止污染命名空间）">限制扩展的作用域</a></li>
 <li><a href="#链式调用时输出中间值">链式调用时输出中间值</a></li>
 </ul>
+<h2 id="扩展属性的backing-field"><a href="#扩展属性的backing-field" class="headerlink" title="扩展属性的backing field"></a>扩展属性的backing field</h2><p>总所周知扩展属性是没有backing field的，它其实就是扩展函数的特殊形式。但是总有人想要给某个类扩展一个真正的field，就像下面那样。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Some <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// unresolved reference: field</span>
+<span class="token keyword">var</span> Some<span class="token punctuation">.</span>rua <span class="token operator">:</span> String
+   <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> field
+   <span class="token keyword">set</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      field <span class="token operator">=</span> value
+   <span class="token punctuation">}</span>
+</code></pre>
+<p>这种需求针对不同的实际情况有不同的解决方法，下面给出一个非最优但是比较通用的方法。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> ruaMap<span class="token operator">:</span> MutableMap<span class="token operator">&lt;</span>Some<span class="token punctuation">,</span> String<span class="token operator">></span> <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> Some<span class="token punctuation">.</span>rua <span class="token operator">:</span> String
+   <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> ruaMap<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">]</span> <span class="token operator">?:</span> <span class="token string">""</span>
+   <span class="token keyword">set</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span> ruaMap<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">]</span> <span class="token operator">=</span> value <span class="token punctuation">}</span>
+</code></pre>
+<p>我们总要找个地方将数据存起来，这里选择了一个全局的Map来解决存储问题。</p>
+<p>需要注意的是，这里对Map的类型有要求：因为不能干扰jvm的垃圾回收机制，所以需要是WeakReferenceMap；因为每个实例都需要保存一份自己的数据，所以需要是IdentityMap；如果在多线程环境跑这代码，需要是ConcurrentMap。综上你需要一个<code>ConcurrentWeakIdentityMap</code>来解决这个问题。</p>
 <h2 id="不依赖getter和setter的lateinit属性"><a href="#不依赖getter和setter的lateinit属性" class="headerlink" title="不依赖getter和setter的lateinit属性"></a>不依赖getter和setter的lateinit属性</h2><p>lateinit属性之所以无法自定义getter和setter，是因为需要在getter插入空检测，并且保证setter能给backing field赋值。</p>
 <p>迂回方法如下：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@UseExperimental</span><span class="token punctuation">(</span>ExperimentalContracts<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span>
