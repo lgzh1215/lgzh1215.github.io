@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Fri Dec 29 2017 00:08:56 GMT+0800">
-        <meta property="article:modified_time" content="Thu Jan 10 2019 01:08:03 GMT+0000">
+        <meta property="article:modified_time" content="Tue May 26 2020 15:26:05 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -263,7 +263,7 @@
     "mainEntityOfPage": "https://aisia.moe/2017/12/28/kotlin-puzzlers/index.html",
     "headline": "【水】Kotlin Puzzlers 改",
     "datePublished": "Fri Dec 29 2017 00:08:56 GMT+0800",
-    "dateModified": "Thu Jan 10 2019 01:08:03 GMT+0000",
+    "dateModified": "Tue May 26 2020 15:26:05 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -566,7 +566,7 @@ a) oneone
 b) twotwo
 c) onetwo
 d) 以上答案都不对
-</code></pre><p>上一题的答案：d</p>
+</code></pre><p>上一题的答案：b</p>
 <p>事实上是 <code>child1</code> 和 <code>parent</code>。<code>Kotlin</code> 的这些扩展方法如 <code>apply</code>、<code>let</code>、<code>also</code> 等等都是适用于所有类型的，包括可空类型。<code>child2</code> 那行 <code>apply</code> 函数接收的拉姆达表达式的类型其实是 <code>Node?.() -&gt; Unit</code>，如果 <code>child2</code>那行代码是写在 <code>Parent</code> 类的外面的话，你就会发现这行代码根本没法通过编译，这里面调用的 <code>lookup</code> 实际上是 <code>parent</code> 的 <code>lookup</code>。（你可以把 <code>apply</code> 换成 <code>also</code> 试试。）</p>
 <h3 id="衔尾蛇-Cyclic-Object-Constructions"><a href="#衔尾蛇-Cyclic-Object-Constructions" class="headerlink" title="衔尾蛇 ~ Cyclic Object Constructions"></a>衔尾蛇 ~ Cyclic Object Constructions</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token keyword">val</span> x<span class="token operator">:</span> Any<span class="token operator">?</span><span class="token punctuation">)</span>
 
@@ -600,7 +600,7 @@ c) [4]
 d) [1, 4]
 </code></pre><p>上一题的答案：b</p>
 <p><code>B</code> 初始化需要 <code>C</code>，<code>C</code> 初始化需要 <code>B</code>。咦，<code>B</code> 还没初始化完成呢，那么哪来的 <code>B</code> 呢，只能是 <code>null</code> 了啊！</p>
-<p>参见 <a href="http://jetbrains.github.io/kotlin-spec/#_singleton_objects" target="_blank" rel="noopener">http://jetbrains.github.io/kotlin-spec/#_singleton_objects</a></p>
+<p>更详细的解释可以看这里：<a href="https://github.com/Kotlin/kotlin-spec/blob/spec-old/kotlin-spec.asc#singleton-objects" target="_blank" rel="noopener">https://github.com/Kotlin/kotlin-spec/blob/spec-old/kotlin-spec.asc#singleton-objects</a></p>
 <h3 id="换个名字你就不认识我了-Good-Child-Has-Many-Names"><a href="#换个名字你就不认识我了-Good-Child-Has-Many-Names" class="headerlink" title="换个名字你就不认识我了 ~ Good Child Has Many Names"></a>换个名字你就不认识我了 ~ Good Child Has Many Names</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> C <span class="token punctuation">{</span>
   <span class="token keyword">open</span> <span class="token keyword">fun</span> <span class="token function">sum</span><span class="token punctuation">(</span>x<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token operator">=</span> x <span class="token operator">+</span> y
 <span class="token punctuation">}</span>
@@ -656,9 +656,9 @@ d) 以上答案都不对
 </code></pre><p>上一题的答案：c</p>
 <p>参见 <a href="https://zhuanlan.zhihu.com/p/27234651" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27234651</a></p>
 <p>本题的答案：d</p>
-<p>JVM 不想理你并向你抛出了一只 NPE。Java 也有这个问题，Scala 不熟悉不清楚。据说 Ceylon 就没有这个问题，具体可以看 Ceylon 官网上的说明（趁机吹一波 Ceylon）。</p>
+<p>JVM 不想理你并向你抛出了一只 NPE。Java 也有这个问题，Scala 不熟悉不清楚。同样是 JVM 平台上的语言，Ceylon 就没有这个问题，Ceylon 官网的文档有这个问题的说明，可以参考一下（趁机吹一波 Ceylon）。</p>
 <p><a href="https://ceylon-lang.org/documentation/1.3/tour/initialization/#definite_assignment_and_definite_initialization" target="_blank" rel="noopener">https://ceylon-lang.org/documentation/1.3/tour/initialization/#definite_assignment_and_definite_initialization</a></p>
-<p>Kotlin 官方人员曾表示修复这个缺陷是一件十分困难的事。</p>
+<p>Kotlin 官方人员曾表示过修复这个缺陷是一件十分困难的事。</p>
 <h2 id="那些坑了我的迷题"><a href="#那些坑了我的迷题" class="headerlink" title="那些坑了我的迷题"></a>那些坑了我的迷题</h2><p>我果然是鶸，错了这么多，进入自卑模式~</p>
 <h3 id="区间测试-Inclusive-Range"><a href="#区间测试-Inclusive-Range" class="headerlink" title="区间测试 ~ Inclusive Range"></a>区间测试 ~ Inclusive Range</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> i <span class="token operator">=</span> <span class="token number">10.5</span>
 
