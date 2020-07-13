@@ -759,47 +759,45 @@ a <span class="token operator">=</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>在 Kotlin 1.3 版本正式启用了 contracts 功能后，上面这种写法能应对更多情况。</p>
-<h2 id="限制扩展的作用域（防止污染命名空间）"><a href="#限制扩展的作用域（防止污染命名空间）" class="headerlink" title="限制扩展的作用域（防止污染命名空间）"></a>限制扩展的作用域（防止污染命名空间）</h2><p>注意：此技巧并不稳定，可能在未来被官方干掉。</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 把扩展丢进一个object里面</span>
-<span class="token keyword">object</span> StringExtension <span class="token punctuation">{</span>
-    <span class="token annotation builtin">@JvmStatic</span> <span class="token keyword">fun</span> String<span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"fuck <span class="token interpolation variable">$this</span>"</span><span class="token punctuation">)</span>
+<h2 id="限制扩展的作用域（防止污染命名空间）"><a href="#限制扩展的作用域（防止污染命名空间）" class="headerlink" title="限制扩展的作用域（防止污染命名空间）"></a>限制扩展的作用域（防止污染命名空间）</h2><p>注意：此方法被官方定义为bug并在1.3.70版本被修复。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">object</span> StringExtension <span class="token punctuation">{</span>
+   <span class="token keyword">fun</span> String<span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"fuck <span class="token interpolation variable">$this</span>"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 使用说明</span>
-<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 下面这行被注释掉的代码不能通过编译</span>
-    <span class="token comment" spellcheck="true">// "kotlin".fuck()</span>
-
-    <span class="token comment" spellcheck="true">// 你要这么用，将MyExtentions塞进上下文（即this）</span>
-    <span class="token function">with</span><span class="token punctuation">(</span>StringExtention<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token string">"kotlin"</span><span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
+<p>当你把扩展丢进一个object里面，那么在IDEA里的自动补全列表就不会出现那个扩展。你需要把这个扩展方法完整地敲出来，IDEA才会提示你引入它。</p>
+<p>或者你可以用一些方法将object塞进接收者里：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">with</span><span class="token punctuation">(</span>StringExtension<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token string">"kotlin"</span><span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 这里会出现自动补全</span>
+   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 或者手动引入</span>
-<span class="token keyword">import</span> StringExtension<span class="token punctuation">.</span>fuck
-
-<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token string">"kotlin"</span><span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 以下是夏姬八写，别模仿</span>
+<p>当然把扩展塞进object里的缺点就很明显了，没有自动补全可能一辈子都想不起来有这个扩展方法。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 以下是夏姬八写，别模仿，只是为了展示某些可能性</span>
 <span class="token keyword">interface</span> Extension
 
 <span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T <span class="token operator">:</span> Extension<span class="token punctuation">,</span> R<span class="token operator">></span> T<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>block<span class="token operator">:</span> T<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> R<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">block</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">object</span> StringExtension <span class="token operator">:</span> Extension <span class="token punctuation">{</span>
-    <span class="token annotation builtin">@JvmStatic</span> <span class="token keyword">fun</span> String<span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"fuck <span class="token interpolation variable">$this</span>"</span><span class="token punctuation">)</span>
+   <span class="token keyword">fun</span> String<span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"fuck <span class="token interpolation variable">$this</span>"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">object</span> IntExtension <span class="token operator">:</span> Extension <span class="token punctuation">{</span>
-    <span class="token annotation builtin">@JvmStatic</span> <span class="token keyword">fun</span> Int<span class="token punctuation">.</span><span class="token function">love</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I love <span class="token interpolation variable">$this</span>"</span><span class="token punctuation">)</span>
+<span class="token keyword">object</span> IntExtension <span class="token punctuation">{</span>
+   <span class="token keyword">fun</span> Int<span class="token punctuation">.</span><span class="token function">love</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I love <span class="token interpolation variable">$this</span>"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation builtin">@OptIn</span><span class="token punctuation">(</span>ExperimentalContracts<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">fun</span> <span class="token function">importIntExtensionTo</span><span class="token punctuation">(</span>any<span class="token operator">:</span> Any<span class="token operator">?</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   contract <span class="token punctuation">{</span> <span class="token function">returns</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token function">implies</span> <span class="token punctuation">(</span>any <span class="token keyword">is</span> IntExtension<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    StringExtension<span class="token punctuation">.</span><span class="token function">use</span> <span class="token punctuation">{</span> <span class="token string">"kotlin"</span><span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+   StringExtension<span class="token punctuation">.</span><span class="token function">use</span> <span class="token punctuation">{</span> <span class="token string">"kotlin"</span><span class="token punctuation">.</span><span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
 
-    IntExtension<span class="token punctuation">.</span><span class="token function">use</span> <span class="token punctuation">{</span> <span class="token number">1551</span><span class="token punctuation">.</span><span class="token function">love</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+   <span class="token function">with</span><span class="token punctuation">(</span><span class="token function">Any</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">importIntExtensionTo</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+      <span class="token number">42</span><span class="token punctuation">.</span><span class="token function">love</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h2 id="链式调用时输出中间值"><a href="#链式调用时输出中间值" class="headerlink" title="链式调用时输出中间值"></a>链式调用时输出中间值</h2><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> printlnBy <span class="token punctuation">{</span> it <span class="token punctuation">}</span>
