@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Sun Dec 09 2018 09:40:02 GMT+0800">
-        <meta property="article:modified_time" content="Tue May 26 2020 15:26:05 GMT+0000">
+        <meta property="article:modified_time" content="Mon Jul 13 2020 12:24:16 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -263,7 +263,7 @@
     "mainEntityOfPage": "https://aisia.moe/2018/12/09/kotlin-suppress/index.html",
     "headline": "Kotlin Suppress 的非常规用法",
     "datePublished": "Sun Dec 09 2018 09:40:02 GMT+0800",
-    "dateModified": "Tue May 26 2020 15:26:05 GMT+0000",
+    "dateModified": "Mon Jul 13 2020 12:24:16 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -513,8 +513,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>在 Java 中，有个叫 <a href="https://aisia.moe/java6api-cn/java/lang/SuppressWarnings.html">SuppressWarnings</a> 的注解，用于忽略特定的编译器警告。Kotlin 中也有一个类似功能的注解，叫做 <a href="http://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-suppress/" target="_blank" rel="noopener">Suppress</a>，本文主要讲讲这个注解有什么用。<a id="more"></a></p>
-<iframe src="//music.163.com/outchain/player?type=3&id=2057955540&auto=0&height=32" width="298" height="52" frameborder="0" allowfullscreen></iframe>
-<h2 id="常规用法"><a href="#常规用法" class="headerlink" title="常规用法"></a>常规用法</h2><p>有时候会写出这样的一些代码。这些在Kotlin编译器的眼里可能出现问题的代码，实际上却非常正确，跑起来不会出任何问题。</p>
+<h2 id="常规用法"><a href="#常规用法" class="headerlink" title="常规用法"></a>常规用法</h2><p>有时候会写出这样的一些代码，在Kotlin编译器的眼里可能会出现问题，但是实际上却非常正确，跑起来不会出任何问题。</p>
 <p>然后你就得到了一个编译器警告（warning），甚至是编译错误（error）。</p>
 <p>比较常见的，比如说 unchecked cast：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> some<span class="token operator">:</span> List<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span> <span class="token operator">=</span> emptyList<span class="token operator">&lt;</span>Nothing<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -525,18 +524,6 @@ some <span class="token keyword">as</span> List<span class="token operator">&lt;
 <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"UNCHECKED_CAST"</span><span class="token punctuation">)</span>
 some <span class="token keyword">as</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span>
 </code></pre>
-<p>再举个例子：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">sealed</span> <span class="token keyword">class</span> Base <span class="token punctuation">{</span>
-   <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"LeakingThis"</span><span class="token punctuation">)</span>
-   <span class="token keyword">val</span> code <span class="token operator">=</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-   <span class="token keyword">abstract</span> <span class="token keyword">fun</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Int
-
-   <span class="token keyword">class</span> Derived <span class="token operator">:</span> <span class="token function">Base</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">42</span>
-   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>上面这代码并不会出现 warning 的具体说明里的问题，所以使用了 Suppress 解决这个 warning。</p>
 <p>这是很简单的破事水，没有任何讨论的价值。</p>
 <p>然后下面是正文。</p>
 <p>好孩子不要模仿！很危险的！</p>
@@ -546,48 +533,88 @@ some <span class="token keyword">as</span> List<span class="token operator">&lt;
 </code></pre>
 <p>编译器会告诉你这样是不对的，然后向你丢出了一个 error：</p>
 <pre><code>Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type String?
-</code></pre><p>然后就可以使用 Suppress 让编译器闭嘴！</p>
+</code></pre><p>然后就可以使用 <code>Suppress</code> 让编译器闭嘴！</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"UNSAFE_CALL"</span><span class="token punctuation">)</span>
 <span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">null</span> <span class="token keyword">as</span> String<span class="token operator">?</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span>
 </code></pre>
 <p>然后就可以顺利的通过编译，编译后跑一跑，就可以轻松地拿到一个空指针异常：</p>
 <pre><code>Exception in thread &quot;main&quot; java.lang.NullPointerException
     at .......
-</code></pre><p>很简单，有了 Suppress，你就可以让这些可以本来通过编译器生成java字节码，但是因为各种各样的原因（例如类型安全）被ban掉的代码，顺利通过编译。</p>
+</code></pre><p>很简单，有了 <code>Suppress</code>，你就可以让这些可以本来通过编译器生成java字节码，但是因为各种各样的原因（例如类型安全）被ban掉的代码，顺利通过编译。</p>
 <p>下面给几个可能有用的例子。</p>
 <h3 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">some</span><span class="token punctuation">(</span>any<span class="token operator">:</span> Any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
    <span class="token keyword">when</span><span class="token punctuation">(</span>any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// Cannot check for instance of erased type: Array&lt;String></span>
       <span class="token keyword">is</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span>any<span class="token punctuation">.</span>size<span class="token punctuation">)</span>
    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>这是我吐槽过的「Java能做但是Kotlin做不了的事」系列之一。不考虑Kotlin的其他target（如js），在Jvm平台上有如下的迂回：</p>
+<p>这是我吐槽过的「Java能做但是Kotlin做不了的事」系列之一。在Java你可以检查一个对象是不是某个特定的数组类型 <code>if (any instanceof String[])</code>，但是Kotlin把这个问题一刀切了，导致Kotlin不能直接做这样的type check。</p>
+<p>不考虑Kotlin的其他target（如js），在Jvm平台上有如下的迂回：</p>
 <pre class=" language-kotlin"><code class="language-kotlin">any <span class="token keyword">is</span> Array<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span> <span class="token operator">&amp;&amp;</span> any<span class="token punctuation">.</span>isArrayOf<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>就是很丑罢了。</p>
-<p>在Kotlin的早期代码，这样的type check是允许的，因为某些原因ban掉了（读者可以想想为什么要ban掉这样的代码）。这个时候可以用 Suppress 把这个后门打开。</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"CANNOT_CHECK_FOR_ERASED"</span><span class="token punctuation">)</span>
+<p>在Kotlin的早期代码，这样的type check是允许的，因为某些原因ban掉了（读者可以想想为什么要ban掉这样的代码）。这个时候可以用 <code>Suppress</code> 把这个后门打开。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">some</span><span class="token punctuation">(</span>any<span class="token operator">:</span> Any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"CANNOT_CHECK_FOR_ERASED"</span><span class="token punctuation">)</span>
+   <span class="token keyword">when</span><span class="token punctuation">(</span>any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">is</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span>any<span class="token punctuation">.</span>size<span class="token punctuation">)</span>
+      <span class="token comment" spellcheck="true">// Smart cast to Array&lt;String></span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><p>类型别名。</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Some <span class="token punctuation">{</span>
-   <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"TOPLEVEL_TYPEALIASES_ONLY"</span><span class="token punctuation">)</span>
+<p>PS：这个其实也是可以对非数组的泛型使用的，例如这样：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"CANNOT_CHECK_FOR_ERASED"</span><span class="token punctuation">)</span>
+<span class="token keyword">when</span><span class="token punctuation">(</span>any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">is</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span>any<span class="token punctuation">.</span>size<span class="token punctuation">)</span>
+   <span class="token comment" spellcheck="true">// Smart cast to List&lt;String></span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这里实际上等价于以下代码：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">when</span><span class="token punctuation">(</span>any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">is</span> List<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">(</span>any <span class="token keyword">as</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span>size<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>并不是大家都想要的真泛型（不信可以传个 <code>List&lt;Int&gt;</code> 什么的进去试试），只是上面的代码可以享受到 Smart Cast 罢了。</p>
+<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><p>可以在非顶层空间定义类型别名。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"TOPLEVEL_TYPEALIASES_ONLY"</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> Some <span class="token punctuation">{</span>
    typealias Str <span class="token operator">=</span> String
 
    <span class="token keyword">val</span> a<span class="token operator">:</span> Str <span class="token operator">=</span> <span class="token string">""</span>
+
+   <span class="token keyword">fun</span> <span class="token function">some</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      typealias int <span class="token operator">=</span> Int
+
+      <span class="token keyword">val</span> some<span class="token operator">:</span> int <span class="token operator">=</span> <span class="token number">1</span>
+   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>一目了然，不解释。</p>
-<h3 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h3><p>Kotlin 在远古版本 <a href="https://blog.jetbrains.com/kotlin/2015/09/kotlin-m13-is-out/" target="_blank" rel="noopener">M13</a> 新增了 lateinit 修饰符，可以对只读属性和可变属性使用。</p>
-<p>然后 <a href="https://blog.jetbrains.com/kotlin/2015/10/kotlin-m14-is-out/" target="_blank" rel="noopener">M14</a> 版本就残忍地 ban 掉了 lateinit val。</p>
+<p>主要是为了限制类型别名的作用域。另外把类型别名定义在顶层一定会生成一个 <code>文件名Kt</code> 的 class，可以用这个方法避免这种情况的发生。</p>
+<h3 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h3><p>Kotlin 在远古版本 <a href="https://blog.jetbrains.com/kotlin/2015/09/kotlin-m13-is-out/" target="_blank" rel="noopener">M13</a> 新增了 <code>lateinit</code> 修饰符，当时是可以对只读属性（val）和可变属性（var）使用。</p>
+<p>然后 <a href="https://blog.jetbrains.com/kotlin/2015/10/kotlin-m14-is-out/" target="_blank" rel="noopener">M14</a> 版本就残忍地 ban 掉了 <code>lateinit val</code>。</p>
+<p>现在你可以用 <code>Suppress</code> 绕开编译器对 <code>lateinit val</code> 的限制。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"INAPPLICABLE_LATEINIT_MODIFIER"</span><span class="token punctuation">)</span>
 <span class="token keyword">lateinit</span> <span class="token keyword">val</span> lateInitVal<span class="token operator">:</span> String
 </code></pre>
-<p>lateinit val 的用处可以看上面 M13 的链接里面的说明。</p>
-<h3 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h3><p>Kotlin Collection Literals 半成品。</p>
+<p><code>lateinit val</code> 的用处可以看上面 M13 的链接里面的说明。它的 backing field 并不是定义为 <code>final</code> 的，它和 <code>lateinit var</code> 的区别只是没有 setter，所以一般是配合各种注入框架来使用的。</p>
+<p>但是没有 setter 并不能阻止我们直接对它进行赋值：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"INAPPLICABLE_LATEINIT_MODIFIER"</span><span class="token punctuation">)</span>
+<span class="token keyword">lateinit</span> <span class="token keyword">val</span> some<span class="token operator">:</span> String
+
+<span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"VAL_REASSIGNMENT"</span><span class="token punctuation">)</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   some <span class="token operator">=</span> <span class="token string">"1"</span>
+   <span class="token function">println</span><span class="token punctuation">(</span>some<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 输出 1</span>
+   some <span class="token operator">=</span> <span class="token string">"2"</span>
+   <span class="token function">println</span><span class="token punctuation">(</span>some<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 输出 2</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h3><p>Kotlin Collection Literals 半成品。这个特性是JetBrains他们在17年4月份的时候做的关于Kotlin未来特性的一份<a href="https://drive.google.com/file/d/0BwAovUlww0CmVmNQTXd4TTdKYUU/view" target="_blank" rel="noopener">调查问卷</a>的第6个特性。简单地说是用一些特殊的语法来创建各种集合，而不是（丑陋的）<code>listOf</code>、<code>mapOf</code> 等标准库函数。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"UNSUPPORTED"</span><span class="token punctuation">)</span>
 <span class="token keyword">val</span> bs<span class="token operator">:</span> BooleanArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">]</span>
 </code></pre>
-<p>这是个未完成的功能，目前只支持数组。以后可以支持 List、Map 和 Set，所以为了避免不必要的兼容性麻烦，在正常情况下只允许在注解里这样用。要想在其他地方用，就像上面代码那样。</p>
+<p>但是这是个未完成的功能，目前只支持数组，在未来计划支持 List、Map 和 Set 的创建。所以为了避免不必要的兼容性麻烦，在正常情况下只允许在注解里这样用。要想在其他地方用，就像上面代码那样加上 <code>Suppress</code> 注解。</p>
 <h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>想知道更多的Suppress选项的话，可以去翻Kotlin的源码。</p>
 <p>这种无法得到官方支持的奇技淫巧，也许下次更新就挂掉了，所以如果用了那就后果自负吧。</p>
 

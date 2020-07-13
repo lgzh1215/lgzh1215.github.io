@@ -363,7 +363,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扩展属性的backing-field"><span class="post-toc-number">1.</span> <span class="post-toc-text">扩展属性的backing field</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不依赖getter和setter的lateinit属性"><span class="post-toc-number">2.</span> <span class="post-toc-text">不依赖getter和setter的lateinit属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解除内联类的一些限制"><span class="post-toc-number">3.</span> <span class="post-toc-text">解除内联类的一些限制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启残废的SAM转换功能"><span class="post-toc-number">4.</span> <span class="post-toc-text">开启残废的SAM转换功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何添加编译器参数"><span class="post-toc-number">5.</span> <span class="post-toc-text">如何添加编译器参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不需要import就能使用的顶层函数"><span class="post-toc-number">6.</span> <span class="post-toc-text">不需要import就能使用的顶层函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的Lambda表达式"><span class="post-toc-number">7.</span> <span class="post-toc-text">递归的Lambda表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的NullCheck"><span class="post-toc-number">8.</span> <span class="post-toc-text">阻止编译器添加对非空类型的NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给主构造器内的属性自定义getter和setter"><span class="post-toc-number">9.</span> <span class="post-toc-text">给主构造器内的属性自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">10.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">11.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">12.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扩展属性的backing-field"><span class="post-toc-number">1.</span> <span class="post-toc-text">扩展属性的backing field</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不依赖getter和setter的lateinit属性"><span class="post-toc-number">2.</span> <span class="post-toc-text">不依赖getter和setter的lateinit属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解除内联类的一些限制"><span class="post-toc-number">3.</span> <span class="post-toc-text">解除内联类的一些限制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启残废的SAM转换功能"><span class="post-toc-number">4.</span> <span class="post-toc-text">开启残废的SAM转换功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何添加编译器参数"><span class="post-toc-number">5.</span> <span class="post-toc-text">如何添加编译器参数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用-Gradle"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">使用 Gradle</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用-Gradle-Kotlin-Dsl："><span class="post-toc-number">5.2.</span> <span class="post-toc-text">使用 Gradle Kotlin Dsl：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IDEA项目，不使用Maven、Gradle构建工具"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">IDEA项目，不使用Maven、Gradle构建工具</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不需要import就能使用的顶层函数"><span class="post-toc-number">6.</span> <span class="post-toc-text">不需要import就能使用的顶层函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归的Lambda表达式"><span class="post-toc-number">7.</span> <span class="post-toc-text">递归的Lambda表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止编译器添加对非空类型的NullCheck"><span class="post-toc-number">8.</span> <span class="post-toc-text">阻止编译器添加对非空类型的NullCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#给主构造器内的属性自定义getter和setter"><span class="post-toc-number">9.</span> <span class="post-toc-text">给主构造器内的属性自定义getter和setter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流的读取"><span class="post-toc-number">10.</span> <span class="post-toc-text">流的读取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制扩展的作用域（防止污染命名空间）"><span class="post-toc-number">11.</span> <span class="post-toc-text">限制扩展的作用域（防止污染命名空间）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链式调用时输出中间值"><span class="post-toc-number">12.</span> <span class="post-toc-text">链式调用时输出中间值</span></a></li></ol>
     </ul>
     
 
@@ -548,7 +548,7 @@
    <span class="token punctuation">}</span>
 </code></pre>
 <p>这种需求针对不同的实际情况有不同的解决方法，下面给出一个非最优但是比较通用的方法。</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> ruaMap<span class="token operator">:</span> MutableMap<span class="token operator">&lt;</span>Some<span class="token punctuation">,</span> String<span class="token operator">></span> <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> ruaMap<span class="token operator">:</span> MutableMap<span class="token operator">&lt;</span>Some<span class="token punctuation">,</span> String<span class="token operator">></span> <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 这个TODO别直接抄了</span>
 
 <span class="token keyword">var</span> Some<span class="token punctuation">.</span>rua <span class="token operator">:</span> String
    <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> ruaMap<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">]</span> <span class="token operator">?:</span> <span class="token string">""</span>
@@ -558,7 +558,11 @@
 <p>需要注意的是，这里对Map的类型有要求：因为不能干扰jvm的垃圾回收机制，所以需要是WeakReferenceMap；因为每个实例都需要保存一份自己的数据，所以需要是IdentityMap；如果在多线程环境跑这代码，需要是ConcurrentMap。综上你需要一个<code>ConcurrentWeakIdentityMap</code>来解决这个问题。</p>
 <h2 id="不依赖getter和setter的lateinit属性"><a href="#不依赖getter和setter的lateinit属性" class="headerlink" title="不依赖getter和setter的lateinit属性"></a>不依赖getter和setter的lateinit属性</h2><p>lateinit属性之所以无法自定义getter和setter，是因为需要在getter插入空检测，并且保证setter能给backing field赋值。</p>
 <p>迂回方法如下：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@UseExperimental</span><span class="token punctuation">(</span>ExperimentalContracts<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">import</span> kotlin<span class="token punctuation">.</span>contracts<span class="token punctuation">.</span>ExperimentalContracts
+<span class="token keyword">import</span> kotlin<span class="token punctuation">.</span>contracts<span class="token punctuation">.</span>contract
+<span class="token keyword">import</span> kotlin<span class="token punctuation">.</span>contracts<span class="token punctuation">.</span>InvocationKind
+
+<span class="token annotation builtin">@OptIn</span><span class="token punctuation">(</span>ExperimentalContracts<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token function">trick</span><span class="token punctuation">(</span>willNotBeInvoked<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
    contract <span class="token punctuation">{</span> <span class="token function">callsInPlace</span><span class="token punctuation">(</span>willNotBeInvoked<span class="token punctuation">,</span> InvocationKind<span class="token punctuation">.</span>EXACTLY_ONCE<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -575,9 +579,21 @@
 <span class="token keyword">var</span> lateInit<span class="token operator">:</span> String
 <span class="token keyword">val</span> no_use <span class="token operator">=</span> trick <span class="token punctuation">{</span> lateInit <span class="token operator">=</span> <span class="token function">undefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
 </code></pre>
-<p>原理：利用contracts欺骗Kotlin编译器，让它以为属性已被正常初始化（然而并不），属性停留在未被初始化的阶段，从而模拟 lateinit 的功能。当然安全性需要由敲代码的人来保证了。</p>
+<p>原理：利用contract欺骗Kotlin编译器，让它以为属性已被正常初始化（然而并不），属性停留在未被初始化的阶段，从而模拟 lateinit 的功能。当然安全性需要由敲代码的人来保证了。</p>
 <p>因为是假的lateinit，所以反射 Some::lateInit.isLateinit 将返回 false。</p>
-<p>用途：自定义getter或setter、@JvmField</p>
+<p>用途：当你需要给lateinit属性自定义getter或setter时、或者需要一个lateinit的@JvmField。</p>
+<p>2020/7/13更新：</p>
+<p>更新一个不使用contract的方法，比较简单：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Some <span class="token punctuation">{</span>
+   <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"MUST_BE_INITIALIZED_OR_BE_ABSTRACT"</span><span class="token punctuation">)</span>
+   <span class="token keyword">var</span> lateInit<span class="token operator">:</span> String
+<span class="token punctuation">}</span>
+
+<span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"MUST_BE_INITIALIZED"</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> lateInit<span class="token operator">:</span> String
+</code></pre>
+<p>利用我<a href="https://aisia.moe/2018/12/09/kotlin-suppress/">那篇文章</a>介绍的方法，用<code>Suppress</code>注解消除Kotlin编译器的编译错误，让属性保持在未初始化的状态。</p>
+<p>以上两种方法都需要注意如果直接读取未初始化的属性，会得到<code>null</code>，所以在使用时要格外小心，确保属性的初始化。</p>
 <h2 id="解除内联类的一些限制"><a href="#解除内联类的一些限制" class="headerlink" title="解除内联类的一些限制"></a>解除内联类的一些限制</h2><p>不开后门的话，Kotlin1.3的新功能<strong>内联类</strong>的作用将十分有限。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 非公有构造器，以及泛型</span>
 <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"NON_PUBLIC_PRIMARY_CONSTRUCTOR_OF_INLINE_CLASS"</span><span class="token punctuation">)</span>
@@ -609,15 +625,19 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>副作用：NewInference可能存在bug，并且当出现编译错误的时候可能得到一堆难懂的报错信息。</p>
-<h2 id="如何添加编译器参数"><a href="#如何添加编译器参数" class="headerlink" title="如何添加编译器参数"></a>如何添加编译器参数</h2><p>使用 Gradle：</p>
-<pre class=" language-Groovy"><code class="language-Groovy">// build.gradle
+<h2 id="如何添加编译器参数"><a href="#如何添加编译器参数" class="headerlink" title="如何添加编译器参数"></a>如何添加编译器参数</h2><h3 id="使用-Gradle"><a href="#使用-Gradle" class="headerlink" title="使用 Gradle"></a>使用 Gradle</h3><pre class=" language-Groovy"><code class="language-Groovy">// build.gradle
 compileKotlin {
     ...
     kotlinOptions.freeCompilerArgs += ["-foo", "-bar"]
 }
+
+compileTestKotlin {
+    // 单元测试代码的kotlin编译任务，同上
+}
 </code></pre>
 <p>PS：使用Gradle的话，请注意IDEA的 <code>Delegate IDE build/run actions to gradle</code> 这个选项是否勾选的区别。</p>
-<p>使用 Gradle Kotlin Dsl：</p>
+<p>PPS：对于自定义源文件集（source set）这些任务称呼取决于 <code>compile&lt;Name&gt;Kotlin</code> 模式。比如说安卓项目则是例如 <code>compileDebugKotlin</code>、 <code>compileReleaseUnitTestKotlin</code> 等。</p>
+<h3 id="使用-Gradle-Kotlin-Dsl："><a href="#使用-Gradle-Kotlin-Dsl：" class="headerlink" title="使用 Gradle Kotlin Dsl："></a>使用 Gradle Kotlin Dsl：</h3><p>因为我本身不使用Gradle Kotlin Dsl，所以不保证下面的写法在未来还能用。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// build.gradle.kts</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>jetbrains<span class="token punctuation">.</span>kotlin<span class="token punctuation">.</span>gradle<span class="token punctuation">.</span>tasks<span class="token punctuation">.</span>KotlinCompile
 
@@ -630,8 +650,7 @@ tasks<span class="token punctuation">.</span>withType<span class="token operator
 <span class="token keyword">val</span> compileKotlin<span class="token operator">:</span> KotlinCompile <span class="token keyword">by</span> tasks
 kotlinOptions<span class="token punctuation">.</span>freeCompilerArgs <span class="token operator">+=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string">"-foo"</span><span class="token punctuation">,</span> <span class="token string">"-bar"</span><span class="token punctuation">)</span>
 </code></pre>
-<p>IDEA项目，不使用Maven、Gradle构建工具的情况：</p>
-<p>有两个地方：一个是对整个Project有效的全局设置；另一个对单独Module有效，可以覆盖全局设置。</p>
+<h3 id="IDEA项目，不使用Maven、Gradle构建工具"><a href="#IDEA项目，不使用Maven、Gradle构建工具" class="headerlink" title="IDEA项目，不使用Maven、Gradle构建工具"></a>IDEA项目，不使用Maven、Gradle构建工具</h3><p>有两个地方：一个是对整个Project有效的全局设置；另一个对单独Module有效，可以覆盖全局设置。（善用设置里的搜索功能）</p>
 <p>全局设置：File -&gt; Settings -&gt; 找到 Kotlin Compiler -&gt; Additional command line parameters</p>
 <p>Module设置：File -&gt; Project Structure -&gt; Module -&gt; 找到目标Module里面的Kotlin设置 -&gt; Additional command line parameters</p>
 <p>如果Module设置没有Kotlin的话，可以点击「+」按钮手动加上 Kotlin 设置。</p>
@@ -641,7 +660,7 @@ kotlinOptions<span class="token punctuation">.</span>freeCompilerArgs <span clas
 
 <span class="token keyword">fun</span> <span class="token function">fuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 </code></pre>
-<p>因为 kotlin 包下的东西都是自动导入的，也就不需要自己动手导入啦。</p>
+<p>因为 kotlin 包下的东西都是自动导入的，所以只需要将你的扩展函数也丢到 kotlin 这个包里，就不需要自己动手导入啦。</p>
 <p>需要传入编译器参数 <code>-Xallow-kotlin-package</code> 来允许使用 kotlin 开头的包名。</p>
 <h2 id="递归的Lambda表达式"><a href="#递归的Lambda表达式" class="headerlink" title="递归的Lambda表达式"></a>递归的Lambda表达式</h2><p>在某个 Kotlin 裙里看到有人在问：</p>
 <blockquote>
@@ -797,7 +816,7 @@ a <span class="token operator">=</span> <span class="token punctuation">{</span>
 <span class="token comment" spellcheck="true">// 18</span>
 <span class="token comment" spellcheck="true">// 6</span>
 </code></pre>
-<p>注意副作用，别夏姬八用！</p>
+<p>注意副作用，别随便乱用！</p>
 <p>如果是集合操作，可以考虑使用 <code>onEach</code> 这个高阶函数，例如<code>onEach { println(it) }</code>。</p>
 
         
