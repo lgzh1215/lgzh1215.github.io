@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://aisia.moe/2017/10/18/huadian/</loc>
-    <lastmod>2020-07-16T13:16:56.642Z</lastmod>
-  </url>  <url>
-    <loc>https://aisia.moe/2017/04/27/about/</loc>
-    <lastmod>2020-07-16T13:16:56.642Z</lastmod>
-  </url>  <url>
-    <loc>https://aisia.moe/2018/02/26/why-not-gradle-kts-dsl/</loc>
-    <lastmod>2020-07-16T13:16:56.642Z</lastmod>
-  </url>  <url>
-    <loc>https://aisia.moe/2018/03/25/kotlin-contracts-dsl/</loc>
-    <lastmod>2020-07-16T13:16:56.642Z</lastmod>
+    <loc>https://aisia.moe/2018/07/03/inline-class/</loc>
+    <lastmod>2020-07-16T13:21:27.369Z</lastmod>
   </url>  <url>
     <loc>https://aisia.moe/2017/12/28/kotlin-puzzlers/</loc>
-    <lastmod>2020-07-16T13:16:56.642Z</lastmod>
+    <lastmod>2020-07-16T13:21:27.369Z</lastmod>
+  </url>  <url>
+    <loc>https://aisia.moe/2018/02/26/why-not-gradle-kts-dsl/</loc>
+    <lastmod>2020-07-16T13:21:27.369Z</lastmod>
+  </url>  <url>
+    <loc>https://aisia.moe/2018/03/25/kotlin-contracts-dsl/</loc>
+    <lastmod>2020-07-16T13:21:27.369Z</lastmod>
   </url>  <url>
     <loc>https://aisia.moe/2018/10/03/kotlin-experimental-api/</loc>
-    <lastmod>2020-07-16T13:16:56.642Z</lastmod>
+    <lastmod>2020-07-16T13:21:27.369Z</lastmod>
   </url>  <url>
     <loc>https://aisia.moe/2018/12/09/kotlin-suppress/</loc>
-    <lastmod>2020-07-16T13:16:56.642Z</lastmod>
+    <lastmod>2020-07-16T13:21:27.369Z</lastmod>
   </url>  <url>
-    <loc>https://aisia.moe/2018/07/03/inline-class/</loc>
-    <lastmod>2020-07-16T13:16:56.642Z</lastmod>
+    <loc>https://aisia.moe/2020/07/16/kotlin-internal-annotations/</loc>
+    <lastmod>2020-07-16T13:21:27.369Z</lastmod>
+  </url>  <url>
+    <loc>https://aisia.moe/2017/10/18/huadian/</loc>
+    <lastmod>2020-07-16T13:21:27.367Z</lastmod>
+  </url>  <url>
+    <loc>https://aisia.moe/2017/04/27/about/</loc>
+    <lastmod>2020-07-16T13:21:27.366Z</lastmod>
   </url>  <url>
     <loc>https://aisia.moe/2018/02/08/kotlin-coroutine-kepa/</loc>
     <lastmod>2018-11-20T16:31:05.000Z</lastmod>

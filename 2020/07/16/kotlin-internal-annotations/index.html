@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Kotlin标准库里的那些internal注解 | 
+        
+        萌夜雀的人头会社
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon_normal.png">
+    <link rel="icon" href="/img/favicon_high.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="本文介绍一下 Koltin 标准库里面 kotlin.internal 这个包里的一些注解的作用。这些注解在 Kotlin 官网上的参考文档上没有任何提及，而且在网上搜也没有什么文章介绍，源码里的注释也只是寥寥几句话，难以理解。">
+    <meta name="keywords" content="萌夜雀 人头会社,Others">
+    <meta name="theme-color" content="#9C27B0">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #7A1EA1;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #9B26AF !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #9B26AF !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #9B26AF !important;
+  }
+
+  .toTop {
+    background: #B8B8B8 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #B8B8B8;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #B8B8B8;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #B8B8B8;
+  }
+
+  .post-toc a:hover {
+    color: #7A1EA1;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="萌夜雀的人头会社">
+    <meta name="msapplication-starturl" content="https://aisia.moe/2020/07/16/kotlin-internal-annotations/">
+    <meta name="msapplication-navbutton-color" content="#9C27B0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="萌夜雀的人头会社">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon_high.png">
+
+    <!-- Site Verification -->
+    <meta name="google-site-verification" content="4_IUCIIHRXDDJ_WXIUCZRKp6YHxSLCilo6rOlfMHoH4">
+    
+
+    <!-- RSS -->
+    
+        
+            <link rel="alternate" type="application/atom+xml" href="/atom.xml">
+        
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://aisia.moe/2020/07/16/kotlin-internal-annotations/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Kotlin标准库里的那些internal注解 | 萌夜雀的人头会社">
+    <meta property="og:image" content="/img/favicon_high.png">
+    <meta property="og:description" content="本文介绍一下 Koltin 标准库里面 kotlin.internal 这个包里的一些注解的作用。这些注解在 Kotlin 官网上的参考文档上没有任何提及，而且在网上搜也没有什么文章介绍，源码里的注释也只是寥寥几句话，难以理解。">
+    <meta property="og:article:tag" content="Others"> 
+
+    
+        <meta property="article:published_time" content="Thu Jul 16 2020 21:19:28 GMT+0800">
+        <meta property="article:modified_time" content="Thu Jul 16 2020 13:21:27 GMT+0000">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://aisia.moe/2020/07/16/kotlin-internal-annotations/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://aisia.moe/2020/07/16/kotlin-internal-annotations/index.html",
+    "headline": "Kotlin标准库里的那些internal注解",
+    "datePublished": "Thu Jul 16 2020 21:19:28 GMT+0800",
+    "dateModified": "Thu Jul 16 2020 13:21:27 GMT+0000",
+    "author": {
+        "@type": "Person",
+        "name": "Dexlind",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "行云流水 疾风怒涛 丛云蔽月 风催花"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "萌夜雀的人头会社",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon_high.png"
+        }
+    },
+    "keywords": ",Others萌夜雀 人头会社",
+    "description": "本文介绍一下 Koltin 标准库里面 kotlin.internal 这个包里的一些注解的作用。这些注解在 Kotlin 官网上的参考文档上没有任何提及，而且在网上搜也没有什么文章介绍，源码里的注释也只是寥寥几句话，难以理解。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+        <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-112770037-1', 'auto');ga('send', 'pageview');
+</script>
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何使用这些注解"><span class="post-toc-number">1.</span> <span class="post-toc-text">如何使用这些注解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Magic-Inference-Annotations"><span class="post-toc-number">2.</span> <span class="post-toc-text">Magic Inference Annotations</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NoInfer"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">@NoInfer</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Exact"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">@Exact</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OnlyInputTypes"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">@OnlyInputTypes</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他注解"><span class="post-toc-number">3.</span> <span class="post-toc-text">其他注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LowPriorityInOverloadResolution"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">@LowPriorityInOverloadResolution</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HidesMembers"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">@HidesMembers</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#InlineOnly"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">@InlineOnly</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本文完"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">本文完</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Kotlin标准库里的那些internal注解
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Dexlind</strong>
+        <span>7月 16, 2020</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC3ElEQVR42u3aQW4bQQwEQP//08k1QJBVN6nA8kztSZC1EmsOJsjer19XXl/Y2NjY2NjY2NjYH8n+iq8/P/98b/vXf9Xz9/uzmrGxsbFvYL/4119iktf59zx/W1IzNjY29j3sWRFJ+8lLnx1oVDM2NjY2dtl+8oKef6VtqNjY2NjYs8HgeT2UtKJk1YWNjY2NvV8q5T+cr6jy3/22XRo2Njb2x7M3Qe93vf7mfBsbGxv7Y9jtlQ8hSXt7b7j7onJsbGzsQ9nPjNmjk+2K//mI37bkwsbGxj6U/Qzer4Rmy6ZZhS8OGhsbG/todh67blb/SRic11AfKzY2Nvah7DxqbUeU2RCyCSdefDM2Njb20ex2xZ/c1bbA9qHMujZsbGzsQ9ktPr8rP5r2YfqkyWFjY2Pfw96EtcmY0ba9fbQ8nMCwsbGxfzg7WdzMVlHtCJEPKu3qChsbG/tU9qbofPDIHwlq21JSITY2NvbZ7LysWUjQDhXtoRfLLGxsbOxr2JuBoY0HNoebNzNsbGzsO9n5yiaPct8VDM+GHGxsbOxT2W182z5Ak8cDs7XR2+IBbGxs7B/LbiPe2aooaTn5YqsNnrGxsbFvYG+Q+ZKoXT/ly6+oDWNjY2Mfzc4bWDJ+5Kuo2egyOw5sbGzsU9n79f0zaRbifpVXFFpgY2NjX8aeLXTyUoq1/uLCxsbGvo2drJPyUWHTDtsKo09iY2NjH8rOy8obVR7Btm2yjZaxsbGxb2Dn7arF5I/v7AePKFTGxsbGvoA9GwnyQWV2BO1Kq4gHsLGxsY9gb5pEHifkD2VueEU8gI2NjX0cO29as+bUtrc8SCgOFBsbG/sCdhIMJAfURgX50W9WS9jY2NjYeeCav5McVt786qUSNjY29sXsWZyQN6H/URs2Njb2Dew83J01lXwZlK+ZkruwsbGxb2Dvg97NiqoNDPL6sbGxsW9g33NhY2NjY2NjY2Njf8z1G7z6AZMC2rT5AAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Others/">Others</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Kotlin标准库里的那些internal注解&url=https://aisia.moe/2020/07/16/kotlin-internal-annotations/index.html&pic=https://aisia.moe/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Kotlin标准库里的那些internal注解&url=https://aisia.moe/2020/07/16/kotlin-internal-annotations/index.html&via=Dexlind" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://aisia.moe/2020/07/16/kotlin-internal-annotations/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://aisia.moe/2020/07/16/kotlin-internal-annotations/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>本文介绍一下 Koltin 标准库里面 <code>kotlin.internal</code> 这个包里的一些注解的作用。这些注解在 Kotlin 官网上的参考文档上没有任何提及，而且在网上搜也没有什么文章介绍，源码里的注释也只是寥寥几句话，难以理解。<a id="more"></a>虽然是声明为 <code>internal</code> 的，但是许多开发者（包括一些 JetBrains 员工）在非 Kotlin 标准库的项目中也有使用。</p>
+<p>因为 Kotlin 1.4 尚未发布正式版，1.4-M3 版本的 bug 还太多，所以本文使用的 Kotlin 版本为 1.3.72。</p>
+<p><strong>另外由于文笔太差，本文不保证读者能看懂。</strong></p>
+<h2 id="如何使用这些注解"><a href="#如何使用这些注解" class="headerlink" title="如何使用这些注解"></a>如何使用这些注解</h2><p>这些注解被声明为 <code>internal</code>，如下。可见性修饰符 <code>internal</code> 意味着该成员只在相同模块内可见，在本文指的是仅在 Kotlin 标准库内可见。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> kotlin<span class="token punctuation">.</span>internal
+
+<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>BINARY<span class="token punctuation">)</span>
+<span class="token keyword">internal</span> <span class="token keyword">annotation</span> <span class="token keyword">class</span> NoInfer
+</code></pre>
+<p>这并不代表我们不能用他，有两种方法可以绕开限制。</p>
+<p>其中一种方法我已经在之前<a href="https://aisia.moe/2018/03/25/kotlin-contracts-dsl/">介绍 Contracts DSL 的文章</a>里提到过了，在自己的项目里新建一个 kt 文件，把这些注解的源码一个不漏地复制粘贴进去（包括包名），然后添加编译器参数 <code>-Xallow-kotlin-package</code> （允许使用 kotlin 开头的包名），就可以使用了。这里有个现成的例子可以模仿 <a href="https://github.com/orangy/squash/blob/dc025481b7104a5e234d6df370d715b6b37c81eb/squash-core/src/kotlin/internal/InferenceAnnotations.kt" target="_blank" rel="noopener">orangy/squash</a>。</p>
+<p>第二种方法是利用了我<a href="https://aisia.moe/2018/12/09/kotlin-suppress/">另一篇文章</a>介绍的可以使用注解 <code>@Suppress</code> 强行消除编译错误。如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"INVISIBLE_REFERENCE"</span><span class="token punctuation">,</span> <span class="token string">"INVISIBLE_MEMBER"</span><span class="token punctuation">)</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">suppressTest</span><span class="token punctuation">(</span>some<span class="token operator">:</span> <span class="token label symbol">@kotlin</span><span class="token punctuation">.</span>internal<span class="token punctuation">.</span>NoInfer T<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p>个人比较推荐第二种方法。</p>
+<h2 id="Magic-Inference-Annotations"><a href="#Magic-Inference-Annotations" class="headerlink" title="Magic Inference Annotations"></a>Magic Inference Annotations</h2><p>在大多数场景下，Kotlin 编译器的类型推断的默认行为足以满足需求。但是有时候会遇到一些例外情况需要我们对类型推断进行微调，于是就有了这些 magic inference annotations（官方就是这么称呼的）。</p>
+<p>准确地说，它们都是对泛型的类型推导进行微调。</p>
+<p>在介绍这些与类型推断有关的注解前先来了解一些 <strong>前 置 知 识</strong>，让我们来了解一下类型推断的大致流程（我会省略许多与本文无关的细节）。首先我们来看以下代码：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> R<span class="token operator">></span> <span class="token function">some</span><span class="token punctuation">(</span>t<span class="token operator">:</span> T<span class="token punctuation">)</span><span class="token operator">:</span> R <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">val</span> result<span class="token operator">:</span> String <span class="token operator">=</span> <span class="token function">some</span><span class="token punctuation">(</span><span class="token number">1551</span><span class="token punctuation">)</span>
+</code></pre>
+<p>编译器首先会从代码中获得一些信息，称为类型约束（type constraint）。代码中对 <code>some</code> 这个函数进行调用，将 <code>1551</code> 作为参数传给 <code>some</code>，把返回值赋值给类型为 <code>String</code> 的变量 <code>result</code>，编译器最终获得了两条约束：Int 是 T 的子类型，R 是 String 的子类型。（省略了很多细节）</p>
+<p>然后由编译器的类型约束求解器（type constraint solver）对这些约束进行进一步的处理，最终获得类型推断的结果：T 推导为 Int，R 推导为 String。（省略了非常多的细节，怎样画马.jpg）</p>
+<p>接下来开始正式介绍。</p>
+<h3 id="NoInfer"><a href="#NoInfer" class="headerlink" title="@NoInfer"></a>@NoInfer</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> kotlin<span class="token punctuation">.</span>internal
+
+<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>BINARY<span class="token punctuation">)</span>
+<span class="token keyword">internal</span> <span class="token keyword">annotation</span> <span class="token keyword">class</span> NoInfer
+</code></pre>
+<blockquote>
+<p>Specifies that the corresponding type should be ignored during type inference.</p>
+</blockquote>
+<p><code>kotlin.internal.NoInfer</code> 比较简单，当一个类型被标注为 <code>@NoInfer</code> ，类型约束求解器并不会利用该类型提供的约束进行求解，编译器只检查类型推断的结果是否与约束相符合。简单地说就是不参与类型推断。比如下面的代码：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 本文以后的代码默认带有这两行，@Suppress和import</span>
+<span class="token annotation builtin">@file:Suppress</span><span class="token punctuation">(</span><span class="token string">"INVISIBLE_REFERENCE"</span><span class="token punctuation">,</span> <span class="token string">"INVISIBLE_MEMBER"</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> kotlin<span class="token punctuation">.</span>internal<span class="token punctuation">.</span><span class="token operator">*</span>
+
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">someFun</span><span class="token punctuation">(</span>t1<span class="token operator">:</span> T<span class="token punctuation">,</span> t2<span class="token operator">:</span> <span class="token annotation builtin">@NoInfer</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">someFun</span><span class="token punctuation">(</span><span class="token string">"str"</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 编译错误</span>
+
+   <span class="token comment" spellcheck="true">// someFun("str", "str2") // 这样是好的</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>对 <code>someFun</code> 的调用提供了两条类型约束： String 是 T 的子类型（来自第一个参数），Int 是 T 的子类型（来自第二个参数）。</p>
+<p>但是因为 <code>someFun</code> 的定义里第二个参数的类型 <code>T</code> 上有 <code>@NoInfer</code> 注解，类型约束求解器无视了 “ Int 是 T 的子类型” 这条约束，仅使用第一条约束 “ String 是 T 的子类型” 进行求解，最终 T 推导成 String 类型。</p>
+<p>编译器发现第二个参数的类型 <code>Int</code> 和类型推断的结果不符合：Int 不是 String 的子类型。于是编译错误就产生了。</p>
+<p>PS：如果不加 <code>@NoInfer</code> 注解，那么类型约束求解器会根据那两条约束将 <code>T</code> 推导成 <code>Any</code>。</p>
+<p>再来看第二个例子：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">someFun2</span><span class="token punctuation">(</span>t<span class="token operator">:</span> <span class="token annotation builtin">@NoInfer</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">someFun2</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 编译错误</span>
+
+   <span class="token comment" spellcheck="true">// someFun2&lt;Int>(42) // 这样是好的，而且IDEA不会跟你讲&lt;Int>是多余的</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在这个例子中，类型约束求解器实际上没有可用的类型约束，无法进行类型推断，需要在调用时显式传入泛型参数。</p>
+<h3 id="Exact"><a href="#Exact" class="headerlink" title="@Exact"></a>@Exact</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> kotlin<span class="token punctuation">.</span>internal
+
+<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>BINARY<span class="token punctuation">)</span>
+<span class="token keyword">internal</span> <span class="token keyword">annotation</span> <span class="token keyword">class</span> Exact
+</code></pre>
+<blockquote>
+<p>Specifies that the constraint built for the type during type inference should be an equality one.</p>
+</blockquote>
+<p>@Exact 的注释在学习了上面的 <strong>前 置 知 识</strong> 后是非常好理解的。比如说这样的代码：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">someFun3</span><span class="token punctuation">(</span>t<span class="token operator">:</span> <span class="token annotation builtin">@Exact</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">someFun3</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>根据 <strong>前 置 知 识</strong>，类型约束求解器会拿到一条 “ Int 是 T 的子类型” 的约束。但是 <code>someFun3</code> 的定义里参数 <code>t</code> 的类型上有 <code>kotlin.internal.Exact</code> 注解，这个注解会将这个约束修改成 “ T 和 Int 是相同的类型”（不是很严谨，但大概是这么个意思）。于是类型约束求解器不假思索很快就把 T 推导成 Int。</p>
+<p>下面用一个例子来说明：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> U <span class="token operator">:</span> T<span class="token operator">></span> <span class="token function">someFun4</span><span class="token punctuation">(</span>list<span class="token operator">:</span> List<span class="token operator">&lt;</span><span class="token annotation builtin">@Exact</span> T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> U <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">fun</span> <span class="token function">test4</span><span class="token punctuation">(</span>list<span class="token operator">:</span> List<span class="token operator">&lt;</span>Number<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">val</span> i<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token function">someFun4</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 这样是好的</span>
+   <span class="token keyword">val</span> s<span class="token operator">:</span> String <span class="token operator">=</span> <span class="token function">someFun4</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 编译错误</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>someFun4</code> 接收一个 <code>List&lt;T&gt;</code> 类型的参数，返回一个类型为 <code>U</code> 的对象，<code>U</code> 是 <code>T</code> 的子类型，参数的类型 <code>List&lt;T&gt;</code> 的 <code>T</code> 被标记为 <code>@Exact</code>。</p>
+<p><code>test4</code> 里给 <code>someFun4</code> 传入<code>List&lt;Number&gt;</code>类型的参数，类型约束实际上是 “ List&lt; Number&gt; 是 List&lt;@Exact T&gt; 的子类型”。不过因为 Kotlin 的 <code>List&lt;E&gt;</code> 在类型参数 <code>E</code> 上是协变的，所以那条约束其实等价于 “ Number 是 @Exact T 的子类型”，最终被 <code>@Exact</code> 注解修正为 “ T 和 Number 是相同的类型”。（省略了大量编译器如何处理约束的细节）</p>
+<p>所以在 <code>test4</code> 里的第一行 <code>val i: Int = someFun4(list)</code>，有这样的约束：T 和 Number 是相同的类型，U 是 T 的子类型，U 是 Int 的子类型。最终结果为 T 推导为 Number、U 推导为 Int。</p>
+<p>同理可知，第二行 <code>val s: String = someFun4(list)</code> 由于编译器找不到既是 Number 的子类型、又是 String 的子类型的类型，编译错误。</p>
+<p>PS：如果不加 <code>@Exact</code> 注解，第二行的类型推断结果为 T 是 Any，U 是 String，不会有编译错误。</p>
+<h3 id="OnlyInputTypes"><a href="#OnlyInputTypes" class="headerlink" title="@OnlyInputTypes"></a>@OnlyInputTypes</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> kotlin<span class="token punctuation">.</span>internal
+
+<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>TYPE_PARAMETER<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>BINARY<span class="token punctuation">)</span>
+<span class="token keyword">internal</span> <span class="token keyword">annotation</span> <span class="token keyword">class</span> OnlyInputTypes
+</code></pre>
+<blockquote>
+<p>The value of this type parameter should be mentioned in input types (argument types, receiver type or expected type).</p>
+</blockquote>
+<p>终于可以丢掉那些无聊又难搞的类型约束了。<code>kotlin.internal.OnlyInputTypes</code> 和上面那两个注解不同，它是标注在类型参数上的，如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span><span class="token annotation builtin">@OnlyInputTypes</span> T<span class="token operator">></span> <span class="token function">someFun5</span><span class="token punctuation">(</span>t1<span class="token operator">:</span> <span class="token annotation builtin">@NoInfer</span> T<span class="token punctuation">,</span> t2<span class="token operator">:</span> <span class="token annotation builtin">@Exact</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p>这个注解对类型推断的结果添加了一个限制，要求这个结果必须在 input types 的位置上被提及。就像这个注解的注释所说的，可以是 argument types，receiver type 或者 expected type。这几个位置可以用代码来简单展示：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> result<span class="token operator">:</span> ExpectedType <span class="token operator">=</span> receiverType<span class="token punctuation">.</span><span class="token function">functionName</span><span class="token punctuation">(</span>argumentType<span class="token punctuation">)</span>
+</code></pre>
+<p>然后演示一下具体是什么意思：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span><span class="token annotation builtin">@OnlyInputTypes</span> T<span class="token operator">></span> <span class="token function">someFun6</span><span class="token punctuation">(</span>t1<span class="token operator">:</span> T<span class="token punctuation">,</span> t2<span class="token operator">:</span> T<span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">open</span> <span class="token keyword">class</span> A
+<span class="token keyword">class</span> B <span class="token operator">:</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> C <span class="token operator">:</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">fun</span> <span class="token function">test6</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">val</span> r1 <span class="token operator">=</span> <span class="token function">someFun6</span><span class="token punctuation">(</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// 这个是好的</span>
+   <span class="token keyword">val</span> r2<span class="token operator">:</span> A <span class="token operator">=</span> <span class="token function">someFun6</span><span class="token punctuation">(</span><span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">C</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 这个也是好的</span>
+   <span class="token keyword">val</span> r3 <span class="token operator">=</span> <span class="token function">someFun6</span><span class="token punctuation">(</span><span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">C</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// 好不起来了！编译错误！</span>
+   someFun6<span class="token operator">&lt;</span>A<span class="token operator">></span><span class="token punctuation">(</span><span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">C</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>          <span class="token comment" spellcheck="true">// 又好起来了</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>显而易见，<code>test6</code> 里面前3次对 <code>someFun6</code> 的调用的类型推断结果都是 T 推导为 A 类型。</p>
+<p>第一次函数调用，A 类型出现在 argument type 的位置，第二次 A 类型出现在 expected type 的位置，符合 <code>@OnlyInputTypes</code> 这个注解的要求，所以编译通过。</p>
+<p>第三次调用由于 A 类型在 input types 的位置上没有被提及，所以编译失败了。</p>
+<p>至于第四次调用则是纯粹抛弃了类型推导，手动指明了泛型参数，与 <code>@OnlyInputTypes</code> 没有关系了。</p>
+<p>这里举一个 Kotlin 标准库里的例子来说明这个看起来有点“奇葩”的限制有什么用：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 摘自 kotlin 标准库（有删减）</span>
+
+<span class="token comment" spellcheck="true">/**
+ * Returns `true` if [element] is found in the array.
+ */</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span><span class="token annotation builtin">@OnlyInputTypes</span> T<span class="token operator">></span> Array<span class="token operator">&lt;</span><span class="token keyword">out</span> T<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>element<span class="token operator">:</span> T<span class="token punctuation">)</span><span class="token operator">:</span> Boolean <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">indexOf</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>然后有时候不小心写出了这样的代码：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">stupid</span><span class="token punctuation">(</span>arr<span class="token operator">:</span> Array<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">val</span> b <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"I want to find some String in an Int array. Oh! So stupid!"</span><span class="token punctuation">)</span>
+   <span class="token comment" spellcheck="true">// 这里 T 推导为 Any</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>常识告诉我们，一个 Int 数组里不可能会有 String 元素，所以这行代码是无意义的。再看由于存在 <code>@OnlyInputTypes</code> 注解，类型推导的结果 Any 并没有出现在 input types 的位置上，所以编译失败了，从而阻止了这种无意义代码的产生。</p>
+<p>PS：Kotlin 1.4 版本引入了一个默认开启的特性，将 <code>@OnlyInputTypes</code> 注解导致的编译错误（error）降级为警告（warring）。可以通过添加编译器参数 <code>-XXLanguage:-NonStrictOnlyInputTypesChecks</code> 关闭这个特性。（我并没有说一定要关闭这个特性）</p>
+<p>PPS：可以在 Kotlin 标准库里搜索这三个注解都用在什么地方，理解这几个注解的实际用途。（我觉得都和我的举例差不多）</p>
+<h2 id="其他注解"><a href="#其他注解" class="headerlink" title="其他注解"></a>其他注解</h2><h3 id="LowPriorityInOverloadResolution"><a href="#LowPriorityInOverloadResolution" class="headerlink" title="@LowPriorityInOverloadResolution"></a>@LowPriorityInOverloadResolution</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> kotlin<span class="token punctuation">.</span>internal
+
+<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>FUNCTION<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>PROPERTY<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>BINARY<span class="token punctuation">)</span>
+<span class="token keyword">internal</span> <span class="token keyword">annotation</span> <span class="token keyword">class</span> LowPriorityInOverloadResolution
+</code></pre>
+<blockquote>
+<p>Specifies that a corresponding member has the lowest priority in overload resolution.</p>
+</blockquote>
+<p>是名字超长的 <code>kotlin.internal.LowPriorityInOverloadResolution</code> ！</p>
+<p>我觉得它的名字和注释已经很好地解释了它的作用。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">someFun7</span><span class="token punctuation">(</span>i<span class="token operator">:</span> Int<span class="token operator">?</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token annotation builtin">@LowPriorityInOverloadResolution</span>
+<span class="token keyword">fun</span> <span class="token function">someFun7</span><span class="token punctuation">(</span>i<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test7</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">someFun7</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 这将调用第一个someFun7</span>
+    <span class="token operator">::</span>someFun7   <span class="token comment" spellcheck="true">// 这将拿到第一个someFun7的引用</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在标准库里多用于新旧 API 更替时，防止用户调用到旧的 API。</p>
+<h3 id="HidesMembers"><a href="#HidesMembers" class="headerlink" title="@HidesMembers"></a>@HidesMembers</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> kotlin<span class="token punctuation">.</span>internal
+
+<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>FUNCTION<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>PROPERTY<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>BINARY<span class="token punctuation">)</span>
+<span class="token keyword">internal</span> <span class="token keyword">annotation</span> <span class="token keyword">class</span> HidesMembers
+</code></pre>
+<blockquote>
+<p>Specifies that the corresponding member has the highest priority in overload resolution.<br>Effectively this means that an extension annotated with this annotation will win in overload resolution over a member with the same signature.</p>
+</blockquote>
+<p><code>kotlin.internal.HidesMembers</code> 这个注解的名字和注释会给人造成一种错觉。</p>
+<p>根据常识，Kotlin 的扩展函数不能覆盖成员函数：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> Kotlin官网的例子<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span> Example <span class="token punctuation">{</span>
+        <span class="token keyword">fun</span> <span class="token function">printFunctionType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Class method"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">fun</span> Example<span class="token punctuation">.</span><span class="token function">printFunctionType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Extension function"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+
+    <span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">printFunctionType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 这将输出 Class method</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>但是 <code>@HidesMembers</code> 的确能让扩展函数覆盖成员函数：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Box<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">val</span> t1<span class="token operator">:</span> T<span class="token punctuation">,</span> <span class="token keyword">val</span> t2<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">fun</span> <span class="token function">forEach</span><span class="token punctuation">(</span>fn<span class="token operator">:</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">fn</span><span class="token punctuation">(</span>t1<span class="token punctuation">)</span>
+      <span class="token function">fn</span><span class="token punctuation">(</span>t2<span class="token punctuation">)</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation builtin">@HidesMembers</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> Box<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>fn<span class="token operator">:</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"嘻嘻"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test8</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">val</span> box <span class="token operator">=</span> <span class="token function">Box</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">456</span><span class="token punctuation">)</span>
+   box<span class="token punctuation">.</span><span class="token function">forEach</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 嘻嘻</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>你看 Kotlin 标准库里就是这么做的：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// kotlin标准库代码摘抄</span>
+
+<span class="token label symbol">@kotlin</span><span class="token punctuation">.</span>internal<span class="token punctuation">.</span>HidesMembers
+<span class="token keyword">public</span> <span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> Iterable<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>action<span class="token operator">:</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>element <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token function">action</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这是为了隐藏来自 <code>java.lang.Iterable</code> 的 <code>forEach</code>。</p>
+<p>不过这并不意味着我们可以随便用这个注解来做些七七八八的事情，在 Kotlin 编译器的源码里有这么一行代码：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// @HidesMembers annotation only has effect for members with these names</span>
+<span class="token keyword">val</span> HIDES_MEMBERS_NAME_LIST <span class="token operator">=</span> <span class="token function">setOf</span><span class="token punctuation">(</span>Name<span class="token punctuation">.</span><span class="token function">identifier</span><span class="token punctuation">(</span><span class="token string">"forEach"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Name<span class="token punctuation">.</span><span class="token function">identifier</span><span class="token punctuation">(</span><span class="token string">"addSuppressed"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>意思是只有标识名是 <code>forEach</code> 和 <code>addSuppressed</code> 的成员才能用这个注解，是白名单制！</p>
+<p>PS：强行覆盖的初衷是好的，但是偶尔也会带来一些副作用，比如 <a href="https://youtrack.jetbrains.com/issue/KT-39091" target="_blank" rel="noopener">KT-39091</a> 这是来自某开发者的吐槽。</p>
+<h3 id="InlineOnly"><a href="#InlineOnly" class="headerlink" title="@InlineOnly"></a>@InlineOnly</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> kotlin<span class="token punctuation">.</span>internal
+
+<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>FUNCTION<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>PROPERTY<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>PROPERTY_GETTER<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>PROPERTY_SETTER<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>BINARY<span class="token punctuation">)</span>
+<span class="token keyword">internal</span> <span class="token keyword">annotation</span> <span class="token keyword">class</span> InlineOnly
+</code></pre>
+<blockquote>
+<p>Specifies that this function should not be called directly without inlining.</p>
+</blockquote>
+<p><code>kotlin.internal.InlineOnly</code> 这个注解只能给内联函数（或者内联属性）用，用在其他地方是没有效果的。</p>
+<p>这个注解是希望调用内联函数必须能够内联，它的具体效果是将其所标记的内联函数的可见性修饰符在编译时改成 <code>private</code>（当然编译后也是 <code>private</code>）。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 编译前</span>
+<span class="token annotation builtin">@InlineOnly</span>
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token function">someFun9</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 编译后</span>
+<span class="token annotation builtin">@InlineOnly</span>
+<span class="token keyword">private</span> <span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token function">someFun9</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 不要纠结细节，意思意思就可以了</span>
+</code></pre>
+<p>这样可以阻止来自 Java 方面的调用。因为用 Java 调用 Kotlin 的内联方法并不会有内联效果。</p>
+<h3 id="本文完"><a href="#本文完" class="headerlink" title="本文完"></a>本文完</h3><p>我觉得剩下的那几个不用讲了。</p>
+<p>啊，还有个名字很长的可以稍微提一下。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"LATEINIT_INTRINSIC_CALL_ON_NON_LATEINIT"</span><span class="token punctuation">)</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">println</span><span class="token punctuation">(</span><span class="token operator">::</span>fakeLateInit<span class="token punctuation">.</span>isInitialized<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"MUST_BE_INITIALIZED"</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> fakeLateInit<span class="token operator">:</span> String
+   <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">throw</span> <span class="token function">Exception</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span>
+</code></pre>
+<p>把 <code>main</code> 函数上面的注解删掉就能看到那个名字很长的注解的用处了。</p>
+<p>顺便讲一下那三个 magic inference annotations 的八卦。几年前 JB 员工就说过会在未来哪天将这几个注解转正成 <code>public</code> 的，但是直到现在还是老样子。那 JB 员工这几年都在干什么？都在修这些注解的 bug 呀。现在用 1.3.72，把 New Inference 一打开，就能看到 @Exact 的 bug。另外他们还在考虑给 @OnlyInputTypes 换一个更好的名字（逃</p>
+<p>本文真的完了。</p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可，转载请注明出处。
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://aisia.moe/2020/07/16/kotlin-internal-annotations/">https://aisia.moe/2020/07/16/kotlin-internal-annotations/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #B8B8B8;
+            text-shadow: 0;
+            display: none
+        }
+</style>
+	
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn">阅读评论（请确保 disqus 可以正常加载）</button>
+</div>
+
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'https://aisia.moe/2020/07/16/kotlin-internal-annotations/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://aisia.moe/2020/07/16/kotlin-internal-annotations/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/ls-javascript" id="disqus-lazy-load-script">
+    $.ajax({
+        url: 'https://disqus.com/next/config.json',
+        timeout: 4000,
+        type: 'GET',
+        success: (function() {
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//lgzh1215.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+            $('.disqus_click_btn').css('display','none');
+        })(),
+        error: function() {
+          $('.disqus_click_btn').css('display','block');
+        }
+    });
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//lgzh1215.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.disqus_click_btn').css('display','none');
+    });
+</script>
+  	
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/12/09/kotlin-suppress/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Dexlind's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        lgzh1215@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:lgzh1215@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">bookmark</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">view_list</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/java6api-cn" title="Java6 Api">
+                
+                    <i class="material-icons sidebar-material-icons">code</i>
+                
+                Java6 Api
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/2017/04/27/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">11</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/lgzh1215" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/2122856264" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/lgzh1215" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/jin-tian-san-kuai-qian" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/149438" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2017&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>萌夜雀的人头会社
+            
+                <br>
+                
+                    博客内容遵循 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名-非商业性使用-相同方式共享 4.0协议</a>
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#AA00FF'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #AA00FF, 0 0 15px #AA00FF'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#AA00FF',
+        'border-left-color': '#AA00FF'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- 使用 DISQUS js 代码 -->
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
