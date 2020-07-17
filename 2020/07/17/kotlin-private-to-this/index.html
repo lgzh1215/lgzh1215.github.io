@@ -45,7 +45,7 @@
     
     <title>
         
-            categories | 
+            Kotlin：比private更加自私的private to this | 
         
         萌夜雀的人头会社
     </title>
@@ -55,8 +55,8 @@
     <link rel="icon" href="/img/favicon_high.png">
 
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" itemprop="description" content="要和谐, 要有爱">
-    <meta name="keywords" content="萌夜雀 人头会社">
+    <meta name="description" itemprop="description" content="可见性修饰符 private，对于顶层声明来说是该文件内可见，对于类内部的成员来说是该类内部可见，这是大家都知道的事。不过 Kotlin 里还存在着可见范围更小的，那就是 private to this，仅对 this 可见 。">
+    <meta name="keywords" content="萌夜雀 人头会社,Others">
     <meta name="theme-color" content="#9C27B0">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -212,7 +212,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="萌夜雀的人头会社">
-    <meta name="msapplication-starturl" content="https://aisia.moe/categories/">
+    <meta name="msapplication-starturl" content="https://aisia.moe/2020/07/17/kotlin-private-to-this/">
     <meta name="msapplication-navbutton-color" content="#9C27B0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="萌夜雀的人头会社">
@@ -231,13 +231,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://aisia.moe/categories/">
+    <meta property="og:url" content="https://aisia.moe/2020/07/17/kotlin-private-to-this/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="categories | 萌夜雀的人头会社">
+    <meta property="og:title" content="Kotlin：比private更加自私的private to this | 萌夜雀的人头会社">
     <meta property="og:image" content="/img/favicon_high.png">
-    <meta property="og:description" content="要和谐, 要有爱">
-    
+    <meta property="og:description" content="可见性修饰符 private，对于顶层声明来说是该文件内可见，对于类内部的成员来说是该类内部可见，这是大家都知道的事。不过 Kotlin 里还存在着可见范围更小的，那就是 private to this，仅对 this 可见 。">
+    <meta property="og:article:tag" content="Others"> 
 
+    
+        <meta property="article:published_time" content="Fri Jul 17 2020 20:09:06 GMT+0800">
+        <meta property="article:modified_time" content="Fri Jul 17 2020 12:11:59 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -245,13 +248,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://aisia.moe/categories/index.html">
+        <link rel="canonical" href="https://aisia.moe/2020/07/17/kotlin-private-to-this/index.html">
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://aisia.moe/2020/07/17/kotlin-private-to-this/index.html",
+    "headline": "Kotlin：比private更加自私的private to this",
+    "datePublished": "Fri Jul 17 2020 20:09:06 GMT+0800",
+    "dateModified": "Fri Jul 17 2020 12:11:59 GMT+0000",
+    "author": {
+        "@type": "Person",
+        "name": "Dexlind",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "行云流水 疾风怒涛 丛云蔽月 风催花"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "萌夜雀的人头会社",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon_high.png"
+        }
+    },
+    "keywords": ",Others萌夜雀 人头会社",
+    "description": "可见性修饰符 private，对于顶层声明来说是该文件内可见，对于类内部的成员来说是该类内部可见，这是大家都知道的事。不过 Kotlin 里还存在着可见范围更小的，那就是 private to this，仅对 this 可见 。",
+}
+</script>
 
 
     
@@ -295,6 +328,30 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+
+
+
 
 <!-- Layouts -->
 
@@ -321,7 +378,7 @@
         
     
             <p class="article-headline-p">
-                categories
+                Kotlin：比private更加自私的private to this
             </p>
         </div>
 
@@ -340,7 +397,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Dexlind</strong>
-        <span>4月 19, 2017</span>
+        <span>7月 17, 2020</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -362,13 +419,22 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB5klEQVR42u3aS3LCMBAFQN//0skBKJz3JBwM01pRFGA1i6n5HT9fcQ4MDAwMDAwMjNswjvgk33r8zLNvveAOGBgYwxh/hLbgQo+vk89s3QEDA2MkI3n8eeh89vjzcLx4BwwMDIwNxvn7CQkDAwNj/yfaoJmzMTAwMPaL2DbJS9pzb6jFMTAwPpCRN+Wve/2v8w0MDIyPYlyyBlEOEm66M4KBgXEbRt78elWgfBUMAwNjGuO6YcD5pduVMgwMDIyE1yaF+a/VIRsDA2MYI08K83falYvkDhgYGJMZSWK31uhvB585BgMDYw6jKBpLTFLQ7owHMDAwZjLa5leSLOZpZVLQYmBgYBTBLl7ET/6gfPkMAwNjJqN92GJrLGjJtcNRDAyMOYyd4jMfFbQFbb1sgYGB8dWMtdWHdsk1TzGLcI+BgTGGcQ5YK2KTJYx2mRUDA2MyIy87k4vmw9E8lEcjTAwMjK9m1CsOcTKXl75tYw4DA2Ma44hPO07IA3TbaMPAwJjJ2Amy7RXbhbCtwQAGBsbXMdYGimtrYWvBHQMDAyNh5OlgEr7bBhwGBgbGfsBtE82bpoYYGBg3ZqyFyLyUXRxVXtFuw8DA+EDG/rpqTkoCa1QkY2BgjGF87sHAwMDAwMDAeOv5BWM95CleWfXMAAAAAElFTkSuQmCC">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACaklEQVR42u3aQW6EMBAEwP3/p5MHREC3jQ3aFKcIweLigCc98/n56uODh4eHh4eHh4f3Mt4nPv5ef/Q75+fP/z46k6wNDw8Pbyfv4lMbL+Lo3iP2EWNsbXh4eHj7efljzjeAhNSeL9aGh4eH9zLe+ce6heHh4eH9B95YkJG/rCSqwMPDw3sPr/iHP7grL74T3qasBQ8PDy/mzX/W1/39QH8PDw8P75RXjzTFW0IyOpAEGfUK8fDw8Bbz2rGnmfi1ZecDB3h4eHj7eW3jf2b0Kh8gSJ6Ch4eHt5+XxwHtuMBM0JC8miKMwMPDw7uVN9bKmh84GIs/ot/Hw8PDW8wb+3wnG0NSRrcbwMJ9Dw8PD2+ad9eI6hi73YTw8PDwdvLGmkxjUcUMLC/H8fDw8PbzklAgaUfdNVhQx8p4eHh4W3h5ENBe024bydAAHh4e3nt4bandls7tXWNjXnh4eHh7eHdFujNRRb6GB2JcPDw8vOnYtL0rWW4bhRw+Cw8PD28xry2X50OEsWGswRgXDw8PbwFv/pM9VhznbbD6DB4eHt5iXhIxtO2otjRvf+fiLjw8PLwtvLEyt22SJZtNETrg4eHhPcRLhk0TfP7pPy/c89gCDw8P7ylee8wPSM2/posr8fDw8BbzPvEx1o5qo4dko7p4Ch4eHt4W3ljzfqZlVQ+h5qU2Hh4e3kZeshnkoW3evhrbnIqSGg8PD+9RXh4o5CVyHk8krx4PDw/vnbwZTNLESuLgOozAw8PDW8DLB6HysruNaOdHFvDw8PD28G4LAuKwNQfUV+Lh4eEt5n3fgYeHh4eHh4eH94LjF/nnxHB5ij1PAAAAAElFTkSuQmCC">
     
 </ul>
 
     
 
     <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Others/">Others</a>
+    </li></ul>
     
 
     <!-- Share -->
@@ -395,7 +461,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=categories&url=https://aisia.moe/categories/index.html&pic=https://aisia.moe/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Kotlin：比private更加自私的private to this&url=https://aisia.moe/2020/07/17/kotlin-private-to-this/index.html&pic=https://aisia.moe/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -404,7 +470,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=categories&url=https://aisia.moe/categories/index.html&via=Dexlind" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Kotlin：比private更加自私的private to this&url=https://aisia.moe/2020/07/17/kotlin-private-to-this/index.html&via=Dexlind" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -413,7 +479,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://aisia.moe/categories/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://aisia.moe/2020/07/17/kotlin-private-to-this/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -422,7 +488,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://aisia.moe/categories/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://aisia.moe/2020/07/17/kotlin-private-to-this/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -447,7 +513,91 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <p>可见性修饰符 <code>private</code>，对于顶层声明来说是该文件内可见，对于类内部的成员来说是该类内部可见，这是大家都知道的事。不过 Kotlin 里还存在着可见范围更小的，那就是 <code>private to this</code>，仅对 <code>this</code> 可见 。<a id="more"></a></p>
+<p>我们先从泛型逆变（contravariant）说起。比如说我们有一个消费者：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">interface</span> Consumer<span class="token operator">&lt;</span><span class="token keyword">in</span> T<span class="token operator">></span> <span class="token punctuation">{</span>
+   <span class="token keyword">fun</span> <span class="token function">consume</span><span class="token punctuation">(</span>t<span class="token operator">:</span> T<span class="token punctuation">)</span><span class="token operator">:</span> Unit
+<span class="token punctuation">}</span>
+</code></pre>
+<p>它的类型参数 <code>T</code> 是逆变的。这意味着 <code>T</code> 只能出现在成员的输入位置，如例子中 <code>consume</code> 函数的参数位置，而不能出现在成员的输出位置（比如说返回值位置）。这个限制是为了确保类型安全。</p>
+<p>然后因为是逆变的，这使得 <code>Consumer&lt;CharSequence&gt;</code> 是 <code>Consumer&lt;String&gt;</code> 的子类型：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span>c<span class="token operator">:</span> Consumer<span class="token operator">&lt;</span>CharSequence<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">val</span> consumer <span class="token operator">:</span> Consumer<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token operator">=</span> c
+   consumer<span class="token punctuation">.</span><span class="token function">consume</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>毕竟 <code>String</code> 是 <code>CharSequence</code> 的子类型，如果一个东西是字符串，那么这个东西也可以是一个字符序列。然后一个消费 <code>CharSequence</code> 的消费者当然可以拿一个 <code>String</code> 当做 <code>CharSequence</code> 来消费，所以说 “消费 <code>String</code> 的消费者” 可以用 “消费 <code>CharSequence</code> 的消费者” 来代替。</p>
+<p>这个替代关系很好地阐释了 <code>Consumer&lt;CharSequence&gt;</code> 是 <code>Consumer&lt;String&gt;</code> 的子类型。</p>
+<p>现在我们改一下消费者的逻辑，把接口删了换成类，并且让她在出生的时候就能拿到消费品，这样并不会改变逆变的性质：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Consumer<span class="token operator">&lt;</span><span class="token keyword">in</span> T<span class="token operator">></span><span class="token punctuation">(</span>t<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">private</span> <span class="token keyword">val</span> somethingToConsume<span class="token operator">:</span> T <span class="token operator">=</span> t
+
+   <span class="token keyword">fun</span> <span class="token function">consumeMyThing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span>somethingToConsume<span class="token punctuation">)</span>
+
+   <span class="token keyword">fun</span> <span class="token function">consume</span><span class="token punctuation">(</span>t<span class="token operator">:</span> T<span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">val</span> consumer <span class="token operator">:</span> Consumer<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token operator">=</span> Consumer<span class="token operator">&lt;</span>Any<span class="token operator">></span><span class="token punctuation">(</span><span class="token function">Any</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   consumer<span class="token punctuation">.</span><span class="token function">consume</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>是时候回归主题了，我们的消费者小姐，她的 <code>somethingToConsume</code>，可见性就是 <code>private to this</code>，仅对 <code>this</code> 可见。 </p>
+<p>比如说消费者小姐看中了别人的消费品，想要抢过来玩：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Consumer<span class="token operator">&lt;</span><span class="token keyword">in</span> T<span class="token operator">></span><span class="token punctuation">(</span>t<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">private</span> <span class="token keyword">val</span> somethingToConsume<span class="token operator">:</span> T <span class="token operator">=</span> t
+
+   <span class="token keyword">fun</span> <span class="token function">consumeMyThing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span>somethingToConsume<span class="token punctuation">)</span>
+
+   <span class="token keyword">fun</span> <span class="token function">consumeOthers</span><span class="token punctuation">(</span>other<span class="token operator">:</span> Consumer<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token punctuation">{</span>
+      <span class="token keyword">val</span> string <span class="token operator">=</span> other<span class="token punctuation">.</span>somethingToConsume
+      <span class="token function">println</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+      <span class="token comment" spellcheck="true">// Error: Cannot access 'somethingToConsume'</span>
+      <span class="token comment" spellcheck="true">// It is private</span><span class="token comment" spellcheck="true">/*private to this*/</span> <span class="token keyword">in</span> <span class="token string">'Consumer'</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>编译器看到了这样的违法行为，马上阻止了她：你只能玩你自己的东西。</p>
+<p>之所以 <code>consumeMyThing</code> 可以通过编译，是因为通过 <code>this</code> 调用 <code>somethingToConsume</code> （<code>this</code> 省略了）；在 <code>consumeOthers</code> 函数里调用 <code>somethingToConsume</code> 用的不是 <code>this</code>，所以失败了。仅对 <code>this</code> 可见，字面意思。</p>
+<p>为什么会有这样的限制呢？原因很简单，<code>consumeOthers</code> 的代码其实是违反了逆变泛型参数的安全限制，<code>other.somethingToConsume</code> 这里实际上是 <code>other</code> 在对外输出 <code>T</code>，眼尖的同学可能早就发现了，<code>somethingToConsume</code> 的 <code>T</code> 是处在输出的位置上的。</p>
+<p>但是“输出”是相对的，一个 <code>private</code> 的东西，自产自销自己用，那不算输出，是安全的。但是像上面那样从别人家里那东西，那就相当于是别人在输出了。</p>
+<p>可以演示一下如果不存在 <code>private to this</code> 的限制会发生什么问题。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Consumer<span class="token operator">&lt;</span><span class="token keyword">in</span> T<span class="token operator">></span><span class="token punctuation">(</span>t<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">private</span> <span class="token keyword">val</span> somethingToConsume<span class="token operator">:</span> T <span class="token operator">=</span> t
+
+   <span class="token keyword">fun</span> <span class="token function">consumeMyThing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> <span class="token function">println</span><span class="token punctuation">(</span>somethingToConsume<span class="token punctuation">)</span>
+
+   <span class="token keyword">fun</span> <span class="token function">consumeOthers</span><span class="token punctuation">(</span>other<span class="token operator">:</span> Consumer<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token punctuation">{</span>
+      <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"INVISIBLE_MEMBER"</span><span class="token punctuation">)</span>
+      <span class="token keyword">val</span> string <span class="token operator">=</span> other<span class="token punctuation">.</span>somethingToConsume <span class="token comment" spellcheck="true">// dangerous!!</span>
+      <span class="token function">println</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">val</span> intConsumer <span class="token operator">=</span> <span class="token function">Consumer</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span>
+   <span class="token keyword">val</span> anyConsumer <span class="token operator">=</span> <span class="token function">Consumer</span><span class="token punctuation">(</span><span class="token function">Any</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   <span class="token comment" spellcheck="true">// 因为是逆变的，所以 Consumer&lt;Any> 是 Consumer&lt;String> 的子类型</span>
+   intConsumer<span class="token punctuation">.</span><span class="token function">consumeOthers</span><span class="token punctuation">(</span>anyConsumer<span class="token punctuation">)</span>
+
+   <span class="token comment" spellcheck="true">// intConsumer 想要从别人手里拿到一个 String，但是实际上拿到的是 Any</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这里使用了我的<a href="https://aisia.moe/2018/12/09/kotlin-suppress/">那篇文章</a>介绍的技巧，使用 <code>@Suppress(&quot;INVISIBLE_MEMBER&quot;)</code> 强行无视可见性的限制。</p>
+<p>运行代码然后就得到了一个类型转换异常：</p>
+<pre><code>Exception in thread &quot;main&quot; java.lang.ClassCastException: java.lang.Object cannot be cast to java.lang.String
+    at Consumer.consumeOthers
+</code></pre><p>所以现在来总结一下。当一个类、接口的逆变的泛型参数出现在 <code>private</code> 成员的输出位置时（比较常见的是返回值位置），那么那个 <code>private</code> 成员，实际上可见性是 <code>private to this</code>。举例：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Test<span class="token operator">&lt;</span><span class="token keyword">in</span> T<span class="token operator">></span> <span class="token punctuation">{</span>
+   <span class="token keyword">private</span> <span class="token keyword">val</span> foo<span class="token operator">:</span> T <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+   <span class="token keyword">private</span> <span class="token keyword">var</span> bar<span class="token operator">:</span> T <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+   <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">bas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> <span class="token function">TODO</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>为了允许上面这些代码合法存在，但是又要禁止不安全的调用，这就是为什么要有 <code>private to this</code> 的原因。</p>
+<p>本文完。</p>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -455,7 +605,7 @@
                             <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可，转载请注明出处。
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="https://aisia.moe/categories/index.html">https://aisia.moe/categories/index.html</a>
+                        <strong>本文链接：</strong><a href="https://aisia.moe/2020/07/17/kotlin-private-to-this/">https://aisia.moe/2020/07/17/kotlin-private-to-this/</a>
                     </p>
                 </blockquote>
         
@@ -511,8 +661,8 @@
 
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'https://aisia.moe/categories/index.html';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'https://aisia.moe/categories/index.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'https://aisia.moe/2020/07/17/kotlin-private-to-this/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://aisia.moe/2020/07/17/kotlin-private-to-this/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
@@ -566,6 +716,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2020/07/16/kotlin-internal-annotations/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -758,6 +916,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
