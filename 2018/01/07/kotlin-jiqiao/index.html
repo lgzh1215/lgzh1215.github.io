@@ -606,7 +606,8 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>可能有Bug（逃</p>
-<h2 id="开启残废的SAM转换功能"><a href="#开启残废的SAM转换功能" class="headerlink" title="开启残废的SAM转换功能"></a>开启残废的SAM转换功能</h2><p>Kotlin1.3版本有用，没试过更旧的版本。</p>
+<h2 id="开启残废的SAM转换功能"><a href="#开启残废的SAM转换功能" class="headerlink" title="开启残废的SAM转换功能"></a>开启残废的SAM转换功能</h2><p>Kotlin 1.4 版本是默认开启的，所以不用管。</p>
+<p>Kotlin 1.3 版本有用，没试过更旧的版本。</p>
 <p>添加编译器参数：</p>
 <pre><code>-XXLanguage:+NewInference
 -XXLanguage:+SamConversionForKotlinFunctions
@@ -624,7 +625,6 @@
    test <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 这里报错</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>副作用：NewInference可能存在bug，并且当出现编译错误的时候可能得到一堆难懂的报错信息。</p>
 <h2 id="如何添加编译器参数"><a href="#如何添加编译器参数" class="headerlink" title="如何添加编译器参数"></a>如何添加编译器参数</h2><h3 id="使用-Gradle"><a href="#使用-Gradle" class="headerlink" title="使用 Gradle"></a>使用 Gradle</h3><pre class=" language-Groovy"><code class="language-Groovy">// build.gradle
 compileKotlin {
     ...
@@ -636,7 +636,7 @@ compileTestKotlin {
 }
 </code></pre>
 <p>PS：使用Gradle的话，请注意IDEA的 <code>Delegate IDE build/run actions to gradle</code> 这个选项是否勾选的区别。</p>
-<p>PPS：对于自定义源文件集（source set）这些任务称呼取决于 <code>compile&lt;Name&gt;Kotlin</code> 模式。比如说安卓项目则是例如 <code>compileDebugKotlin</code>、 <code>compileReleaseUnitTestKotlin</code> 等。</p>
+<p>PPS：对于自定义源文件集（source set）这些任务称呼取决于 <code>compile&lt;Name&gt;Kotlin</code> 模式。比如说安卓项目，例如 <code>compileDebugKotlin</code>、 <code>compileReleaseUnitTestKotlin</code> 等。</p>
 <h3 id="使用-Gradle-Kotlin-Dsl："><a href="#使用-Gradle-Kotlin-Dsl：" class="headerlink" title="使用 Gradle Kotlin Dsl："></a>使用 Gradle Kotlin Dsl：</h3><p>因为我本身不使用Gradle Kotlin Dsl，所以不保证下面的写法在未来还能用。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// build.gradle.kts</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>jetbrains<span class="token punctuation">.</span>kotlin<span class="token punctuation">.</span>gradle<span class="token punctuation">.</span>tasks<span class="token punctuation">.</span>KotlinCompile
@@ -1093,7 +1093,7 @@ a <span class="token operator">=</span> <span class="token punctuation">{</span>
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">12</span>
+                <span class="sidebar-badge">11</span>
             </a>
         </li>
         

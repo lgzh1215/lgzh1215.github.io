@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Sun Dec 09 2018 09:40:02 GMT+0800">
-        <meta property="article:modified_time" content="Fri Jul 17 2020 12:11:59 GMT+0000">
+        <meta property="article:modified_time" content="Wed Aug 19 2020 04:46:08 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -263,7 +263,7 @@
     "mainEntityOfPage": "https://aisia.moe/2018/12/09/kotlin-suppress/index.html",
     "headline": "Kotlin Suppress 的非常规用法",
     "datePublished": "Sun Dec 09 2018 09:40:02 GMT+0800",
-    "dateModified": "Fri Jul 17 2020 12:11:59 GMT+0000",
+    "dateModified": "Wed Aug 19 2020 04:46:08 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -354,7 +354,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常规用法"><span class="post-toc-number">1.</span> <span class="post-toc-text">常规用法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#非常规用法"><span class="post-toc-number">2.</span> <span class="post-toc-text">非常规用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">例1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例2"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">例2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例3"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">例3</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例4"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">例4</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结尾"><span class="post-toc-number">3.</span> <span class="post-toc-text">结尾</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常规用法"><span class="post-toc-number">1.</span> <span class="post-toc-text">常规用法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#非常规用法"><span class="post-toc-number">2.</span> <span class="post-toc-text">非常规用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">例1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例2"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">例2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例3"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">例3</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例4"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">例4</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例5"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">例5</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结尾"><span class="post-toc-number">3.</span> <span class="post-toc-text">结尾</span></a></li></ol>
     </ul>
     
 
@@ -554,7 +554,7 @@ some <span class="token keyword">as</span> List<span class="token operator">&lt;
 <pre class=" language-kotlin"><code class="language-kotlin">any <span class="token keyword">is</span> Array<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span> <span class="token operator">&amp;&amp;</span> any<span class="token punctuation">.</span>isArrayOf<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>就是很丑罢了。</p>
-<p>在Kotlin的早期代码，这样的type check是允许的，因为某些原因ban掉了（读者可以想想为什么要ban掉这样的代码）。这个时候可以用 <code>Suppress</code> 把这个后门打开。</p>
+<p>在Kotlin的早期代码，这样的 type check 是允许的，但是后来为了保证类型安全，ban 掉了这样的写法。这个时候可以用 <code>Suppress</code> 把这个后门打开。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">some</span><span class="token punctuation">(</span>any<span class="token operator">:</span> Any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
    <span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"CANNOT_CHECK_FOR_ERASED"</span><span class="token punctuation">)</span>
    <span class="token keyword">when</span><span class="token punctuation">(</span>any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -563,6 +563,7 @@ some <span class="token keyword">as</span> List<span class="token operator">&lt;
    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<p>读者可以想想为什么要ban掉这样的代码，毕竟这种代码有可能会出现类型安全问题，要格外小心！</p>
 <p>PS：这个其实也是可以对非数组的泛型使用的，例如这样：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"CANNOT_CHECK_FOR_ERASED"</span><span class="token punctuation">)</span>
 <span class="token keyword">when</span><span class="token punctuation">(</span>any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -576,6 +577,7 @@ some <span class="token keyword">as</span> List<span class="token operator">&lt;
 <span class="token punctuation">}</span>
 </code></pre>
 <p>并不是大家都想要的真泛型（不信可以传个 <code>List&lt;Int&gt;</code> 什么的进去试试），只是上面的代码可以享受到 Smart Cast 罢了。</p>
+<p>可想而知，这样的代码也是有类型安全问题的。</p>
 <h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><p>可以在非顶层空间定义类型别名。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"TOPLEVEL_TYPEALIASES_ONLY"</span><span class="token punctuation">)</span>
 <span class="token keyword">class</span> Some <span class="token punctuation">{</span>
@@ -592,7 +594,7 @@ some <span class="token keyword">as</span> List<span class="token operator">&lt;
 </code></pre>
 <p>主要是为了限制类型别名的作用域。另外把类型别名定义在顶层一定会生成一个 <code>文件名Kt</code> 的 class，可以用这个方法避免这种情况的发生。</p>
 <h3 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h3><p>Kotlin 在远古版本 <a href="https://blog.jetbrains.com/kotlin/2015/09/kotlin-m13-is-out/" target="_blank" rel="noopener">M13</a> 新增了 <code>lateinit</code> 修饰符，当时是可以对只读属性（val）和可变属性（var）使用。</p>
-<p>然后 <a href="https://blog.jetbrains.com/kotlin/2015/10/kotlin-m14-is-out/" target="_blank" rel="noopener">M14</a> 版本就残忍地 ban 掉了 <code>lateinit val</code>。</p>
+<p>然后在下一个版本 <a href="https://blog.jetbrains.com/kotlin/2015/10/kotlin-m14-is-out/" target="_blank" rel="noopener">M14</a> 就残忍地 ban 掉了 <code>lateinit val</code>。</p>
 <p>现在你可以用 <code>Suppress</code> 绕开编译器对 <code>lateinit val</code> 的限制。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"INAPPLICABLE_LATEINIT_MODIFIER"</span><span class="token punctuation">)</span>
 <span class="token keyword">lateinit</span> <span class="token keyword">val</span> lateInitVal<span class="token operator">:</span> String
@@ -610,13 +612,27 @@ some <span class="token keyword">as</span> List<span class="token operator">&lt;
    <span class="token function">println</span><span class="token punctuation">(</span>some<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 输出 2</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<p>嘻嘻~</p>
 <h3 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h3><p>Kotlin Collection Literals 半成品。这个特性是JetBrains他们在17年4月份的时候做的关于Kotlin未来特性的一份<a href="https://drive.google.com/file/d/0BwAovUlww0CmVmNQTXd4TTdKYUU/view" target="_blank" rel="noopener">调查问卷</a>的第6个特性。简单地说是用一些特殊的语法来创建各种集合，而不是（丑陋的）<code>listOf</code>、<code>mapOf</code> 等标准库函数。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"UNSUPPORTED"</span><span class="token punctuation">)</span>
 <span class="token keyword">val</span> bs<span class="token operator">:</span> BooleanArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">]</span>
 </code></pre>
 <p>但是这是个未完成的功能，目前只支持数组，在未来计划支持 List、Map 和 Set 的创建。所以为了避免不必要的兼容性麻烦，在正常情况下只允许在注解里这样用。要想在其他地方用，就像上面代码那样加上 <code>Suppress</code> 注解。</p>
-<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>想知道更多的Suppress选项的话，可以去翻Kotlin的源码。</p>
-<p>这种无法得到官方支持的奇技淫巧，也许下次更新就挂掉了，所以如果用了那就后果自负吧。</p>
+<h3 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h3><p>可以用来解决某些与 Java 互操作时 package private 可见性带来的问题。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 这是 Java 代码</span>
+<span class="token keyword">package</span> test<span class="token punctuation">;</span>
+
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 仅包内可见</span>
+</code></pre>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 这是 Kotlin 代码</span>
+<span class="token keyword">package</span> test
+
+<span class="token annotation builtin">@Suppress</span><span class="token punctuation">(</span><span class="token string">"EXPOSED_SUPER_CLASS"</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> TestImpl <span class="token operator">:</span> <span class="token function">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>当去掉那行 Suppress 注解时编译无法通过。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>想知道更多的 Suppress 选项的话，可以去翻 Kotlin 的源码。</p>
+<p>这种奇技淫巧是无法得到官方支持的，也许下次更新就挂掉了，所以如果用了那就后果自负吧。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -894,7 +910,7 @@ some <span class="token keyword">as</span> List<span class="token operator">&lt;
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">12</span>
+                <span class="sidebar-badge">11</span>
             </a>
         </li>
         
