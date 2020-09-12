@@ -45,7 +45,7 @@
     
     <title>
         
-            一言难尽的Kotlin SAM转换 | 
+            关于Kotlin的SAM转换的破事水 | 
         
         萌夜雀的人头会社
     </title>
@@ -233,14 +233,14 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://aisia.moe/2020/09/12/kotlin-sam-history/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="一言难尽的Kotlin SAM转换 | 萌夜雀的人头会社">
+    <meta property="og:title" content="关于Kotlin的SAM转换的破事水 | 萌夜雀的人头会社">
     <meta property="og:image" content="/img/favicon_high.png">
     <meta property="og:description" content="随着 Kotlin 1.4 正式发布，关于 SAM 转换的一些问题就可以盖棺定论了。因为这里要讲的都是些旧的东西，所以这是一篇灌水文。">
     <meta property="og:article:tag" content="Kotlin"> 
 
     
         <meta property="article:published_time" content="Sat Sep 12 2020 15:12:43 GMT+0800">
-        <meta property="article:modified_time" content="Sat Sep 12 2020 09:46:20 GMT+0000">
+        <meta property="article:modified_time" content="Sat Sep 12 2020 12:05:19 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -261,9 +261,9 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "mainEntityOfPage": "https://aisia.moe/2020/09/12/kotlin-sam-history/index.html",
-    "headline": "一言难尽的Kotlin SAM转换",
+    "headline": "关于Kotlin的SAM转换的破事水",
     "datePublished": "Sat Sep 12 2020 15:12:43 GMT+0800",
-    "dateModified": "Sat Sep 12 2020 09:46:20 GMT+0000",
+    "dateModified": "Sat Sep 12 2020 12:05:19 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -354,7 +354,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SAM转换的支持情况"><span class="post-toc-number">1.</span> <span class="post-toc-text">SAM转换的支持情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、Java接口，Java使用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1、Java接口，Java使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、Java接口，Kotlin使用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2、Java接口，Kotlin使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、Kotlin接口，Kotlin使用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3、Kotlin接口，Kotlin使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、Kotlin接口，Java使用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4、Kotlin接口，Java使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5、带有suspend函数的Kotlin接口"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5、带有suspend函数的Kotlin接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6、一些旧版本的bug"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">6、一些旧版本的bug</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SAM-Constructor"><span class="post-toc-number">2.</span> <span class="post-toc-text">SAM Constructor</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#你学到了什么"><span class="post-toc-number">3.</span> <span class="post-toc-text">你学到了什么</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kotlin对SAM转换的支持情况"><span class="post-toc-number">1.</span> <span class="post-toc-text">Kotlin对SAM转换的支持情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、Java接口，Java使用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1、Java接口，Java使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、Java接口，Kotlin使用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2、Java接口，Kotlin使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、Kotlin接口，Kotlin使用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3、Kotlin接口，Kotlin使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、Kotlin接口，Java使用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4、Kotlin接口，Java使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5、带有suspend函数的Kotlin接口"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5、带有suspend函数的Kotlin接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6、一些旧版本的bug"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">6、一些旧版本的bug</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SAM-Constructor"><span class="post-toc-number">2.</span> <span class="post-toc-text">SAM Constructor</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#你学到了什么"><span class="post-toc-number">3.</span> <span class="post-toc-text">你学到了什么</span></a></li></ol>
     </ul>
     
 
@@ -386,7 +386,7 @@
         
     
             <p class="article-headline-p">
-                一言难尽的Kotlin SAM转换
+                关于Kotlin的SAM转换的破事水
             </p>
         </div>
 
@@ -469,7 +469,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=一言难尽的Kotlin SAM转换&url=https://aisia.moe/2020/09/12/kotlin-sam-history/index.html&pic=https://aisia.moe/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=关于Kotlin的SAM转换的破事水&url=https://aisia.moe/2020/09/12/kotlin-sam-history/index.html&pic=https://aisia.moe/img/favicon_normal.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -478,7 +478,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=一言难尽的Kotlin SAM转换&url=https://aisia.moe/2020/09/12/kotlin-sam-history/index.html&via=Dexlind" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=关于Kotlin的SAM转换的破事水&url=https://aisia.moe/2020/09/12/kotlin-sam-history/index.html&via=Dexlind" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -522,7 +522,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>随着 Kotlin 1.4 正式发布，关于 SAM 转换的一些问题就可以盖棺定论了。因为这里要讲的都是些旧的东西，所以这是一篇灌水文。<a id="more"></a></p>
-<h2 id="SAM转换的支持情况"><a href="#SAM转换的支持情况" class="headerlink" title="SAM转换的支持情况"></a>SAM转换的支持情况</h2><p>在 1.4 发布之前，经常有新人在群里提出关于 SAM 转换的问题。</p>
+<h2 id="Kotlin对SAM转换的支持情况"><a href="#Kotlin对SAM转换的支持情况" class="headerlink" title="Kotlin对SAM转换的支持情况"></a>Kotlin对SAM转换的支持情况</h2><p>在 1.4 发布之前，经常有新人在群里提出关于 SAM 转换的问题。</p>
 <p>为了说明这个问题，要分成几个情况来讨论。</p>
 <p>我们需要区分这个接口是Java接口还是Kotlin接口：</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 这是Java</span>
@@ -641,7 +641,7 @@ kepa<span class="token punctuation">.</span><span class="token function">some</s
 kepa<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>这段代码 IDEA 不会提示错误，但是会编译失败。</p>
-<p>表面上看确实有这个辅助方法，所以这样的代码可以通过 Kotlin 编译器前端的检查（这就是IDEA不会报错的原因）。但是实际上编译器的后端并没有办法针对这样的情况进行代码生成，彻底懵逼了，boom！</p>
+<p>表面上看确实有这个辅助函数，所以这样的代码可以通过 Kotlin 编译器前端的检查。但是实际上编译器的后端并没有办法针对这样的情况进行代码生成，彻底懵逼了，boom！</p>
 <h2 id="你学到了什么"><a href="#你学到了什么" class="headerlink" title="你学到了什么"></a>你学到了什么</h2><ul>
 <li>一些无用的历史知识</li>
 <li>关于 SAM constructor 的冷知识</li>
