@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Sat Sep 12 2020 17:45:14 GMT+0800">
-        <meta property="article:modified_time" content="Sat Sep 12 2020 12:05:19 GMT+0000">
+        <meta property="article:modified_time" content="Fri Sep 18 2020 08:39:06 GMT+0000">
     
 
     <!-- The Twitter Card protocol -->
@@ -263,7 +263,7 @@
     "mainEntityOfPage": "https://aisia.moe/2020/09/12/kotlin-auto-type-conversion/index.html",
     "headline": "Kotlin的自动类型转换",
     "datePublished": "Sat Sep 12 2020 17:45:14 GMT+0800",
-    "dateModified": "Sat Sep 12 2020 12:05:19 GMT+0000",
+    "dateModified": "Fri Sep 18 2020 08:39:06 GMT+0000",
     "author": {
         "@type": "Person",
         "name": "Dexlind",
@@ -556,10 +556,11 @@
 
 useSome <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"some"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
 </code></pre>
-<p>在我的<a href="https://aisia.moe/2020/09/12/kotlin-sam-history/">另一篇文章</a>里有更详细的介绍。</p>
 <p>如果读者不同意这个说法，可以选择跳过本小节内容。</p>
+<p>在我的<a href="https://aisia.moe/2020/09/12/kotlin-sam-history/">另一篇文章</a>里有更详细的介绍。</p>
 <h2 id="Coercion-to-Unit"><a href="#Coercion-to-Unit" class="headerlink" title="Coercion to Unit"></a>Coercion to Unit</h2><p>我们都知道 Kotlin 的 lambda 表达式是使用里面最后一个表达式的值来作为 lambda 的返回值的。比如这样：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> block <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"yeah"</span> <span class="token punctuation">}</span>
+<span class="token function">println</span><span class="token punctuation">(</span>block<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 输出 yeah</span>
 </code></pre>
 <p>block 的类型是 <code>() -&gt; String</code>。</p>
 <p>然后我们来看看这样的情况：</p>
@@ -567,9 +568,9 @@ useSome <span class="token punctuation">{</span> <span class="token function">pr
    <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">block</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-test <span class="token punctuation">{</span> <span class="token string">"yeah"</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 输出 Unit</span>
+test <span class="token punctuation">{</span> <span class="token string">"yeah"</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 输出 kotlin.Unit</span>
 </code></pre>
-<p>相信很多人都熟悉这样的写法。</p>
+<p>我们可以注意到那个 block 的类型是 <code>() -&gt; Unit</code>，相信很多人都熟悉这样的写法。</p>
 <p>在某些初学者的眼里这看起来像是把一个 <code>() -&gt; String</code> 类型的 lambda 传给了需要 <code>() -&gt; Unit</code> 类型的函数。</p>
 <p>这就是 <strong>coercion to unit</strong>，一个很久以前就存在的特性，可以理解为编译器自动帮你在 lambda 表达式的最后加了一行 <code>Unit</code>，把本来应该是<code>() -&gt; String</code> 类型的 lambda 变成了 <code>() -&gt; Unit</code> 类型。</p>
 <p>在 Kotlin 1.4 版本，这个特性得到了进化，你甚至可以这样写：</p>
@@ -582,7 +583,7 @@ test <span class="token punctuation">{</span> <span class="token string">"yeah"<
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">// 需要 Kotlin 1.4 版本</span>
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token operator">::</span>some<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 输出 Unit</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token operator">::</span>some<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 输出 kotlin.Unit</span>
 </code></pre>
 <p>编译器帮你把 <code>() -&gt; String</code> 类型的函数引用转成了 <code>() -&gt; Unit</code>。</p>
 <h2 id="Unit-Conversion"><a href="#Unit-Conversion" class="headerlink" title="Unit Conversion"></a>Unit Conversion</h2><p><strong>警告：这是一项未完成的特性！</strong></p>
@@ -599,12 +600,19 @@ test <span class="token punctuation">{</span> <span class="token string">"yeah"<
 
 <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
    some <span class="token punctuation">{</span> <span class="token string">"str"</span> <span class="token punctuation">}</span>
-   <span class="token comment" spellcheck="true">// 理论上会输出 Unit</span>
+   <span class="token comment" spellcheck="true">// 理论上会输出 kotlin.Unit</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>在函数 some 里把一个 <code>() -&gt; String</code> 传给了 test 函数，可以看出来这个特性其实和 coercion to unit 是差不多的。</p>
-<p>理论上这样的代码运行时会输出 <code>Unit</code>，但是目前由于该特性的代码生成没写好，得不到预期的结果。</p>
-<p>另外，在开启了这个特性后，<code>() -&gt; String</code> 并不会成为 <code>() -&gt; Unit</code> 的子类型，它们依然是两个不相容的类型。</p>
+<p>理论上这样的代码运行时会输出 <code>kotlin.Unit</code>，但是目前由于该特性的代码生成没写好，得不到预期的结果。</p>
+<p>另外，在开启了这个特性后，<code>() -&gt; String</code> 并不会成为 <code>() -&gt; Unit</code> 的子类型，它们依然是两个不相容的类型。这个转换只能在调用函数时发生。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span>block<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">block</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">val</span> a<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> String <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">""</span> <span class="token punctuation">}</span>
+<span class="token keyword">val</span> b<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> a <span class="token comment" spellcheck="true">// 错误！</span>
+<span class="token function">test</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// unit conversion只会在这种情况下发生!</span>
+</code></pre>
 <h2 id="Suspend-Conversion"><a href="#Suspend-Conversion" class="headerlink" title="Suspend Conversion"></a>Suspend Conversion</h2><p><strong>警告：这是一项未完成的特性！</strong></p>
 <p>这是本文要介绍的第二个 Kt 官方团队偷偷塞进 1.4 版本的未完成的新特性。</p>
 <p>比如说我们有这样的一个函数：</p>
@@ -613,16 +621,28 @@ test <span class="token punctuation">{</span> <span class="token string">"yeah"<
 <span class="token punctuation">}</span>
 </code></pre>
 <p>我们可以这样调用它：</p>
-<pre class=" language-kotlin"><code class="language-kotlin">test <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> 
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// case 1</span>
+test <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> 
 </code></pre>
 <p>但是这样不行：</p>
-<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> f <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// case 2</span>
+<span class="token keyword">val</span> f <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token function">test</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 编译错误</span>
 </code></pre>
 <p>编译器会告诉你类型不匹配，<code>f</code> 是 <code>() -&gt; Unit</code> 类型，<code>test</code> 函数需要 <code>suspend () -&gt; Unit</code> 类型的参数。</p>
-<p>当你添加了编译器参数 <code>-XXLanguage:+SuspendConversion</code>，就可以让上面的代码通过编译。</p>
+<p>为什么呢？</p>
+<p>在 case 1 里，lambda 字面量是直接传给 test 函数的，Kotlin 编译器会根据 test 函数的参数类型将这个 lambda 字面量当作是 suspend lambda 来看待，即 <code>suspend () -&gt; Unit</code>。</p>
+<p>在 case 2 里，编译器无法从 <code>val f = { println(&quot;hi&quot;) }</code> 这行语句中获得关于 lambda 字面量的类型的信息，所以就默认推断为普通的函数类型，即 <code>() -&gt; Unit</code>。（对于Kotlin来说，下一行的函数调用并不会影响到 f 的类型推断）</p>
+<p>当你添加了编译器参数 <code>-XXLanguage:+SuspendConversion</code>，就可以让 case 2 通过编译。</p>
 <p>也就是说这个特性可以帮你把普通函数类型的值转成 suspend 函数类型。</p>
-<p>当然由于这是未完成的功能，即使可以通过编译，但是跑起来还是会炸。</p>
+<p>和上面的 unit conversion 差不多，这个 suspend conversion 也是只有在调用函数的时候才发生的。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span>block<span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">val</span> a<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> String <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">""</span> <span class="token punctuation">}</span>
+<span class="token keyword">val</span> b<span class="token operator">:</span> <span class="token function">suspend</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> String <span class="token operator">=</span> a <span class="token comment" spellcheck="true">// 错误！</span>
+<span class="token function">test</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// suspend conversion只会在这种情况下发生!</span>
+</code></pre>
+<p>当然由于这是未完成的功能，即使上面的 case 2 可以通过编译，但是跑起来还是会炸。</p>
 <p>这个特性或许会在 Kotlin 1.5 版本完工，但请不要抱有期待。</p>
 <h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>我并不想讨论「为什么要加这种奇怪的特性」之类的话题。</p>
 <p>不可否认的是，在有限的程序员生涯中，这些新特性可能一次也用不上。上面提到的问题也都有相应的 workaround，不需要新特性也可以写出等价的代码，就是没有那么优雅罢了（</p>
